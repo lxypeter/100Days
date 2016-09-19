@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+    <entity name="Target" representedClassName="Target" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="day" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="flexibleTimes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="result" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="totalDays" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="targetSigns" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TargetSign" inverseName="target" inverseEntity="TargetSign" syncable="YES"/>
+    </entity>
+    <entity name="TargetSign" representedClassName="TargetSign" syncable="YES">
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="signType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="target" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Target" inverseName="targetSigns" inverseEntity="Target" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Target" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="TargetSign" positionX="-54" positionY="45" width="128" height="105"/>
+    </elements>
+</model>

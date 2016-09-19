@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TargetDayViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="62" height="66.5"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="62" height="66.5"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxs-MK-lln">
+                        <rect key="frame" x="26" y="9" width="9.5" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已签到" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPd-za-btu">
+                        <rect key="frame" x="11" y="35" width="40" height="14.5"/>
+                        <color key="backgroundColor" red="0.63529411759999999" green="0.87058823529999996" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="LFz-nS-wtK"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dny-GJ-KHN">
+                        <rect key="frame" x="10" y="57" width="42" height="1"/>
+                        <color key="backgroundColor" red="0.81176470590000005" green="0.0" blue="0.058823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="l7q-qr-kqE"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Dny-GJ-KHN" secondAttribute="trailing" constant="10" id="1ZF-7R-UZx"/>
+                <constraint firstItem="SPd-za-btu" firstAttribute="top" secondItem="Vxs-MK-lln" secondAttribute="bottom" constant="2" id="8ih-Xw-2jI"/>
+                <constraint firstItem="Vxs-MK-lln" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="9CQ-OV-NNZ"/>
+                <constraint firstItem="Dny-GJ-KHN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="AFO-24-ZdD"/>
+                <constraint firstItem="SPd-za-btu" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="HXb-Xn-HVA"/>
+                <constraint firstItem="Vxs-MK-lln" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" multiplier="0.6" constant="1" id="h58-eg-bQR"/>
+                <constraint firstItem="Dny-GJ-KHN" firstAttribute="top" secondItem="SPd-za-btu" secondAttribute="bottom" constant="8" id="iVC-VW-iwd"/>
+                <constraint firstItem="Dny-GJ-KHN" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="vRH-Cn-oDc"/>
+            </constraints>
+            <size key="customSize" width="62" height="66.5"/>
+            <connections>
+                <outlet property="dayLabel" destination="Vxs-MK-lln" id="PTx-ag-7sc"/>
+                <outlet property="stateLabel" destination="SPd-za-btu" id="jAp-9L-OCO"/>
+                <outlet property="todayLineView" destination="Dny-GJ-KHN" id="yxm-cG-bVX"/>
+            </connections>
+            <point key="canvasLocation" x="295" y="294.25"/>
+        </collectionViewCell>
+    </objects>
+</document>
