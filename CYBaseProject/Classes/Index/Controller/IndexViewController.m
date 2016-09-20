@@ -104,7 +104,7 @@
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
-            UIAlertAction *photoLibraryAction = [UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertAction *photoLibraryAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"from the library", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
                 [weakSelf presentViewController:ipc animated:YES completion:nil];
             }];
@@ -112,14 +112,14 @@
         }
         
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"take photo", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
                 [weakSelf presentViewController:ipc animated:YES completion:nil];
             }];
             [alertController addAction:cameraAction];
         }
         
-        [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+        [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:nil]];
         
         [weakSelf presentViewController:alertController animated:YES completion:nil];
     };

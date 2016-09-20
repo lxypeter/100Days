@@ -18,12 +18,12 @@
 @interface TargetMonthlyListController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *totalDaysLabel;
-@property (weak, nonatomic) IBOutlet UILabel *daysLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *stateLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *passDaysLabel;
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
@@ -60,7 +60,7 @@
     self.tableView.backgroundColor = UICOLOR(@"#EBEBF1");
     self.tableView.rowHeight = 68.0;
     self.totalDaysLabel.text = [NSString stringWithFormat:@"%@",self.target.totalDays];
-    self.daysLabel.text = [NSString stringWithFormat:@"%@",self.target.day];
+    self.passDaysLabel.text = [NSString stringWithFormat:NSLocalizedString(@"DaysPassed", nil),self.target.day];
     self.contentLabel.text = self.target.content;
     self.stateLabel.layer.borderColor = [UIColor whiteColor].CGColor;
     self.stateLabel.layer.borderWidth = 2;

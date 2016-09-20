@@ -10,10 +10,11 @@
 		696872CAAC6733D6F9917A0E /* libPods-100Days.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC8616921B563A3832D4712 /* libPods-100Days.a */; };
 		E10ECE421D7D4FA100B15F26 /* CalendarColorDict.plist in Resources */ = {isa = PBXBuildFile; fileRef = E10ECE411D7D4FA100B15F26 /* CalendarColorDict.plist */; };
 		E10ECE461D7D55A200B15F26 /* TargetMonthlySign.m in Sources */ = {isa = PBXBuildFile; fileRef = E10ECE451D7D55A200B15F26 /* TargetMonthlySign.m */; };
+		E135CFA71D91213E00C6D180 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E135CFA91D91213E00C6D180 /* InfoPlist.strings */; };
+		E135CFB41D91213E00C6D180 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E135CFB61D91213E00C6D180 /* Localizable.strings */; };
 		E15B83371D7EA97200E1B2CF /* TargetDayViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15B83351D7EA97200E1B2CF /* TargetDayViewCell.m */; };
 		E15B83381D7EA97200E1B2CF /* TargetDayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15B83361D7EA97200E1B2CF /* TargetDayViewCell.xib */; };
 		E15B833E1D7EB35000E1B2CF /* WeekDayHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E15B833D1D7EB35000E1B2CF /* WeekDayHeaderView.m */; };
-		E15B83401D7EB3F600E1B2CF /* WeekDayHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15B833F1D7EB3F600E1B2CF /* WeekDayHeaderView.xib */; };
 		E174FEDD1D7BC52600894AB3 /* DescriptionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E174FEDC1D7BC52600894AB3 /* DescriptionUtil.m */; };
 		E174FEE01D7BD28C00894AB3 /* TargetMonthlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E174FEDF1D7BD28C00894AB3 /* TargetMonthlyViewController.m */; };
 		E186BD7E1D797EE6006D62D5 /* TargetListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E186BD7D1D797EE6006D62D5 /* TargetListViewController.m */; };
@@ -26,12 +27,10 @@
 		E1A140BD1D3E4CDF00D77589 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A140B91D3E4CDF00D77589 /* UIView+Toast.m */; };
 		E1B3FDEA1D7A6DB900489B44 /* CYBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FDE91D7A6DB900489B44 /* CYBaseViewController.m */; };
 		E1B3FDEE1D7A70C400489B44 /* TargetListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B3FDEC1D7A70C400489B44 /* TargetListCell.m */; };
-		E1B3FDEF1D7A70C400489B44 /* TargetListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1B3FDED1D7A70C400489B44 /* TargetListCell.xib */; };
 		E1BF44B01D76701A0070900D /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BF44AB1D76701A0070900D /* IndexViewController.m */; };
 		E1BF44B11D76701A0070900D /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BF44AD1D76701A0070900D /* LeftMenuViewController.m */; };
 		E1BF44B21D76701A0070900D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BF44AF1D76701A0070900D /* MainViewController.m */; };
 		E1BF44B51D7673E60070900D /* NoTargetView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BF44B41D7673E60070900D /* NoTargetView.m */; };
-		E1BF44B71D76743D0070900D /* NoTargetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1BF44B61D76743D0070900D /* NoTargetView.xib */; };
 		E1BF44BF1D76C00C0070900D /* SetTargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BF44BE1D76C00C0070900D /* SetTargetViewController.m */; };
 		E1BF44C31D76C1320070900D /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BF44C21D76C1320070900D /* UIPlaceHolderTextView.m */; };
 		E1BF44C81D76D4ED0070900D /* 100DaysTargetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1BF44C61D76D4ED0070900D /* 100DaysTargetModel.xcdatamodeld */; };
@@ -55,8 +54,11 @@
 		E1CC35B71D3E0C87005FEA04 /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC33B01D3E0C86005FEA04 /* DDContextFilterLogFormatter.m */; };
 		E1CC35B81D3E0C87005FEA04 /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC33B21D3E0C86005FEA04 /* DDDispatchQueueLogFormatter.m */; };
 		E1CC35B91D3E0C87005FEA04 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC33B41D3E0C86005FEA04 /* DDMultiFormatter.m */; };
+		E1E54D451D90DB5F00487C98 /* WeekDayHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E54D471D90DB5F00487C98 /* WeekDayHeaderView.xib */; };
+		E1E54D491D90DC2100487C98 /* TargetMonthlyListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E54D4B1D90DC2100487C98 /* TargetMonthlyListCell.xib */; };
+		E1E54D4D1D90E3A200487C98 /* TargetListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E54D4F1D90E3A200487C98 /* TargetListCell.xib */; };
+		E1E54D531D9110F400487C98 /* NoTargetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E54D551D9110F400487C98 /* NoTargetView.xib */; };
 		E1F686811D810E8700C3EC49 /* TargetMonthlyListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F6867F1D810E8700C3EC49 /* TargetMonthlyListCell.m */; };
-		E1F686821D810E8700C3EC49 /* TargetMonthlyListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F686801D810E8700C3EC49 /* TargetMonthlyListCell.xib */; };
 		E1F686851D81116B00C3EC49 /* TargetMonthlyListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F686841D81116B00C3EC49 /* TargetMonthlyListController.m */; };
 		E1F6868A1D814C9400C3EC49 /* CustInfoSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F686891D814C9400C3EC49 /* CustInfoSettingViewController.m */; };
 /* End PBXBuildFile section */
@@ -70,12 +72,16 @@
 		E10ECE411D7D4FA100B15F26 /* CalendarColorDict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CalendarColorDict.plist; sourceTree = "<group>"; };
 		E10ECE441D7D55A200B15F26 /* TargetMonthlySign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMonthlySign.h; sourceTree = "<group>"; };
 		E10ECE451D7D55A200B15F26 /* TargetMonthlySign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMonthlySign.m; sourceTree = "<group>"; };
+		E135CF9F1D91213E00C6D180 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		E135CFA81D91213E00C6D180 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E135CFAA1D91213E00C6D180 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		E135CFB51D91213E00C6D180 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E135CFB71D91213E00C6D180 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E15B83341D7EA97200E1B2CF /* TargetDayViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetDayViewCell.h; sourceTree = "<group>"; };
 		E15B83351D7EA97200E1B2CF /* TargetDayViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetDayViewCell.m; sourceTree = "<group>"; };
 		E15B83361D7EA97200E1B2CF /* TargetDayViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetDayViewCell.xib; sourceTree = "<group>"; };
 		E15B833C1D7EB35000E1B2CF /* WeekDayHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekDayHeaderView.h; sourceTree = "<group>"; };
 		E15B833D1D7EB35000E1B2CF /* WeekDayHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekDayHeaderView.m; sourceTree = "<group>"; };
-		E15B833F1D7EB3F600E1B2CF /* WeekDayHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekDayHeaderView.xib; sourceTree = "<group>"; };
 		E174FEDB1D7BC52600894AB3 /* DescriptionUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionUtil.h; sourceTree = "<group>"; };
 		E174FEDC1D7BC52600894AB3 /* DescriptionUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionUtil.m; sourceTree = "<group>"; };
 		E174FEDE1D7BD28C00894AB3 /* TargetMonthlyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMonthlyViewController.h; sourceTree = "<group>"; };
@@ -100,7 +106,6 @@
 		E1B3FDE91D7A6DB900489B44 /* CYBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYBaseViewController.m; sourceTree = "<group>"; };
 		E1B3FDEB1D7A70C400489B44 /* TargetListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetListCell.h; sourceTree = "<group>"; };
 		E1B3FDEC1D7A70C400489B44 /* TargetListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetListCell.m; sourceTree = "<group>"; };
-		E1B3FDED1D7A70C400489B44 /* TargetListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetListCell.xib; sourceTree = "<group>"; };
 		E1BF44AA1D76701A0070900D /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
 		E1BF44AB1D76701A0070900D /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexViewController.m; sourceTree = "<group>"; };
 		E1BF44AC1D76701A0070900D /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
@@ -109,7 +114,6 @@
 		E1BF44AF1D76701A0070900D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		E1BF44B31D7673E60070900D /* NoTargetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoTargetView.h; sourceTree = "<group>"; };
 		E1BF44B41D7673E60070900D /* NoTargetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoTargetView.m; sourceTree = "<group>"; };
-		E1BF44B61D76743D0070900D /* NoTargetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoTargetView.xib; sourceTree = "<group>"; };
 		E1BF44BD1D76C00C0070900D /* SetTargetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetTargetViewController.h; sourceTree = "<group>"; };
 		E1BF44BE1D76C00C0070900D /* SetTargetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetTargetViewController.m; sourceTree = "<group>"; };
 		E1BF44C11D76C1320070900D /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
@@ -160,9 +164,16 @@
 		E1CC33B21D3E0C86005FEA04 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		E1CC33B31D3E0C86005FEA04 /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
 		E1CC33B41D3E0C86005FEA04 /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
+		E1E54D461D90DB5F00487C98 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/WeekDayHeaderView.xib"; sourceTree = "<group>"; };
+		E1E54D481D90DB6600487C98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/WeekDayHeaderView.xib; sourceTree = "<group>"; };
+		E1E54D4A1D90DC2100487C98 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/TargetMonthlyListCell.xib"; sourceTree = "<group>"; };
+		E1E54D4C1D90DC2400487C98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TargetMonthlyListCell.xib; sourceTree = "<group>"; };
+		E1E54D4E1D90E3A200487C98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TargetListCell.xib; sourceTree = "<group>"; };
+		E1E54D521D90E43200487C98 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/TargetListCell.xib"; sourceTree = "<group>"; };
+		E1E54D541D9110F400487C98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NoTargetView.xib; sourceTree = "<group>"; };
+		E1E54D581D91117B00487C98 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/NoTargetView.xib"; sourceTree = "<group>"; };
 		E1F6867E1D810E8700C3EC49 /* TargetMonthlyListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMonthlyListCell.h; sourceTree = "<group>"; };
 		E1F6867F1D810E8700C3EC49 /* TargetMonthlyListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMonthlyListCell.m; sourceTree = "<group>"; };
-		E1F686801D810E8700C3EC49 /* TargetMonthlyListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetMonthlyListCell.xib; sourceTree = "<group>"; };
 		E1F686831D81116B00C3EC49 /* TargetMonthlyListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMonthlyListController.h; sourceTree = "<group>"; };
 		E1F686841D81116B00C3EC49 /* TargetMonthlyListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMonthlyListController.m; sourceTree = "<group>"; };
 		E1F686881D814C9400C3EC49 /* CustInfoSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustInfoSettingViewController.h; sourceTree = "<group>"; };
@@ -213,6 +224,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		E135CFA41D91213E00C6D180 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				E135CFA91D91213E00C6D180 /* InfoPlist.strings */,
+				E135CFB61D91213E00C6D180 /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		E174FEDA1D7BC50500894AB3 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,18 +271,18 @@
 			children = (
 				E1B3FDEB1D7A70C400489B44 /* TargetListCell.h */,
 				E1B3FDEC1D7A70C400489B44 /* TargetListCell.m */,
-				E1B3FDED1D7A70C400489B44 /* TargetListCell.xib */,
+				E1E54D4F1D90E3A200487C98 /* TargetListCell.xib */,
 				E15B83341D7EA97200E1B2CF /* TargetDayViewCell.h */,
 				E15B83351D7EA97200E1B2CF /* TargetDayViewCell.m */,
 				E15B83361D7EA97200E1B2CF /* TargetDayViewCell.xib */,
 				E15B833C1D7EB35000E1B2CF /* WeekDayHeaderView.h */,
 				E15B833D1D7EB35000E1B2CF /* WeekDayHeaderView.m */,
-				E15B833F1D7EB3F600E1B2CF /* WeekDayHeaderView.xib */,
+				E1E54D471D90DB5F00487C98 /* WeekDayHeaderView.xib */,
 				E18AC85B1D7FBFCE00531F6F /* MonthHeaderView.h */,
 				E18AC85C1D7FBFCE00531F6F /* MonthHeaderView.m */,
 				E1F6867E1D810E8700C3EC49 /* TargetMonthlyListCell.h */,
 				E1F6867F1D810E8700C3EC49 /* TargetMonthlyListCell.m */,
-				E1F686801D810E8700C3EC49 /* TargetMonthlyListCell.xib */,
+				E1E54D4B1D90DC2100487C98 /* TargetMonthlyListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -343,7 +363,7 @@
 			children = (
 				E1BF44B31D7673E60070900D /* NoTargetView.h */,
 				E1BF44B41D7673E60070900D /* NoTargetView.m */,
-				E1BF44B61D76743D0070900D /* NoTargetView.xib */,
+				E1E54D551D9110F400487C98 /* NoTargetView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -451,6 +471,7 @@
 		E1CC2EEC1D3E0C85005FEA04 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E135CFA41D91213E00C6D180 /* Localization */,
 				E1BF44C41D76D3FF0070900D /* CoreData */,
 				E1CC2EED1D3E0C85005FEA04 /* Global */,
 				E1CC2EF61D3E0C85005FEA04 /* Image */,
@@ -643,6 +664,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = E1CC2EC81D3E0C1B005FEA04;
 			productRefGroup = E1CC2ED21D3E0C1B005FEA04 /* Products */;
@@ -659,14 +681,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1BF44B71D76743D0070900D /* NoTargetView.xib in Resources */,
+				E1E54D531D9110F400487C98 /* NoTargetView.xib in Resources */,
+				E135CFB41D91213E00C6D180 /* Localizable.strings in Resources */,
 				E10ECE421D7D4FA100B15F26 /* CalendarColorDict.plist in Resources */,
-				E1B3FDEF1D7A70C400489B44 /* TargetListCell.xib in Resources */,
+				E1E54D4D1D90E3A200487C98 /* TargetListCell.xib in Resources */,
 				E1CC33B61D3E0C86005FEA04 /* LaunchScreen.storyboard in Resources */,
-				E15B83401D7EB3F600E1B2CF /* WeekDayHeaderView.xib in Resources */,
+				E1E54D451D90DB5F00487C98 /* WeekDayHeaderView.xib in Resources */,
 				E1CC33B91D3E0C86005FEA04 /* Assets.xcassets in Resources */,
-				E1F686821D810E8700C3EC49 /* TargetMonthlyListCell.xib in Resources */,
+				E1E54D491D90DC2100487C98 /* TargetMonthlyListCell.xib in Resources */,
 				E1CC33B71D3E0C86005FEA04 /* Main.storyboard in Resources */,
+				E135CFA71D91213E00C6D180 /* InfoPlist.strings in Resources */,
 				E15B83381D7EA97200E1B2CF /* TargetDayViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -774,6 +798,24 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		E135CFA91D91213E00C6D180 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E135CFA81D91213E00C6D180 /* Base */,
+				E135CFAA1D91213E00C6D180 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E135CFB61D91213E00C6D180 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E135CFB51D91213E00C6D180 /* Base */,
+				E135CFB71D91213E00C6D180 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		E1CC2EF01D3E0C85005FEA04 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -786,8 +828,45 @@
 			isa = PBXVariantGroup;
 			children = (
 				E1CC2EF31D3E0C85005FEA04 /* Base */,
+				E135CF9F1D91213E00C6D180 /* zh-Hans */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E1E54D471D90DB5F00487C98 /* WeekDayHeaderView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1E54D461D90DB5F00487C98 /* zh-Hans */,
+				E1E54D481D90DB6600487C98 /* Base */,
+			);
+			name = WeekDayHeaderView.xib;
+			sourceTree = "<group>";
+		};
+		E1E54D4B1D90DC2100487C98 /* TargetMonthlyListCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1E54D4A1D90DC2100487C98 /* zh-Hans */,
+				E1E54D4C1D90DC2400487C98 /* Base */,
+			);
+			name = TargetMonthlyListCell.xib;
+			sourceTree = "<group>";
+		};
+		E1E54D4F1D90E3A200487C98 /* TargetListCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1E54D4E1D90E3A200487C98 /* Base */,
+				E1E54D521D90E43200487C98 /* zh-Hans */,
+			);
+			name = TargetListCell.xib;
+			sourceTree = "<group>";
+		};
+		E1E54D551D9110F400487C98 /* NoTargetView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1E54D541D9110F400487C98 /* Base */,
+				E1E54D581D91117B00487C98 /* zh-Hans */,
+			);
+			name = NoTargetView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -880,7 +959,7 @@
 			baseConfigurationReference = 4C6DF8E0E3ED207E32706D8A /* Pods-100Days.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Feng Hou (JY7929XD73)";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CYBaseProject/Resource/Global/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/CYBaseProject/Resource/Plist/Info.plist";
@@ -896,7 +975,7 @@
 			baseConfigurationReference = FCDCEDDFCBE034AA29CA0038 /* Pods-100Days.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Feng Hou (JY7929XD73)";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CYBaseProject/Resource/Global/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/CYBaseProject/Resource/Plist/Info.plist";

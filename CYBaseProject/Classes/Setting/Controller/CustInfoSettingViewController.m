@@ -45,7 +45,7 @@
     
     NSString *userName = self.nameTextField.text;
     if ([NSString isBlankString:userName]) {
-        [self.view makeToast:@"用户名不能为空！"];
+        [self.view makeToast:NSLocalizedString(@"Please input your nickname!", nil)];
         return;
     }
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];

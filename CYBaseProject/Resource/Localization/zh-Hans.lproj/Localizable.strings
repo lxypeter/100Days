@@ -1,0 +1,95 @@
+/* 
+  Localizable.strings
+  100Days
+
+  Created by Peter Lee on 16/9/19.
+  Copyright © 2016年 CY.Lee. All rights reserved.
+*/
+
+//IndexViewController
+"from the library" = "从相册选择";
+
+"take photo" = "拍照";
+
+"Cancel" = "取消";
+
+//MainViewController
+"LeaveTimeLeft" = "您剩下%@次机会";
+
+"Are you sure to terminate the target?" = "是否确定结束你的目标？";
+
+"Yes" = "是";
+
+"No,let me reconsider it." = "否，让我再想想";
+
+"Sorry, you have no leave times!" = "抱歉，您已没有请假的机会了！";
+
+"No Sign" = "未签到";
+
+"Sign Successfully！" = "签到成功！";
+
+"Share" = "分享";
+
+"Confirm" = "确定";
+
+"SignAlready" = "您今天已签到，状态为【%@】";
+
+"Sign again" = "重新签到";
+
+"Sorry, your target failed..." = "很遗憾，您的目标失败了……";
+
+"You have terminated the target, a new tour is waiting for you！" = "您的目标已终止，快开始新的征程吧！";
+
+//LeftMenuViewController
+"Target Records" = "目标记录";
+
+"Timed Reminder" = "定时提醒";
+
+//TargetMonthlyListController
+"DaysPassed" = "已进行%@天";
+
+//SetTargetViewController
+"A simple target in 50 characters" = "一个简单明确的目标，50字以内";
+
+"Please input your target!" = "目标不能为空！";
+
+"A reasonable time range makes the target easy to achieve. Please control the days between 7 and 100." = "合适的范围更利于实现，目标天数请控制在7-100之间。";
+
+"Leave times are up to one fifth of the total days" = "请假天数最多为总天数的五分之一！";
+
+//CustInfoSettingViewController
+"Please input your nickname!" = "用户名不能为空！";
+
+//TargetListViewController
+"Are you sure to delete the target record?" = "是否确认删除目标？";
+
+"Delete" = "删除";
+
+//Calander
+"Calander" = "日历";
+
+"CalanderDay" = "日";
+
+//Target State
+"Progressing" = "进行中";
+"Completed" = "已完成";
+"Fail" = "失败";
+"End" = "结束";
+
+//Sign State
+"Signed" = "已签到";
+"Leave" = "请假";
+
+//Month
+"Jan" = "一月";
+"Feb" = "二月";
+"Mar" = "三月";
+"Apr" = "四月";
+"May" = "五月";
+"Jun" = "六月";
+"Jul" = "七月";
+"Aug" = "八月";
+"Sep" = "九月";
+"Oct" = "十月";
+"Nov" = "十一月";
+"Dec" = "十二月";

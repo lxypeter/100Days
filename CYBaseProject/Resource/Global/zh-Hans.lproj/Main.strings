@@ -1,0 +1,117 @@
+
+/* Class = "UILabel"; text = "LXY"; ObjectID = "2Ae-l0-k6k"; */
+"2Ae-l0-k6k.text" = "LXY";
+
+/* Class = "UILabel"; text = "请假"; ObjectID = "4lx-EM-XqV"; */
+"4lx-EM-XqV.text" = "请假";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "4ze-sd-WN0"; */
+"4ze-sd-WN0.text" = "0";
+
+/* Class = "UILabel"; text = "签到"; ObjectID = "5FK-kS-5XK"; */
+"5FK-kS-5XK.text" = "签到";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "5gH-Kh-fAS"; */
+"5gH-Kh-fAS.text" = "0";
+
+/* Class = "UILabel"; text = "天"; ObjectID = "79u-Xl-VeF"; */
+"79u-Xl-VeF.text" = "天";
+
+/* Class = "UILabel"; text = "天目标"; ObjectID = "9XZ-pH-H4m"; */
+"9XZ-pH-H4m.text" = "天目标";
+
+/* Class = "UILabel"; text = "已进行"; ObjectID = "BHV-Dg-hb4"; */
+"BHV-Dg-hb4.text" = "已进行";
+
+/* Class = "UITextField"; text = "100"; ObjectID = "BRU-Ri-oW7"; */
+"BRU-Ri-oW7.text" = "100";
+
+/* Class = "UITextField"; text = "20"; ObjectID = "ByI-LW-69P"; */
+"ByI-LW-69P.text" = "20";
+
+/* Class = "UILabel"; text = "这是一个目标这是一个目标这是一个目标这是一个目标这是一个目标这是一个目标这是一个目标这是一个目标"; ObjectID = "Bz6-Qd-t2K"; */
+"Bz6-Qd-t2K.text" = "这是一个目标这是一个目标这是一个目标这是一个目标这是一个目标这是一个目标这是一个目标这是一个目标";
+
+/* Class = "UILabel"; text = "我想有"; ObjectID = "CDD-zH-3fY"; */
+"CDD-zH-3fY.text" = "我想有";
+
+/* Class = "UILabel"; text = "个人信息"; ObjectID = "ERd-9u-OdE"; */
+"ERd-9u-OdE.text" = "个人信息";
+
+/* Class = "UILabel"; text = "一个"; ObjectID = "Elk-Tb-OOH"; */
+"Elk-Tb-OOH.text" = "一个";
+
+/* Class = "UILabel"; text = "天"; ObjectID = "GVO-Q9-WBt"; */
+"GVO-Q9-WBt.text" = "天";
+
+/* Class = "UIButton"; normalTitle = "确认"; ObjectID = "L4w-OB-29x"; */
+"L4w-OB-29x.normalTitle" = "确认";
+
+/* Class = "UILabel"; text = "结束"; ObjectID = "O96-Df-eWO"; */
+"O96-Df-eWO.text" = "结束";
+
+/* Class = "UILabel"; text = "已完成今天任务"; ObjectID = "Qz1-cE-h8o"; */
+"Qz1-cE-h8o.text" = "已完成今天任务";
+
+/* Class = "UILabel"; text = "进行中 "; ObjectID = "UHL-7N-lmu"; */
+"UHL-7N-lmu.text" = "进行中 ";
+
+/* Class = "UILabel"; text = "目标："; ObjectID = "cai-wv-U0X"; */
+"cai-wv-U0X.text" = "目标：";
+
+/* Class = "UILabel"; text = "2016-09-08"; ObjectID = "czK-X4-1zZ"; */
+"czK-X4-1zZ.text" = "2016-09-08";
+
+/* Class = "UILabel"; text = "/50"; ObjectID = "dfx-Q1-GCq"; */
+"dfx-Q1-GCq.text" = "/50";
+
+/* Class = "UITextField"; placeholder = "您的名字"; ObjectID = "ehr-Pj-hNp"; */
+"ehr-Pj-hNp.placeholder" = "您的名字";
+
+/* Class = "UILabel"; text = "你剩下0次机会"; ObjectID = "el2-VQ-wru"; */
+"el2-VQ-wru.text" = "你剩下0次机会";
+
+/* Class = "UILabel"; text = "天"; ObjectID = "fBF-4A-6Pk"; */
+"fBF-4A-6Pk.text" = "天";
+
+/* Class = "UILabel"; text = "已进行"; ObjectID = "frS-JN-pFo"; */
+"frS-JN-pFo.text" = "已进行";
+
+/* Class = "UILabel"; text = "至"; ObjectID = "gWi-h1-Qq0"; */
+"gWi-h1-Qq0.text" = "至";
+
+/* Class = "UILabel"; text = "这个目标不再适合我了"; ObjectID = "gpZ-Eh-fNG"; */
+"gpZ-Eh-fNG.text" = "这个目标不再适合我了";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "gxs-8y-1eq"; */
+"gxs-8y-1eq.text" = "100";
+
+/* Class = "UILabel"; text = "上次签到："; ObjectID = "kid-lm-T4M"; */
+"kid-lm-T4M.text" = "上次签到：";
+
+/* Class = "UILabel"; text = "2016-12-12"; ObjectID = "lbM-6Z-zB8"; */
+"lbM-6Z-zB8.text" = "2016-12-12";
+
+/* Class = "UIButton"; normalTitle = "确    定"; ObjectID = "oRW-Je-bbq"; */
+"oRW-Je-bbq.normalTitle" = "确    定";
+
+/* Class = "UILabel"; text = "12"; ObjectID = "otS-eK-Xp4"; */
+"otS-eK-Xp4.text" = "12";
+
+/* Class = "UILabel"; text = "天目标"; ObjectID = "rcv-ym-dtQ"; */
+"rcv-ym-dtQ.text" = "天目标";
+
+/* Class = "UILabel"; text = "暂无"; ObjectID = "sTS-kq-OFK"; */
+"sTS-kq-OFK.text" = "暂无";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "uvN-uy-ttd"; */
+"uvN-uy-ttd.text" = "-";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "v64-QP-ZLN"; */
+"v64-QP-ZLN.text" = "0";
+
+/* Class = "UILabel"; text = "天的假期"; ObjectID = "ylN-0w-8yH"; */
+"ylN-0w-8yH.text" = "天的假期";
+
+/* Class = "UILabel"; text = "这将是"; ObjectID = "zc8-Vs-qs1"; */
+"zc8-Vs-qs1.text" = "这将是";

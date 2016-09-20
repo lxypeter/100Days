@@ -16,29 +16,29 @@
     NSUInteger month = [[formatter stringFromDate:date]integerValue];
     switch (month) {
         case 1:
-            return @"一月";
+            return NSLocalizedString(@"Jan", nil);
         case 2:
-            return @"二月";
+            return NSLocalizedString(@"Feb", nil);
         case 3:
-            return @"三月";
+            return NSLocalizedString(@"Mar", nil);
         case 4:
-            return @"四月";
+            return NSLocalizedString(@"Apr", nil);
         case 5:
-            return @"五月";
+            return NSLocalizedString(@"Mar", nil);
         case 6:
-            return @"六月";
+            return NSLocalizedString(@"Jun", nil);
         case 7:
-            return @"七月";
+            return NSLocalizedString(@"Jul", nil);
         case 8:
-            return @"八月";
+            return NSLocalizedString(@"Aug", nil);
         case 9:
-            return @"九月";
+            return NSLocalizedString(@"Sep", nil);
         case 10:
-            return @"十月";
+            return NSLocalizedString(@"Oct", nil);
         case 11:
-            return @"十一月";
+            return NSLocalizedString(@"Nov", nil);
         case 12:
-            return @"十二月";
+            return NSLocalizedString(@"Dec", nil);
         default:
             return @"";
     }
@@ -48,28 +48,28 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     formatter.dateFormat = @"dd";
     NSUInteger day = [[formatter stringFromDate:date]integerValue];
-    return [NSString stringWithFormat:@"%@日",@(day)];
+    return [NSString stringWithFormat:@"%@%@",@(day),NSLocalizedString(@"CalanderDay", nil)];
 }
 
 + (NSString *)resultDescriptionOfResult:(TargetResult)result{
     switch (result) {
         case TargetResultProgressing:
-            return @"进行中";
+            return NSLocalizedString(@"Progressing", nil);
         case TargetResultComplete:
-            return @"已完成";
+            return NSLocalizedString(@"Completed", nil);
         case TargetResultFail:
-            return @"失败";
+            return NSLocalizedString(@"Fail", nil);
         case TargetResultStop:
-            return @"结束";
+            return NSLocalizedString(@"End", nil);
     }
 }
 
 + (NSString *)signTypeDescriptionOfType:(TargetSignType)type{
     switch (type) {
         case TargetSignTypeSign:
-            return @"已签到";
+            return NSLocalizedString(@"Signed", nil);
         case TargetSignTypeLeave:
-            return @"请假";
+            return NSLocalizedString(@"Leave", nil);
     }
 }
 

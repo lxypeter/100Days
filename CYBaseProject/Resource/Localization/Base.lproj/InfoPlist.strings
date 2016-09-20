@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  100Days
+
+  Created by Peter Lee on 16/9/19.
+  Copyright © 2016年 CY.Lee. All rights reserved.
+*/
+
+CFBundleDisplayName = "100 Days";

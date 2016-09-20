@@ -36,7 +36,7 @@
 
 - (void)configureSubViews{
     
-    self.title = @"签到日历";
+    self.title = NSLocalizedString(@"Calander", nil);
     
     WeekDayHeaderView *headerView = [[[NSBundle mainBundle]loadNibNamed:@"WeekDayHeaderView" owner:nil options:nil]lastObject];
     [self.view addSubview:headerView];
@@ -70,7 +70,13 @@
     self.collectionView = collectionView;
     
     [self.collectionView performBatchUpdates:^{} completion:^(BOOL finished) {
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.selectedIndex] atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
+        if(self.selectedIndex!=0){
+            
+            TargetMonthlySign *targetMonthlySign = self.targetMonthlySigns[self.selectedIndex-1];
+            NSInteger lastDayOfLastMonth = targetMonthlySign.startWeakDay+targetMonthlySign.monthTotalDay-1;
+            
+            [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:lastDayOfLastMonth inSection:self.selectedIndex-1] atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
+        }
     }];
     
 }

@@ -40,8 +40,11 @@
 #pragma mark - lazy load
 - (NSArray *)optionsArray{
     if (!_optionsArray) {
-        LeftSideViewOption *option = [LeftSideViewOption optionWithTitle:@"目标记录" imageName:@"leftview_record" className:@"TargetListViewController"];
-        _optionsArray = @[option];
+        LeftSideViewOption *recordOption = [LeftSideViewOption optionWithTitle:NSLocalizedString(@"Target Records", nil) imageName:@"leftview_record" className:@"TargetListViewController"];
+        
+        LeftSideViewOption *reminderOption = [LeftSideViewOption optionWithTitle:NSLocalizedString(@"Timed Reminder", nil) imageName:@"leftview_notification" className:@"TargetListViewController"];
+        
+        _optionsArray = @[recordOption,reminderOption];
     }
     return _optionsArray;
 }

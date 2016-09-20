@@ -34,7 +34,7 @@
 }
 
 - (void)configureSubViews{
-    self.targetTextView.placeholder = @"一个简单明确的目标，50字以内";
+    self.targetTextView.placeholder = NSLocalizedString(@"A simple target in 50 characters", nil);
     
     self.targetView.layer.cornerRadius = 8;
     self.targetView.layer.masksToBounds = YES;
@@ -52,7 +52,7 @@
     //validate target
     NSString *targetContent = self.targetTextView.text;
     if(targetContent.length==0){
-        [[UIApplication sharedApplication].keyWindow makeToast:@"目标不能为空！"];
+        [[UIApplication sharedApplication].keyWindow makeToast:NSLocalizedString(@"Please input your target!", nil)];
         return;
     }
     
@@ -81,7 +81,7 @@
 - (void)textViewDidChange:(UITextView *)textView{
     if (textView == self.targetTextView) {
         if (textView.text.length>50) {
-            textView.text = [textView.text substringToIndex:144];
+            textView.text = [textView.text substringToIndex:50];
         }
         self.inputNumLabel.text = [NSString stringWithFormat:@"%@",@(textView.text.length)];
     }
@@ -99,17 +99,17 @@
     if (textField == self.dayTextField) {
         if([textField.text intValue]>100){
             textField.text = @"100";
-            [[UIApplication sharedApplication].keyWindow makeToast:@"合适的范围更利于实现，目标天数请控制在7-100之间。"];
+            [[UIApplication sharedApplication].keyWindow makeToast:NSLocalizedString(@"A reasonable time range makes the target easy to achieve. Please control the days between 7 and 100.", nil)];
         }
         if([textField.text intValue]<7){
             textField.text = @"7";
-            [[UIApplication sharedApplication].keyWindow makeToast:@"合适的范围更利于实现，目标天数请控制在7-100之间。"];
+            [[UIApplication sharedApplication].keyWindow makeToast:NSLocalizedString(@"A reasonable time range makes the target easy to achieve. Please control the days between 7 and 100.", nil)];
         }
         self.flexibleTimesTextField.text = [NSString stringWithFormat:@"%@",@([textField.text intValue]/10)];
     }else if (textField == self.flexibleTimesTextField){
         if ([textField.text intValue]/[self.dayTextField.text intValue]>0.2) {
             textField.text = [NSString stringWithFormat:@"%.f",[self.dayTextField.text intValue] * 0.2];
-            [[UIApplication sharedApplication].keyWindow makeToast:@"请假天数最多为总天数的五分之一！"];
+            [[UIApplication sharedApplication].keyWindow makeToast:NSLocalizedString(@"Leave times are up to one fifth of the total days", nil)];
         }
     }
 }

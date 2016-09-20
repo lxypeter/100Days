@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  100Days
+
+  Created by Peter Lee on 16/9/19.
+  Copyright © 2016年 CY.Lee. All rights reserved.
+*/
+
+//MainViewController
+"LeaveTimeLeft" = "You have %@ times left";
+
+"SignAlready" = "You have signed today，state is \"%@\"";
+
+//TargetMonthlyListController
+"DaysPassed" = "%@ days passed";
+
+//Calander
+"CalanderDay" = " ";

@@ -96,7 +96,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
     NSString *day = @"0";
     NSString *totalDay = @"0";
     NSString *targetContent = @"-";
-    NSString *leaveNote = @"您剩下0次机会";
+    NSString *leaveNote = [NSString stringWithFormat:NSLocalizedString(@"LeaveTimeLeft", nil),0];
     NSString *lastSignTime = @"-";
     
     if (self.currentTarget) {
@@ -106,7 +106,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
         day = [NSString stringWithFormat:@"%@",self.currentTarget.day];
         totalDay = [NSString stringWithFormat:@"%@",self.currentTarget.totalDays];
         targetContent = self.currentTarget.content;
-        leaveNote = [NSString stringWithFormat:@"您剩下%@次机会",self.currentTarget.flexibleTimes];
+        leaveNote = [NSString stringWithFormat:NSLocalizedString(@"LeaveTimeLeft", nil),self.currentTarget.flexibleTimes];
         TargetSign *lastTargetSign = [self queryLastTargetSign:self.currentTarget];
         if (lastTargetSign) {
             NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
@@ -236,20 +236,20 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
 
 - (IBAction)clickEndButton:(id)sender {
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"目标一旦结束就不可重新激活，是否确定终止？"] preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:NSLocalizedString(@"Are you sure to terminate the target?", nil)] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", nil)  style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self terminateTarget:self.currentTarget WithResult:TargetResultStop];
         
     }];
     [alertController addAction:yesAction];
-    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"否，让我再想想" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"No,let me reconsider it.", nil) style:UIAlertActionStyleDefault handler:nil];
     [alertController addAction:noAction];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (IBAction)clickLeaveButton:(id)sender {
     if (self.currentTarget.flexibleTimes<=0) {
-        [self.view makeToast:@"抱歉，您已没有请假的机会了！"];
+        [self.view makeToast:NSLocalizedString(@"Sorry, you have no leave times!", nil)];
     }
     [self signWithTarget:self.currentTarget type:TargetSignTypeLeave];
 }
@@ -337,7 +337,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
             
             TargetSign *targetSigh = [NSEntityDescription insertNewObjectForEntityForName:@"TargetSign" inManagedObjectContext:context];
             targetSigh.signType = @(TargetSignTypeLeave);
-            targetSigh.note = @"未签到";
+            targetSigh.note = NSLocalizedString(@"No Sign", nil);
             targetSigh.signTime = [[lastSignTime zeroOfDate] dateByAddingTimeInterval:(60 * 60 * 24 * index)];
             [target addTargetSignsObject:targetSigh];
         }
@@ -370,12 +370,12 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
     [self refreshData];
     
     if (type == TargetSignTypeSign) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"签到成功！"] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *shareAction = [UIAlertAction actionWithTitle:@"分享" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:NSLocalizedString(@"Sign Successfully！", nil)] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *shareAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Share", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self.view makeToast:@"下个版本吧╮(╯_╰)╭"];
         }];
         [alertController addAction:shareAction];
-        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Confirm", nil) style:UIAlertActionStyleDefault handler:nil];
         [alertController addAction:confirmAction];
         [self presentViewController:alertController animated:YES completion:nil];
     }
@@ -388,8 +388,8 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
     TargetSignType lastSignType = [targetSignInOneDay.signType integerValue];
     if (targetSignInOneDay) {// signed
         NSString *typeName = [DescriptionUtil signTypeDescriptionOfType:lastSignType];
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"您今天已签到，状态为【%@】",typeName] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *resignAction = [UIAlertAction actionWithTitle:@"重新签到" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:NSLocalizedString(@"SignAlready", nil),typeName] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *resignAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Sign again", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
             if (lastSignType!=type) {
                 if(lastSignType == TargetSignTypeLeave){
@@ -402,7 +402,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
             [self signTarget:target signType:type note:@"" time:[NSDate date]];
         }];
         [alertController addAction:resignAction];
-        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Confirm", nil) style:UIAlertActionStyleDefault handler:nil];
         [alertController addAction:confirmAction];
         [self presentViewController:alertController animated:YES completion:nil];
         return;
@@ -420,16 +420,16 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
     
     switch (result) {
         case TargetResultComplete:{
-            
+            //FIXME:成功页面
             break;
         }
         case TargetResultFail:{
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:@"很遗憾，您的目标失败了……" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"Sorry, your target failed...", nil)  delegate:nil cancelButtonTitle:NSLocalizedString(@"Confirm", nil) otherButtonTitles: nil];
             [alertView show];
             break;
         }
         case TargetResultStop:{
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:@"您的目标已终止，快开始新的征程吧！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"You have terminated the target, a new tour is waiting for you！", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Confirm", nil) otherButtonTitles: nil];
             [alertView show];
             break;
         }
