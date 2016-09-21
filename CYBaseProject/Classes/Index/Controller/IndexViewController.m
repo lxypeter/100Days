@@ -213,6 +213,10 @@
         [self.mainNaviController.view.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             obj.enabled = YES;
         }];
+    }else{
+        [self.mainNaviController.view.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.enabled = NO;
+        }];
     }
 }
 

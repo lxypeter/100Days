@@ -58,6 +58,7 @@
 		E1E54D491D90DC2100487C98 /* TargetMonthlyListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E54D4B1D90DC2100487C98 /* TargetMonthlyListCell.xib */; };
 		E1E54D4D1D90E3A200487C98 /* TargetListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E54D4F1D90E3A200487C98 /* TargetListCell.xib */; };
 		E1E54D531D9110F400487C98 /* NoTargetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E54D551D9110F400487C98 /* NoTargetView.xib */; };
+		E1E54D5D1D913A0900487C98 /* SignShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E54D5C1D913A0900487C98 /* SignShareViewController.m */; };
 		E1F686811D810E8700C3EC49 /* TargetMonthlyListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F6867F1D810E8700C3EC49 /* TargetMonthlyListCell.m */; };
 		E1F686851D81116B00C3EC49 /* TargetMonthlyListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F686841D81116B00C3EC49 /* TargetMonthlyListController.m */; };
 		E1F6868A1D814C9400C3EC49 /* CustInfoSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F686891D814C9400C3EC49 /* CustInfoSettingViewController.m */; };
@@ -172,6 +173,8 @@
 		E1E54D521D90E43200487C98 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/TargetListCell.xib"; sourceTree = "<group>"; };
 		E1E54D541D9110F400487C98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NoTargetView.xib; sourceTree = "<group>"; };
 		E1E54D581D91117B00487C98 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/NoTargetView.xib"; sourceTree = "<group>"; };
+		E1E54D5B1D913A0900487C98 /* SignShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignShareViewController.h; sourceTree = "<group>"; };
+		E1E54D5C1D913A0900487C98 /* SignShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignShareViewController.m; sourceTree = "<group>"; };
 		E1F6867E1D810E8700C3EC49 /* TargetMonthlyListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMonthlyListCell.h; sourceTree = "<group>"; };
 		E1F6867F1D810E8700C3EC49 /* TargetMonthlyListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMonthlyListCell.m; sourceTree = "<group>"; };
 		E1F686831D81116B00C3EC49 /* TargetMonthlyListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMonthlyListController.h; sourceTree = "<group>"; };
@@ -461,6 +464,7 @@
 		E1CC2EEB1D3E0C85005FEA04 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E1E54D591D91387300487C98 /* Share */,
 				E186BD791D797BEA006D62D5 /* Record */,
 				E1BF44BB1D76BFD70070900D /* Setting */,
 				E1BF44A71D766FE50070900D /* Index */,
@@ -620,6 +624,23 @@
 			path = MyLib;
 			sourceTree = "<group>";
 		};
+		E1E54D591D91387300487C98 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				E1E54D5A1D91387300487C98 /* Controller */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		E1E54D5A1D91387300487C98 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E1E54D5B1D913A0900487C98 /* SignShareViewController.h */,
+				E1E54D5C1D913A0900487C98 /* SignShareViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -773,6 +794,7 @@
 				E1BF44DA1D76DA8C0070900D /* TargetSign+CoreDataProperties.m in Sources */,
 				E10ECE461D7D55A200B15F26 /* TargetMonthlySign.m in Sources */,
 				E1CC33B81D3E0C86005FEA04 /* main.m in Sources */,
+				E1E54D5D1D913A0900487C98 /* SignShareViewController.m in Sources */,
 				E1A140BA1D3E4CDF00D77589 /* NSString+CYVerification.m in Sources */,
 				E1BF44B01D76701A0070900D /* IndexViewController.m in Sources */,
 				E1F6868A1D814C9400C3EC49 /* CustInfoSettingViewController.m in Sources */,

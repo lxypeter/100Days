@@ -15,6 +15,7 @@
 #import "UIView+Toast.h"
 #import "TargetMonthlyListController.h"
 #import "DescriptionUtil.h"
+#import "SignShareViewController.h"
 
 typedef NS_ENUM(NSInteger,MainViewAnimationType){
     MainViewAnimationTypeIn,
@@ -87,7 +88,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
 
 - (void)viewWillDisappear:(BOOL)animated{
     self.navigationController.navigationBar.hidden = NO;
-    [self viewAnimation:MainViewAnimationTypeOut];
+//    [self viewAnimation:MainViewAnimationTypeOut];
 }
 
 #pragma mark - subViews setting method
@@ -368,17 +369,10 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
     }
     
     [self refreshData];
-    
-    if (type == TargetSignTypeSign) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:NSLocalizedString(@"Sign Successfully！", nil)] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *shareAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Share", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self.view makeToast:@"下个版本吧╮(╯_╰)╭"];
-        }];
-        [alertController addAction:shareAction];
-        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Confirm", nil) style:UIAlertActionStyleDefault handler:nil];
-        [alertController addAction:confirmAction];
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
+    //FIXME:分享
+    SignShareViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"SignShareViewController"];
+    ctrl.targetSign = targetSigh;
+    [self presentViewController:ctrl animated:YES completion:nil];
     
 }
 

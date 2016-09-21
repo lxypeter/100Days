@@ -65,6 +65,11 @@
 
 "Delete" = "删除";
 
+//SignShareViewController
+"TargetDayType" = "%@天目标";
+
+"CurrentDay" = "%@天";
+
 //Calander
 "Calander" = "日历";
 

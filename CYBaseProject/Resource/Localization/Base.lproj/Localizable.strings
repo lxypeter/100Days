@@ -14,5 +14,10 @@
 //TargetMonthlyListController
 "DaysPassed" = "%@ days passed";
 
+//SignShareViewController
+"TargetDayType" = "%@ days target";
+
+"CurrentDay" = "%@ day";
+
 //Calander
 "CalanderDay" = " ";

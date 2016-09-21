@@ -115,3 +115,10 @@
 
 /* Class = "UILabel"; text = "这将是"; ObjectID = "zc8-Vs-qs1"; */
 "zc8-Vs-qs1.text" = "这将是";
+
+//SignShareViewController.h
+"Zbt-gv-MU1.normalTitle" = "确定";
+
+"5IO-b9-zAH.normalTitle" = "分享";
+
+"4oB-iq-5dW.normalTitle" = "编辑";
