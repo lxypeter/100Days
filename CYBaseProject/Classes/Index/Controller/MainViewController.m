@@ -16,6 +16,7 @@
 #import "TargetMonthlyListController.h"
 #import "DescriptionUtil.h"
 #import "SignShareViewController.h"
+#import "TargetSucceedViewController.h"
 
 typedef NS_ENUM(NSInteger,MainViewAnimationType){
     MainViewAnimationTypeIn,
@@ -62,6 +63,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
             make.right.mas_equalTo(0);
             make.bottom.mas_equalTo(0);
         }];
+        [noTargetView updateConstraintsIfNeeded];
         _noTargetView = noTargetView;
     }
     return _noTargetView;
@@ -88,7 +90,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
 
 - (void)viewWillDisappear:(BOOL)animated{
     self.navigationController.navigationBar.hidden = NO;
-//    [self viewAnimation:MainViewAnimationTypeOut];
+    [self viewAnimation:MainViewAnimationTypeOut];
 }
 
 #pragma mark - subViews setting method
@@ -275,6 +277,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
         [self updateTarget:target];
         self.currentTarget = target;
     }else{
+        self.currentTarget = nil;
         [self refreshData];
     }
 }
@@ -311,9 +314,11 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
     
     NSManagedObjectContext *context = [CoreDataUtil shareContext];
     //update target day
-    NSDate *now = [NSDate date];
-    NSInteger dayInterval = [now dayIntervalSinceDate:target.startDate];
-    target.day = @(dayInterval+1);
+    NSDate *lastValidDate = [NSDate date];
+    if ([lastValidDate compare:target.endDate]==NSOrderedDescending) {
+        lastValidDate = [target.endDate dateByAddingTimeInterval:60 * 60 * 24];
+    }
+    NSInteger dayInterval = [lastValidDate dayIntervalSinceDate:target.startDate];
     
     //update sign
     TargetSign *lastTargetSign = [self queryLastTargetSign:target];
@@ -323,7 +328,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
     }else{
         lastSignTime = [target.startDate dateByAddingTimeInterval:-(60 * 60 * 24)];
     }
-    NSInteger signDayInterval = [now dayIntervalSinceDate:lastSignTime];
+    NSInteger signDayInterval = [lastValidDate dayIntervalSinceDate:lastSignTime];
     if (signDayInterval>1) {
         for (int index = 1; index<signDayInterval; index++) {
             
@@ -342,6 +347,14 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
             targetSigh.signTime = [[lastSignTime zeroOfDate] dateByAddingTimeInterval:(60 * 60 * 24 * index)];
             [target addTargetSignsObject:targetSigh];
         }
+    }
+    
+    //update current day
+    if ([lastValidDate compare:target.endDate]==NSOrderedDescending) {
+        target.day = @(dayInterval);
+        [self terminateTarget:target WithResult:TargetResultComplete];
+    }else{
+        target.day = @(dayInterval+1);
     }
     
     if ([context hasChanges]) {
@@ -369,10 +382,16 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
     }
     
     [self refreshData];
-    //FIXME:分享
+
+    //to share view
     SignShareViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"SignShareViewController"];
     ctrl.targetSign = targetSigh;
     [self presentViewController:ctrl animated:YES completion:nil];
+    
+    //check whether target has been completed
+    if ([self.currentTarget.day integerValue] == [self.currentTarget.totalDays integerValue]) {
+        [self terminateTarget:self.currentTarget WithResult:TargetResultComplete];
+    }
     
 }
 
@@ -414,7 +433,9 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
     
     switch (result) {
         case TargetResultComplete:{
-            //FIXME:成功页面
+            TargetSucceedViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"TargetSucceedViewController"];
+            ctrl.target = self.currentTarget;
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ctrl animated:NO completion:nil];
             break;
         }
         case TargetResultFail:{

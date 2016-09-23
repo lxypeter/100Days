@@ -87,16 +87,20 @@
 
 #pragma mark - event method
 - (IBAction)clickBackgroundButton:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewController];
 }
 
 - (IBAction)clickEditButton:(id)sender {
 }
 
 - (IBAction)clickConfrimButton:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewController];
 }
 
 - (IBAction)clickShareButton:(id)sender {
+}
+
+- (void)dismissViewController{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

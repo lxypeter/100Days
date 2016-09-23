@@ -120,13 +120,13 @@
         [datas removeObjectAtIndex:indexPath.row];
         [target.managedObjectContext deleteObject:target];
         [target.managedObjectContext save:nil];
-        [self.tableView reloadData];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
     }];
     [alertController addAction:confirmAction];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-#pragma mark - 
+#pragma mark - coreData method
 - (void)queryData{
     NSManagedObjectContext *context = [CoreDataUtil shareContext];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Target"];

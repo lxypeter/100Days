@@ -11,6 +11,7 @@
 #import "UIView+Toast.h"
 #import "CoreDataUtil.h"
 #import "Target.h"
+#import "NSDate+CYCompare.h"
 
 @interface SetTargetViewController () <UITextViewDelegate,UITextFieldDelegate>
 
@@ -61,13 +62,14 @@
     Target *target = [NSEntityDescription insertNewObjectForEntityForName:@"Target" inManagedObjectContext:context];
     target.totalDays = @([self.dayTextField.text intValue]);
     target.content = targetContent;
-    NSDate *startDate = [NSDate date];
+    NSDate *startDate = [[NSDate date]zeroOfDate];
     target.startDate = startDate;
-    NSInteger timeInterval = ([self.dayTextField.text intValue]-1) * 60 * 60 * 24;
+    NSInteger timeInterval = [self.dayTextField.text intValue] * 60 * 60 * 24 - 1;
     NSDate *endDate = [startDate dateByAddingTimeInterval:timeInterval];
     target.endDate = endDate;
     target.day = @1;
     target.flexibleTimes = @([self.flexibleTimesTextField.text intValue]);
+    target.flexibleTimes = @(100);
     target.result = @(TargetResultProgressing);
     
     if ([context hasChanges]) {
