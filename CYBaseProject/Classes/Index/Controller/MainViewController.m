@@ -40,6 +40,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
 @property (weak, nonatomic) IBOutlet UILabel *dayTimesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalDayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *targetLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dayTimesSuffixLabel;
 
 @property (nonatomic, strong) NoTargetView *noTargetView;
 @property (nonatomic, strong) Target *currentTarget;
@@ -97,6 +98,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
 - (void)refreshData{
     
     NSString *day = @"0";
+    NSString *daySuffix = NSLocalizedString(@"day", nil);
     NSString *totalDay = @"0";
     NSString *targetContent = @"-";
     NSString *leaveNote = [NSString stringWithFormat:NSLocalizedString(@"LeaveTimeLeft", nil),0];
@@ -106,7 +108,17 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
         self.noTargetView.hidden = YES;
         self.calendarButton.enabled = YES;
         
+        //chinese
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSArray *allLanguage = [defaults objectForKey:@"AppleLanguages"];
+        NSString *currentLanguage = [allLanguage objectAtIndex:0];
+        if (![currentLanguage hasPrefix:@"zh-Hans"]){
+            NSString *suffix = [DescriptionUtil ordinalNumberSuffixWithNumber:[self.currentTarget.day integerValue]];
+            daySuffix = [NSString stringWithFormat:@"%@ %@",suffix, NSLocalizedString(@"day", nil)];
+        }
+        
         day = [NSString stringWithFormat:@"%@",self.currentTarget.day];
+        
         totalDay = [NSString stringWithFormat:@"%@",self.currentTarget.totalDays];
         targetContent = self.currentTarget.content;
         leaveNote = [NSString stringWithFormat:NSLocalizedString(@"LeaveTimeLeft", nil),self.currentTarget.flexibleTimes];
@@ -122,6 +134,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
     }
     
     self.dayTimesLabel.text = day;
+    self.dayTimesSuffixLabel.text = daySuffix;
     self.totalDayLabel.text = totalDay;
     self.targetLabel.text = targetContent;
     self.leaveNoteLabel.text = leaveNote;
@@ -399,6 +412,17 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
     NSDate *now = [NSDate date];
     TargetSign *targetSignInOneDay = [self queryTargetSign:self.currentTarget date:now];
     TargetSignType lastSignType = [targetSignInOneDay.signType integerValue];
+    
+    NSString *defaultSignNote;
+    switch (type) {
+        case TargetSignTypeSign:
+            defaultSignNote = NSLocalizedString(@"Daliy sign", nil);
+            break;
+        case TargetSignTypeLeave:
+            defaultSignNote = NSLocalizedString(@"Take a leave", nil);
+            break;
+    }
+    
     if (targetSignInOneDay) {// signed
         NSString *typeName = [DescriptionUtil signTypeDescriptionOfType:lastSignType];
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:NSLocalizedString(@"SignAlready", nil),typeName] preferredStyle:UIAlertControllerStyleAlert];
@@ -412,7 +436,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
                 }
             }
             
-            [self signTarget:target signType:type note:@"" time:[NSDate date]];
+            [self signTarget:target signType:type note:defaultSignNote time:[NSDate date]];
         }];
         [alertController addAction:resignAction];
         UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Confirm", nil) style:UIAlertActionStyleDefault handler:nil];
@@ -421,7 +445,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
         return;
     }
     //unsigned
-    [self signTarget:target signType:type note:@"" time:now];
+    [self signTarget:target signType:type note:defaultSignNote time:now];
 }
 
 - (void)terminateTarget:(Target *)target WithResult:(TargetResult)result{

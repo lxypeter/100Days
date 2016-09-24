@@ -20,8 +20,8 @@
 /* Class = "UILabel"; text = "天目标"; ObjectID = "9XZ-pH-H4m"; */
 "9XZ-pH-H4m.text" = "天目标";
 
-/* Class = "UILabel"; text = "已进行"; ObjectID = "BHV-Dg-hb4"; */
-"BHV-Dg-hb4.text" = "已进行";
+/* Class = "UILabel"; text = "第"; ObjectID = "BHV-Dg-hb4"; */
+"BHV-Dg-hb4.text" = "第";
 
 /* Class = "UITextField"; text = "100"; ObjectID = "BRU-Ri-oW7"; */
 "BRU-Ri-oW7.text" = "100";
@@ -122,6 +122,10 @@
 "5IO-b9-zAH.normalTitle" = "分享";
 
 "4oB-iq-5dW.normalTitle" = "编辑";
+
+"mlP-Xo-8ii.text" = "签到笔记";
+
+"v06-dM-f4j.normalTitle" = "确定";
 
 //TargetSucceedViewController
 "bao-xk-Lcd.text" = "恭喜您！";

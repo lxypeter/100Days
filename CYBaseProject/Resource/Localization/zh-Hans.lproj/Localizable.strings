@@ -14,6 +14,8 @@
 "Cancel" = "取消";
 
 //MainViewController
+"day" = "日";
+
 "LeaveTimeLeft" = "您剩下%@次机会";
 
 "Are you sure to terminate the target?" = "是否确定结束你的目标？";
@@ -27,6 +29,10 @@
 "No Sign" = "未签到";
 
 "Sign Successfully！" = "签到成功！";
+
+"Daliy sign" = "日常签到";
+
+"Take a leave" = "请假";
 
 "Share" = "分享";
 
@@ -68,7 +74,9 @@
 //SignShareViewController
 "TargetDayType" = "%@天目标";
 
-"CurrentDay" = "%@天";
+"CurrentDay" = "第%@";
+
+"Target" = "目标";
 
 //Calander
 "Calander" = "日历";

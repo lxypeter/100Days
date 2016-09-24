@@ -17,7 +17,7 @@
 //SignShareViewController
 "TargetDayType" = "%@ days target";
 
-"CurrentDay" = "%@ day";
+"CurrentDay" = "the %@ day";
 
 //Calander
 "CalanderDay" = " ";

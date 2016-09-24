@@ -56,7 +56,7 @@
 
 - (void)configureSubViews{
     
-    self.title = @"目标";
+    self.title = NSLocalizedString(@"Target", nil);
     self.tableView.backgroundColor = UICOLOR(@"#EBEBF1");
     self.tableView.rowHeight = 68.0;
     self.totalDaysLabel.text = [NSString stringWithFormat:@"%@",self.target.totalDays];

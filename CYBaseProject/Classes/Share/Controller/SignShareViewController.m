@@ -10,8 +10,9 @@
 #import "Target.h"
 #import "DescriptionUtil.h"
 #import "UIColor+HexString.h"
+#import "UIPlaceHolderTextView.h"
 
-@interface SignShareViewController ()
+@interface SignShareViewController () <CAAnimationDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalDaysLabel;
@@ -22,6 +23,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *confirmButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIView *signInfoView;
+@property (weak, nonatomic) IBOutlet UIView *editNoteView;
+@property (weak, nonatomic) IBOutlet UIPlaceHolderTextView *noteTextView;
+@property (weak, nonatomic) IBOutlet UILabel *textNumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
+@property (nonatomic, assign, getter=isEditMode) BOOL editMode;
 
 @end
 
@@ -39,6 +46,9 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self configureSubViews];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)configureSubViews{
@@ -52,6 +62,8 @@
     self.shareButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.shareButton.layer.borderWidth = 0.5;
     
+    self.noteTextView.placeholder = @"";
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *userName = [userDefaults stringForKey:kUserNameKey];
     if (![NSString isBlankString:userName]) {
@@ -62,10 +74,13 @@
         self.headerImageView.image = [UIImage imageWithData:userHeaderData];
     }
     
+    //about targetSign data
     if (!self.targetSign) return;
     
     self.totalDaysLabel.text = [NSString stringWithFormat:NSLocalizedString(@"TargetDayType", nil),self.targetSign.target.totalDays];
-    self.currentDayLabel.text = [NSString stringWithFormat:NSLocalizedString(@"CurrentDay", nil),self.targetSign.target.day];
+    
+    NSString *dayString = [DescriptionUtil dayDescriptionOfDay:[self.targetSign.target.day integerValue]];
+    self.currentDayLabel.text = [NSString stringWithFormat:NSLocalizedString(@"CurrentDay", nil),dayString];
     
     self.stateLabel.text = [DescriptionUtil signTypeDescriptionOfType:[self.targetSign.signType integerValue]];
     
@@ -80,27 +95,147 @@
             break;
     }
     
-    [self.view bringSubviewToFront:self.signInfoView];
-    [self.view bringSubviewToFront:self.confirmButton];
-    [self.view bringSubviewToFront:self.shareButton];
+    self.signNoteLabel.text = self.targetSign.note;
+    self.dateLabel.text = [DescriptionUtil dateDescriptionOfDate:self.targetSign.signTime];
+    
 }
 
 #pragma mark - event method
 - (IBAction)clickBackgroundButton:(id)sender {
-    [self dismissViewController];
+    
+    [self.view endEditing:YES];
+    
+    if (self.editMode) {
+        [self switchEditMode];
+    }else{
+        [self dismissViewController];
+    }
+    
 }
 
 - (IBAction)clickEditButton:(id)sender {
+    [self switchEditMode];
 }
 
 - (IBAction)clickConfrimButton:(id)sender {
+    [self.view endEditing:YES];
     [self dismissViewController];
 }
 
 - (IBAction)clickShareButton:(id)sender {
 }
 
+- (IBAction)clickNoteConfrimButton:(id)sender {
+    self.targetSign.note = self.noteTextView.text;
+    [self switchEditMode];
+}
+
 - (void)dismissViewController{
+    if ([self.targetSign.managedObjectContext hasChanges]) {
+        [self.targetSign.managedObjectContext save:nil];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)switchEditMode{
+    self.editMode = !self.editMode;
+    
+    self.noteTextView.text = self.targetSign.note;
+    self.signNoteLabel.text = self.targetSign.note;
+    self.textNumLabel.text = [NSString stringWithFormat:@"%@",@(self.noteTextView.text.length)];
+    
+    CGFloat animationDuration = 0.5;
+    
+    CAKeyframeAnimation *signInfoAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position.y"];
+    signInfoAnimation.delegate = self;
+    signInfoAnimation.duration = animationDuration;
+    
+    if (self.editMode) {
+        signInfoAnimation.values = @[@(ScreenHeight/2+20),@(-ScreenHeight/2)];
+        signInfoAnimation.keyTimes = @[@(0.3),@(1)];
+    }else{
+        signInfoAnimation.values = @[@(-ScreenHeight/2),@(ScreenHeight/2+20),@(ScreenHeight/2*0.9)];
+        signInfoAnimation.keyTimes = @[@(0),@(0.7),@(1)];
+    }
+    
+    [self.signInfoView.layer addAnimation:signInfoAnimation forKey:@"signInfoView"];
+    
+    CAKeyframeAnimation *editNoteAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position.y"];
+    editNoteAnimation.duration = animationDuration;
+    
+    if (self.editMode) {
+        editNoteAnimation.values = @[@(ScreenHeight*3/2+20),@(ScreenHeight/2*0.9)];
+        editNoteAnimation.keyTimes = @[@(0.3),@(1)];
+    }else{
+        editNoteAnimation.values = @[@(ScreenHeight/2-20),@(ScreenHeight*3/2)];
+        editNoteAnimation.keyTimes = @[@(0.7),@(1)];
+    }
+    
+    [self.editNoteView.layer addAnimation:editNoteAnimation forKey:@"editNoteView"];
+}
+
+#pragma mark - delegate
+#pragma mark animation delegate
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    if (self.editMode) {
+        [self.signInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.view.mas_centerY).offset(-ScreenHeight);
+        }];
+        [self.editNoteView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.view.mas_centerY).offset(-ScreenHeight/2*0.1);
+        }];
+    }else{
+        [self.signInfoView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.view.mas_centerY).offset(-ScreenHeight/2*0.1);
+        }];
+        [self.editNoteView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.view.mas_centerY).offset(ScreenHeight);
+        }];
+    }
+}
+
+#pragma mark textView delegate
+- (void)textViewDidChange:(UITextView *)textView{
+    if (textView.text.length>144) {
+        textView.text = [textView.text substringToIndex:144];
+    }
+    self.textNumLabel.text = [NSString stringWithFormat:@"%@",@(textView.text.length)];
+}
+
+#pragma mark - keybroad method
+- (void)keyboardWillShow:(NSNotification *)notifi{
+    
+    CGRect beginUserInfo = [[notifi.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey]   CGRectValue];
+    if (beginUserInfo.size.height <=44) return;
+    
+    UIControl *textInput = [self firstResponder];
+    CGRect parentRect = [textInput.superview convertRect:textInput.frame toView:nil];
+    CGFloat maxY = CGRectGetMaxY(parentRect);
+    
+    CGRect kbEndFrm = [notifi.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat kbY = kbEndFrm.origin.y;
+    
+    CGFloat delta = kbY - maxY;
+    if(delta < 0){
+        [UIView animateWithDuration:0.25 animations:^{
+            self.view.transform = CGAffineTransformMakeTranslation(0, delta);
+        }];
+    }
+}
+
+- (void)keyboardWillHide{
+    [UIView animateWithDuration:0.25 animations:^{
+        self.view.transform = CGAffineTransformIdentity;
+    }];
+}
+
+- (UIControl *)firstResponder{
+    NSArray *inputArray = @[self.noteTextView];
+    for (UIControl *ctrl in inputArray) {
+        if ([ctrl isFirstResponder]) {
+            return ctrl;
+        }
+    }
+    return nil;
 }
 @end

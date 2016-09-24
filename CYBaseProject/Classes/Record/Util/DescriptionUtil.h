@@ -12,7 +12,10 @@
 @interface DescriptionUtil : NSObject
 
 + (NSString *)monthDescriptionOfDate:(NSDate *)date;
++ (NSString *)dayDescriptionOfDay:(NSInteger)day;
 + (NSString *)dayDescriptionOfDate:(NSDate *)date;
++ (NSString *)dateDescriptionOfDate:(NSDate *)date;
++ (NSString *)ordinalNumberSuffixWithNumber:(NSInteger)num;
 + (NSString *)resultDescriptionOfResult:(TargetResult)result;
 + (NSString *)signTypeDescriptionOfType:(TargetSignType)type;
 

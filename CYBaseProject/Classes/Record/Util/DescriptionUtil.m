@@ -44,12 +44,67 @@
     }
 }
 
++ (NSString *)ordinalNumberSuffixWithNumber:(NSInteger)num{
+    NSString *suffix;
+    if (num%10==1&&num!=11) {
+        suffix = @"st";
+    }else if (num%10==2&&num!=12) {
+        suffix = @"nd";
+    }else{
+        suffix = @"th";
+    }
+    return suffix;
+}
+
++ (NSString *)dayDescriptionOfDay:(NSInteger)day{
+    //chinese
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *allLanguage = [defaults objectForKey:@"AppleLanguages"];
+    NSString *currentLanguage = [allLanguage objectAtIndex:0];
+    if ([currentLanguage hasPrefix:@"zh-Hans"]){
+        return [NSString stringWithFormat:@"%zi日",day];
+    }
+    
+    return [NSString stringWithFormat:@"%zi%@",day,[self ordinalNumberSuffixWithNumber:day]];
+}
+
 + (NSString *)dayDescriptionOfDate:(NSDate *)date{
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     formatter.dateFormat = @"dd";
     NSUInteger day = [[formatter stringFromDate:date]integerValue];
-    return [NSString stringWithFormat:@"%@%@",@(day),NSLocalizedString(@"CalanderDay", nil)];
+    return [self dayDescriptionOfDay:day];
 }
+
++ (NSString *)dateDescriptionOfDate:(NSDate *)date{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *allLanguage = [defaults objectForKey:@"AppleLanguages"];
+    NSString *currentLanguage = [allLanguage objectAtIndex:0];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    formatter.dateFormat = @"yyyy";
+    NSUInteger year = [[formatter stringFromDate:date]integerValue];
+    
+    if ([currentLanguage hasPrefix:@"zh-Hans"]){
+        
+        formatter.dateFormat = @"MM";
+        NSUInteger month = [[formatter stringFromDate:date]integerValue];
+        formatter.dateFormat = @"dd";
+        NSUInteger day = [[formatter stringFromDate:date]integerValue];
+        
+        return [NSString stringWithFormat:@"%zi年%zi月%zi日",year,month,day];
+    }else{
+        NSString *monthString = [self monthDescriptionOfDate:date];
+        NSString *dayString = [self dayDescriptionOfDate:date];
+        return [NSString stringWithFormat:@"%@ %@ %zi",dayString,monthString,year];
+    }
+}
+
+//+ (NSString *)dayDescriptionOfDate:(NSDate *)date{
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+//    formatter.dateFormat = @"dd";
+//    NSUInteger day = [[formatter stringFromDate:date]integerValue];
+//    return [NSString stringWithFormat:@"%@%@",@(day),NSLocalizedString(@"CalanderDay", nil)];
+//}
 
 + (NSString *)resultDescriptionOfResult:(TargetResult)result{
     switch (result) {

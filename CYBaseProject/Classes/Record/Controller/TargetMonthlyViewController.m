@@ -15,6 +15,7 @@
 #import "DescriptionUtil.h"
 #import "MonthHeaderView.h"
 #import "TargetCalendarDay.h"
+#import "SignShareViewController.h"
 
 #define kCollectionCellId @"TargetDayViewCell"
 #define kCollectionMonthHeaderId @"MonthHeaderView"
@@ -122,6 +123,18 @@
     CGFloat screenWidth = [UIApplication sharedApplication].keyWindow.bounds.size.width;
     CGFloat cellWidth = (screenWidth)/7;
     return CGSizeMake(cellWidth,cellWidth*1.2);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    TargetMonthlySign *targetMonthlySign = self.targetMonthlySigns[indexPath.section];
+    TargetCalendarDay *dayModel = [self targetCalendarDayWithTargetMonthlySign:targetMonthlySign index:indexPath.row];
+    
+    if (dayModel.targetSign) {
+        SignShareViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"SignShareViewController"];
+        ctrl.targetSign = dayModel.targetSign;
+        [self presentViewController:ctrl animated:YES completion:nil];
+    }
+    
 }
 
 //generate cell model
