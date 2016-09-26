@@ -42,7 +42,7 @@
     if (!_optionsArray) {
         LeftSideViewOption *recordOption = [LeftSideViewOption optionWithTitle:NSLocalizedString(@"Target Records", nil) imageName:@"leftview_record" className:@"TargetListViewController"];
         
-        LeftSideViewOption *reminderOption = [LeftSideViewOption optionWithTitle:NSLocalizedString(@"Timed Reminder", nil) imageName:@"leftview_notification" className:@"TargetListViewController"];
+        LeftSideViewOption *reminderOption = [LeftSideViewOption optionWithTitle:NSLocalizedString(@"Timed Reminder", nil) imageName:@"leftview_notification" className:@"TimeReminderViewController"];
         
         _optionsArray = @[recordOption,reminderOption];
     }

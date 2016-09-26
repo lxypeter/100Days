@@ -78,6 +78,11 @@
 
 "Target" = "目标";
 
+//TimeReminderViewController
+"Daily Reminder" = "每日提醒";
+"Active Time Reminder" = "开启定时提醒";
+"Remind me at" = "提醒我于";
+
 //Calander
 "Calander" = "日历";
 

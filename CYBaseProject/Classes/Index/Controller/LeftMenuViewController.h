@@ -13,6 +13,7 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *className;
 @property (nonatomic, copy) NSString *imageName;
+@property (nonatomic, assign) BOOL fromStoryboard;
 
 - (instancetype)initWithWithTitle:(NSString *)title imageName:(NSString *)imageName className:(NSString *)className;
 + (instancetype)optionWithTitle:(NSString *)title imageName:(NSString *)imageName className:(NSString *)className;

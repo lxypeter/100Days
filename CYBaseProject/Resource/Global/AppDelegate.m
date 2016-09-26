@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import <IQKeyboardManager.h>
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
 
 @interface AppDelegate ()
 
@@ -18,11 +21,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    //1.设置 log 信息
+    //Logger
     [self setLogger];
-    
+    //Keyboard
     [IQKeyboardManager sharedManager].enable = YES;
-    
+    //register notification
+    [self registerNotificationWithApplication:application];
     return YES;
 }
 
@@ -62,5 +66,24 @@
     [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor purpleColor] backgroundColor:[UIColor whiteColor] forFlag:DDLogFlagInfo];
 }
 
+- (void)registerNotificationWithApplication:(UIApplication *)application{
+    //2016-09-22 add by li.xiyang 百度消息推送适配iOS10
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0) {
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+        UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + UNAuthorizationOptionSound + UNAuthorizationOptionBadge)
+                              completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                                  if (granted) {
+                                      [application registerForRemoteNotifications];
+                                  }
+                              }];
+#endif
+    }else{
+        UIUserNotificationType myTypes = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:myTypes categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    }
+}
 
 @end

@@ -10,6 +10,10 @@
 		696872CAAC6733D6F9917A0E /* libPods-100Days.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC8616921B563A3832D4712 /* libPods-100Days.a */; };
 		E10ECE421D7D4FA100B15F26 /* CalendarColorDict.plist in Resources */ = {isa = PBXBuildFile; fileRef = E10ECE411D7D4FA100B15F26 /* CalendarColorDict.plist */; };
 		E10ECE461D7D55A200B15F26 /* TargetMonthlySign.m in Sources */ = {isa = PBXBuildFile; fileRef = E10ECE451D7D55A200B15F26 /* TargetMonthlySign.m */; };
+		E135724E1D98C2060057B80F /* TimeReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E135724D1D98C2060057B80F /* TimeReminderViewController.m */; };
+		E13572621D99212A0057B80F /* CYBasePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E135725C1D99212A0057B80F /* CYBasePicker.m */; };
+		E13572631D99212A0057B80F /* CYDataSinglePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E135725E1D99212A0057B80F /* CYDataSinglePicker.m */; };
+		E13572641D99212A0057B80F /* CYDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E13572601D99212A0057B80F /* CYDatePicker.m */; };
 		E135CFA71D91213E00C6D180 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E135CFA91D91213E00C6D180 /* InfoPlist.strings */; };
 		E135CFB41D91213E00C6D180 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E135CFB61D91213E00C6D180 /* Localizable.strings */; };
 		E15B83371D7EA97200E1B2CF /* TargetDayViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15B83351D7EA97200E1B2CF /* TargetDayViewCell.m */; };
@@ -74,6 +78,15 @@
 		E10ECE411D7D4FA100B15F26 /* CalendarColorDict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CalendarColorDict.plist; sourceTree = "<group>"; };
 		E10ECE441D7D55A200B15F26 /* TargetMonthlySign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMonthlySign.h; sourceTree = "<group>"; };
 		E10ECE451D7D55A200B15F26 /* TargetMonthlySign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMonthlySign.m; sourceTree = "<group>"; };
+		E135724C1D98C2060057B80F /* TimeReminderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeReminderViewController.h; sourceTree = "<group>"; };
+		E135724D1D98C2060057B80F /* TimeReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeReminderViewController.m; sourceTree = "<group>"; };
+		E135725B1D99212A0057B80F /* CYBasePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYBasePicker.h; sourceTree = "<group>"; };
+		E135725C1D99212A0057B80F /* CYBasePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYBasePicker.m; sourceTree = "<group>"; };
+		E135725D1D99212A0057B80F /* CYDataSinglePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYDataSinglePicker.h; sourceTree = "<group>"; };
+		E135725E1D99212A0057B80F /* CYDataSinglePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYDataSinglePicker.m; sourceTree = "<group>"; };
+		E135725F1D99212A0057B80F /* CYDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYDatePicker.h; sourceTree = "<group>"; };
+		E13572601D99212A0057B80F /* CYDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYDatePicker.m; sourceTree = "<group>"; };
+		E13572611D99212A0057B80F /* CYPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYPicker.h; sourceTree = "<group>"; };
 		E135CF9F1D91213E00C6D180 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		E135CFA81D91213E00C6D180 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E135CFAA1D91213E00C6D180 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -228,6 +241,20 @@
 				E18AC85F1D7FEE7E00531F6F /* TargetCalendarDay.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E135725A1D99212A0057B80F /* CYPicker */ = {
+			isa = PBXGroup;
+			children = (
+				E135725B1D99212A0057B80F /* CYBasePicker.h */,
+				E135725C1D99212A0057B80F /* CYBasePicker.m */,
+				E135725D1D99212A0057B80F /* CYDataSinglePicker.h */,
+				E135725E1D99212A0057B80F /* CYDataSinglePicker.m */,
+				E135725F1D99212A0057B80F /* CYDatePicker.h */,
+				E13572601D99212A0057B80F /* CYDatePicker.m */,
+				E13572611D99212A0057B80F /* CYPicker.h */,
+			);
+			path = CYPicker;
 			sourceTree = "<group>";
 		};
 		E135CFA41D91213E00C6D180 /* Localization */ = {
@@ -392,6 +419,8 @@
 				E1BF44BE1D76C00C0070900D /* SetTargetViewController.m */,
 				E1F686881D814C9400C3EC49 /* CustInfoSettingViewController.h */,
 				E1F686891D814C9400C3EC49 /* CustInfoSettingViewController.m */,
+				E135724C1D98C2060057B80F /* TimeReminderViewController.h */,
+				E135724D1D98C2060057B80F /* TimeReminderViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -399,6 +428,7 @@
 		E1BF44C01D76C1190070900D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E135725A1D99212A0057B80F /* CYPicker */,
 				E1BF44C11D76C1320070900D /* UIPlaceHolderTextView.h */,
 				E1BF44C21D76C1320070900D /* UIPlaceHolderTextView.m */,
 			);
@@ -799,13 +829,17 @@
 				E1BF44DB1D76DA8C0070900D /* TargetSign.m in Sources */,
 				E1BF44CF1D76D9E60070900D /* CoreDataUtil.m in Sources */,
 				E1CC35B81D3E0C87005FEA04 /* DDDispatchQueueLogFormatter.m in Sources */,
+				E13572641D99212A0057B80F /* CYDatePicker.m in Sources */,
 				E1CC35B11D3E0C87005FEA04 /* DDAbstractDatabaseLogger.m in Sources */,
 				E1BF44BF1D76C00C0070900D /* SetTargetViewController.m in Sources */,
+				E13572631D99212A0057B80F /* CYDataSinglePicker.m in Sources */,
 				E1CC35B71D3E0C87005FEA04 /* DDContextFilterLogFormatter.m in Sources */,
 				E1BF44DA1D76DA8C0070900D /* TargetSign+CoreDataProperties.m in Sources */,
 				E10ECE461D7D55A200B15F26 /* TargetMonthlySign.m in Sources */,
 				E1CC33B81D3E0C86005FEA04 /* main.m in Sources */,
 				E1E54D5D1D913A0900487C98 /* SignShareViewController.m in Sources */,
+				E13572621D99212A0057B80F /* CYBasePicker.m in Sources */,
+				E135724E1D98C2060057B80F /* TimeReminderViewController.m in Sources */,
 				E1A140BA1D3E4CDF00D77589 /* NSString+CYVerification.m in Sources */,
 				E1BF44B01D76701A0070900D /* IndexViewController.m in Sources */,
 				E1F6868A1D814C9400C3EC49 /* CustInfoSettingViewController.m in Sources */,
