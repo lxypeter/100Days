@@ -8,16 +8,16 @@
 
 #import "CYBasePicker.h"
 
-typedef void(^DateSelectedBlock)(NSDate *selectedDate);
+typedef void(^CYDateSelectedBlock)(NSDate *selectedDate);
 
 @interface CYDatePicker : CYBasePicker
 
 @property (strong, nonatomic) UIDatePicker *datePicker;
 @property (assign, nonatomic) UIDatePickerMode datePickerMode;
-@property (copy, nonatomic) DateSelectedBlock dateSelectedBlock;
+@property (copy, nonatomic) CYDateSelectedBlock dateSelectedBlock;
 @property (strong, nonatomic) NSDate *currentDate;
 
-+ (instancetype)datePickerWithDateSelectedBlock:(DateSelectedBlock)dateSelectedBlock;
++ (instancetype)datePickerWithDateSelectedBlock:(CYDateSelectedBlock)dateSelectedBlock;
 
 /**
  *  显示Picker并设定当前选中时间

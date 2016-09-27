@@ -15,18 +15,10 @@
 @implementation CYDatePicker
 
 #pragma mark - 初始化
-+ (instancetype)datePickerWithDateSelectedBlock:(DateSelectedBlock)dateSelectedBlock{
++ (instancetype)datePickerWithDateSelectedBlock:(CYDateSelectedBlock)dateSelectedBlock{
     CYDatePicker *dataPicker = [[CYDatePicker alloc]init];
     dataPicker.dateSelectedBlock = dateSelectedBlock;
     return dataPicker;
-}
-
-- (instancetype)init{
-    self = [super init];
-    if (self) {
-        [self addSubViewOfContentView];
-    }
-    return self;
 }
 
 - (void)addSubViewOfContentView{

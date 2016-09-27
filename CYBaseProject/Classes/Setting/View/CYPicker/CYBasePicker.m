@@ -26,9 +26,8 @@
 - (instancetype)init{
     self = [super init];
     if (self) {
-        
         [self setBaseContentView];
-        
+        [self addSubViewOfContentView];
     }
     return self;
 }
@@ -72,6 +71,9 @@
     
 }
 
+- (void)addSubViewOfContentView{
+}
+
 - (void)clickConfirmBtn{
     [self hidePicker];
 }
@@ -106,10 +108,10 @@
     } completion:^(BOOL finished) {
         [self setHidden:YES];
         [self.maskButton setHidden:YES];
+        [self.maskButton removeFromSuperview];
+        [self removeFromSuperview];
     }];
     
-    [self.maskButton removeFromSuperview];
-    [self removeFromSuperview];
 }
 
 #pragma mark - 设置按钮文字及颜色
