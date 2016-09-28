@@ -893,7 +893,7 @@
         <!--Index View Controller-->
         <scene sceneID="KrA-3A-lhP">
             <objects>
-                <viewController id="Qr3-0B-rOh" customClass="IndexViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IndexViewController" id="Qr3-0B-rOh" customClass="IndexViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tmn-ky-ISv"/>
                         <viewControllerLayoutGuide type="bottom" id="ggl-lo-z1J"/>

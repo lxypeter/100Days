@@ -39,7 +39,7 @@
     
     self.title = NSLocalizedString(@"Calander", nil);
     
-    WeekDayHeaderView *headerView = [[[NSBundle mainBundle]loadNibNamed:@"WeekDayHeaderView" owner:nil options:nil]lastObject];
+    WeekDayHeaderView *headerView = [[[NSBundle currentBundle]loadNibNamed:@"WeekDayHeaderView" owner:nil options:nil]lastObject];
     [self.view addSubview:headerView];
     [headerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(64);

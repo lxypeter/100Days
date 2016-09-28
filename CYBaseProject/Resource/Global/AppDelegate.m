@@ -27,6 +27,14 @@
     [IQKeyboardManager sharedManager].enable = YES;
     //register notification
     [self registerNotificationWithApplication:application];
+    
+    NSString *language = [NSBundle currentLanguage];
+    [NSBundle setLanguage:language];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"IndexViewController"];;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -46,6 +54,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    application.applicationIconBadgeNumber=0;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

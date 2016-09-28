@@ -19,5 +19,8 @@
 
 "CurrentDay" = "the %@ day";
 
+//TimeReminderViewController
+"NotificationContent" = "Hello,%@! It's time to complete your daliy target!";
+
 //Calander
 "CalanderDay" = " ";

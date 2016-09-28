@@ -8,15 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger,LeftSideActionType) {
+    LeftSideActionTypeController,
+    LeftSideActionTypeControllerFromStoryboard,
+    LeftSideActionTypeSwitchLanguage
+};
+
 @interface LeftSideViewOption : NSObject
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *className;
 @property (nonatomic, copy) NSString *imageName;
-@property (nonatomic, assign) BOOL fromStoryboard;
+@property (nonatomic, copy) NSString *detail;
+@property (nonatomic, assign) LeftSideActionType leftSideActionType;
 
-- (instancetype)initWithWithTitle:(NSString *)title imageName:(NSString *)imageName className:(NSString *)className;
-+ (instancetype)optionWithTitle:(NSString *)title imageName:(NSString *)imageName className:(NSString *)className;
+- (instancetype)initWithWithTitle:(NSString *)title imageName:(NSString *)imageName actionType:(LeftSideActionType)leftSideActionType;
++ (instancetype)optionWithTitle:(NSString *)title imageName:(NSString *)imageName actionType:(LeftSideActionType)leftSideActionType;
 
 @end
 

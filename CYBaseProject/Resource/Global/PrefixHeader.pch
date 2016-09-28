@@ -14,5 +14,6 @@
 #import "MainMacro.h"
 #import <Masonry.h>
 #import "NSString+CYVerification.h"
+#import "NSBundle+Language.h"
 
 #endif /* ZTESoftProject_PrefixHeader_pch */

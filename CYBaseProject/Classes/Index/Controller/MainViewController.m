@@ -18,6 +18,7 @@
 #import "SignShareViewController.h"
 #import "TargetSucceedViewController.h"
 
+
 typedef NS_ENUM(NSInteger,MainViewAnimationType){
     MainViewAnimationTypeIn,
     MainViewAnimationTypeOut
@@ -52,7 +53,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
 #pragma mark - get/set method
 - (NoTargetView *)noTargetView{
     if (!_noTargetView) {
-        NoTargetView *noTargetView = [[[NSBundle mainBundle]loadNibNamed:@"NoTargetView" owner:nil options:nil]lastObject];
+        NoTargetView *noTargetView = [[[NSBundle currentBundle]loadNibNamed:@"NoTargetView" owner:nil options:nil]lastObject];
         noTargetView.settingBlock = ^{
             SetTargetViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"SetTargetViewController"];
             [self presentViewController:ctrl animated:YES completion:nil];
@@ -64,7 +65,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
             make.right.mas_equalTo(0);
             make.bottom.mas_equalTo(0);
         }];
-        [noTargetView updateConstraintsIfNeeded];
+        [self.view updateConstraintsIfNeeded];
         _noTargetView = noTargetView;
     }
     return _noTargetView;

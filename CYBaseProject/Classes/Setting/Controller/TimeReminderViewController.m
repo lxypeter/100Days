@@ -228,12 +228,14 @@ const static NSString *kTitleKey = @"title";
     NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
     dateComponents.hour = [dateStringArray[0] integerValue];
     dateComponents.minute = [dateStringArray[1] integerValue];
+    NSString *notificationContent = [NSString stringWithFormat:NSLocalizedString(@"NotificationContent", nil),[[NSUserDefaults standardUserDefaults]stringForKey:kUserNameKey]];
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0) {
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
         UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
         content.title = [NSString localizedUserNotificationStringForKey:@"" arguments:nil];
-        content.body = [NSString localizedUserNotificationStringForKey:@"Hello Tom！Get up, let's play with Jerry!" arguments:nil];
+        
+        content.body = [NSString localizedUserNotificationStringForKey:notificationContent arguments:nil];
         content.sound = [UNNotificationSound defaultSound];
         
         content.badge = @([[UIApplication sharedApplication] applicationIconBadgeNumber] + 1);
@@ -258,7 +260,7 @@ const static NSString *kTitleKey = @"title";
         localNote.repeatInterval = NSCalendarUnitDay;
         
         // 1.2.设置弹出的内容
-        localNote.alertBody = @"吃饭了吗?";
+        localNote.alertBody = notificationContent;
         
         // 1.6.设置音效
         localNote.soundName = UILocalNotificationDefaultSoundName;

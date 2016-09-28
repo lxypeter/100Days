@@ -19,6 +19,8 @@
 		E15B83371D7EA97200E1B2CF /* TargetDayViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15B83351D7EA97200E1B2CF /* TargetDayViewCell.m */; };
 		E15B83381D7EA97200E1B2CF /* TargetDayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15B83361D7EA97200E1B2CF /* TargetDayViewCell.xib */; };
 		E15B833E1D7EB35000E1B2CF /* WeekDayHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E15B833D1D7EB35000E1B2CF /* WeekDayHeaderView.m */; };
+		E15E529D1D9BA38400BD8425 /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = E15E529C1D9BA38400BD8425 /* NSBundle+Language.m */; };
+		E15E529F1D9BBD9000BD8425 /* Language.plist in Resources */ = {isa = PBXBuildFile; fileRef = E15E529E1D9BBD9000BD8425 /* Language.plist */; };
 		E174FEDD1D7BC52600894AB3 /* DescriptionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E174FEDC1D7BC52600894AB3 /* DescriptionUtil.m */; };
 		E174FEE01D7BD28C00894AB3 /* TargetMonthlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E174FEDF1D7BD28C00894AB3 /* TargetMonthlyViewController.m */; };
 		E186BD7E1D797EE6006D62D5 /* TargetListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E186BD7D1D797EE6006D62D5 /* TargetListViewController.m */; };
@@ -97,6 +99,9 @@
 		E15B83361D7EA97200E1B2CF /* TargetDayViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetDayViewCell.xib; sourceTree = "<group>"; };
 		E15B833C1D7EB35000E1B2CF /* WeekDayHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekDayHeaderView.h; sourceTree = "<group>"; };
 		E15B833D1D7EB35000E1B2CF /* WeekDayHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekDayHeaderView.m; sourceTree = "<group>"; };
+		E15E529B1D9BA38400BD8425 /* NSBundle+Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Language.h"; sourceTree = "<group>"; };
+		E15E529C1D9BA38400BD8425 /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
+		E15E529E1D9BBD9000BD8425 /* Language.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Language.plist; sourceTree = "<group>"; };
 		E174FEDB1D7BC52600894AB3 /* DescriptionUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionUtil.h; sourceTree = "<group>"; };
 		E174FEDC1D7BC52600894AB3 /* DescriptionUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionUtil.m; sourceTree = "<group>"; };
 		E174FEDE1D7BD28C00894AB3 /* TargetMonthlyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMonthlyViewController.h; sourceTree = "<group>"; };
@@ -264,6 +269,15 @@
 				E135CFB61D91213E00C6D180 /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		E15E52971D9BA2EC00BD8425 /* NSBundle */ = {
+			isa = PBXGroup;
+			children = (
+				E15E529B1D9BA38400BD8425 /* NSBundle+Language.h */,
+				E15E529C1D9BA38400BD8425 /* NSBundle+Language.m */,
+			);
+			path = NSBundle;
 			sourceTree = "<group>";
 		};
 		E174FEDA1D7BC50500894AB3 /* Util */ = {
@@ -554,6 +568,7 @@
 			children = (
 				E1CC2EFB1D3E0C85005FEA04 /* Info.plist */,
 				E10ECE411D7D4FA100B15F26 /* CalendarColorDict.plist */,
+				E15E529E1D9BBD9000BD8425 /* Language.plist */,
 			);
 			path = Plist;
 			sourceTree = "<group>";
@@ -573,6 +588,7 @@
 		E1CC2EFD1D3E0C85005FEA04 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				E15E52971D9BA2EC00BD8425 /* NSBundle */,
 				E18E4FE81D7807E9001EEAA4 /* NSDate */,
 				E1A140AF1D3E4CDF00D77589 /* NSString */,
 				E1A140B21D3E4CDF00D77589 /* UIColor */,
@@ -749,6 +765,7 @@
 				E1E54D4D1D90E3A200487C98 /* TargetListCell.xib in Resources */,
 				E1CC33B61D3E0C86005FEA04 /* LaunchScreen.storyboard in Resources */,
 				E1E54D451D90DB5F00487C98 /* WeekDayHeaderView.xib in Resources */,
+				E15E529F1D9BBD9000BD8425 /* Language.plist in Resources */,
 				E1CC33B91D3E0C86005FEA04 /* Assets.xcassets in Resources */,
 				E1E54D491D90DC2100487C98 /* TargetMonthlyListCell.xib in Resources */,
 				E1CC33B71D3E0C86005FEA04 /* Main.storyboard in Resources */,
@@ -823,6 +840,7 @@
 				E1A140BB1D3E4CDF00D77589 /* UIColor+HexString.m in Sources */,
 				E1A140BD1D3E4CDF00D77589 /* UIView+Toast.m in Sources */,
 				E1B3FDEA1D7A6DB900489B44 /* CYBaseViewController.m in Sources */,
+				E15E529D1D9BA38400BD8425 /* NSBundle+Language.m in Sources */,
 				E1CC35B01D3E0C87005FEA04 /* CLIColor.m in Sources */,
 				E15B83371D7EA97200E1B2CF /* TargetDayViewCell.m in Sources */,
 				E1B3FDEE1D7A70C400489B44 /* TargetListCell.m in Sources */,

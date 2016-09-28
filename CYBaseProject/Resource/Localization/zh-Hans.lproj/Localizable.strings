@@ -51,6 +51,8 @@
 
 "Timed Reminder" = "定时提醒";
 
+"Language" = "语言";
+
 //TargetMonthlyListController
 "DaysPassed" = "已进行%@天";
 
@@ -82,6 +84,7 @@
 "Daily Reminder" = "每日提醒";
 "Active Time Reminder" = "开启定时提醒";
 "Remind me at" = "提醒我于";
+"NotificationContent" = "你好,%@! 是时候完成你今天的目标了!";
 
 //Calander
 "Calander" = "日历";

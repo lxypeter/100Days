@@ -176,7 +176,7 @@
             year++;
         }
         
-        NSDateComponents *resultComponents = [calendar components:NSUIntegerMax fromDate:startDate];
+        NSDateComponents *resultComponents = [[NSDateComponents alloc]init];
         resultComponents.year = year;
         resultComponents.month = month;
         resultComponents.day = 1;
@@ -200,7 +200,7 @@
     static NSString *cellId = @"TargetMonthlyListCell";
     TargetMonthlyListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (!cell) {
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"TargetMonthlyListCell" owner:nil options:nil]lastObject];
+        cell = [[[NSBundle currentBundle]loadNibNamed:@"TargetMonthlyListCell" owner:nil options:nil]lastObject];
     }
     TargetMonthlySign *monthlySign = self.dataArray[indexPath.row];
     cell.targetMonthlySign = monthlySign;

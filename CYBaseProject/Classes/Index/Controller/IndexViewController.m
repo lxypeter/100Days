@@ -11,6 +11,7 @@
 #import "LeftMenuViewController.h"
 #import "UIColor+HexString.h"
 #import "CustInfoSettingViewController.h"
+#import "CYDataPicker.h"
 
 @interface IndexViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
@@ -70,18 +71,60 @@
     LeftMenuViewController *leftMenuViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"LeftMenuViewController"];
     leftMenuViewController.view.frame = CGRectMake(-ScreenWidth*0.8, 0, ScreenWidth*0.8, ScreenHeight);
     leftMenuViewController.leftSideOptionBlock = ^(LeftSideViewOption *option){
+        switch (option.leftSideActionType) {
+            case LeftSideActionTypeController:{
+                
+                [UIView animateWithDuration:0.25 animations:^{
+                    [weakSelf slipViewWithDistance:-(ScreenWidth*0.8)];
+                }completion:^(BOOL finished) {
+                    weakSelf.coverView.hidden = YES;
+                    panGesture.enabled = NO;
+                }];
         
-        [UIView animateWithDuration:0.25 animations:^{
-            [weakSelf slipViewWithDistance:-(ScreenWidth*0.8)];
-        }completion:^(BOOL finished) {
-            weakSelf.coverView.hidden = YES;
-            panGesture.enabled = NO;
-        }];
-        
-        UIViewController *controller = [[NSClassFromString(option.className) alloc]init];
-        controller.title = option.title;
-        [weakSelf.mainNaviController pushViewController:controller animated:YES];
-        
+                UIViewController *controller = [[NSClassFromString(option.className) alloc]init];
+                controller.title = option.title;
+                [weakSelf.mainNaviController pushViewController:controller animated:YES];
+                
+                break;
+            }
+            case LeftSideActionTypeControllerFromStoryboard:{
+                
+                [UIView animateWithDuration:0.25 animations:^{
+                    [weakSelf slipViewWithDistance:-(ScreenWidth*0.8)];
+                }completion:^(BOOL finished) {
+                    weakSelf.coverView.hidden = YES;
+                    panGesture.enabled = NO;
+                }];
+                
+                UIViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:option.className];
+                controller.title = option.title;
+                [weakSelf.mainNaviController pushViewController:controller animated:YES];
+                
+                break;
+            }
+            case LeftSideActionTypeSwitchLanguage:{
+                
+                NSString *path=[[NSBundle mainBundle] pathForResource:@"Language" ofType:@"plist"];
+                NSArray *validLanguageArray = [NSArray arrayWithContentsOfFile:path];
+                NSMutableArray *languageDataSource = [NSMutableArray array];
+                __block NSUInteger currentIndex = 0;
+                [validLanguageArray enumerateObjectsUsingBlock:^(NSDictionary  *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    [languageDataSource addObject:obj[@"name"]];
+                    if ([obj[@"name"] isEqualToString:[NSBundle currentLanguage]]) {
+                        currentIndex = idx;
+                    }
+                }];
+                
+                CYDataPicker *picker = [CYDataPicker dataPickerWithType:CYDataPickerTypeSingleSelect dataSource:languageDataSource];
+                picker.dataSingleSelectedBlock = ^(NSString *selectedValue,NSInteger selectedIndex){
+                    [self changeLanguageTo:validLanguageArray[selectedIndex][@"code"]];
+                };
+                [picker showPickerWithSelectedRow:currentIndex];
+                break;
+            }
+            default:
+                break;
+        }
     };
     leftMenuViewController.modifyButtonActionBlock = ^{
         
@@ -205,6 +248,14 @@
     tempFrame.origin.x = tempFrame.origin.x + moveDistance;
     self.mainNaviController.view.frame = tempFrame;
     
+}
+
+- (void)changeLanguageTo:(NSString *)language {
+    
+    [NSBundle setLanguage:language];
+    
+    IndexViewController *tab = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"IndexViewController"];
+    [UIApplication sharedApplication].keyWindow.rootViewController = tab;
 }
 
 #pragma mark - delegate method

@@ -138,10 +138,12 @@
     switch (self.dataPickerType) {
         case CYDataPickerTypeSingleSelect:{
             title = self.dataSource[row];
+            break;
         }
         case CYDataPickerTypeMultiSelect:{
             NSArray *componentSource = self.dataSource[component];
             title = componentSource[row];
+            break;
         }
     }
     
