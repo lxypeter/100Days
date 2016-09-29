@@ -62,7 +62,7 @@
     static NSString *cellId = @"targetListCell";
     TargetListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (!cell) {
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"TargetListCell" owner:nil options:nil]lastObject];
+        cell = [[[NSBundle currentBundle]loadNibNamed:@"TargetListCell" owner:nil options:nil]lastObject];
     }
     NSArray *datas = self.targetDatas[indexPath.section][@"datas"];
     Target *target = datas[indexPath.row];

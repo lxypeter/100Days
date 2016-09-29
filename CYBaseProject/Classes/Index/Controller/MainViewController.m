@@ -110,10 +110,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
         self.calendarButton.enabled = YES;
         
         //chinese
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSArray *allLanguage = [defaults objectForKey:@"AppleLanguages"];
-        NSString *currentLanguage = [allLanguage objectAtIndex:0];
-        if (![currentLanguage hasPrefix:@"zh-Hans"]){
+        if (![[NSBundle currentLanguage] hasPrefix:@"zh-Hans"]){
             NSString *suffix = [DescriptionUtil ordinalNumberSuffixWithNumber:[self.currentTarget.day integerValue]];
             daySuffix = [NSString stringWithFormat:@"%@ %@",suffix, NSLocalizedString(@"day", nil)];
         }

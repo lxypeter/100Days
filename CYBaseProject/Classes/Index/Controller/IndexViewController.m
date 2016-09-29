@@ -36,7 +36,7 @@
 #pragma mark - configure subViews
 - (void)configureSubViews{
     
-    //主页面
+    //main controller
     MainViewController *mainController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"MainViewController"];
     __weak typeof (self) weakSelf = self;
     mainController.settingButtonEvent = ^{
@@ -54,11 +54,11 @@
     self.mainNaviController = mainNaviController;
     [self.view addSubview:mainNaviController.view];
     
-    //主页面手势
+    //gesture in main controller
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panMainControllerView:)];
     [self.mainNaviController.view addGestureRecognizer:panGesture];
     
-    //遮盖层
+    //coverview
     UIView *coverView = [[UIView alloc]initWithFrame:mainController.view.frame];
     coverView.backgroundColor = [UIColor clearColor];
     coverView.hidden = YES;
@@ -67,7 +67,7 @@
     [coverView addGestureRecognizer:tapGesture];
     self.coverView = coverView;
     
-    //左边侧滑栏
+    //left side menu view
     LeftMenuViewController *leftMenuViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"LeftMenuViewController"];
     leftMenuViewController.view.frame = CGRectMake(-ScreenWidth*0.8, 0, ScreenWidth*0.8, ScreenHeight);
     leftMenuViewController.leftSideOptionBlock = ^(LeftSideViewOption *option){
@@ -110,7 +110,7 @@
                 __block NSUInteger currentIndex = 0;
                 [validLanguageArray enumerateObjectsUsingBlock:^(NSDictionary  *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     [languageDataSource addObject:obj[@"name"]];
-                    if ([obj[@"name"] isEqualToString:[NSBundle currentLanguage]]) {
+                    if ([obj[@"code"] isEqualToString:[NSBundle currentLanguage]]) {
                         currentIndex = idx;
                     }
                 }];
@@ -192,7 +192,7 @@
 
 - (void)panMainControllerView:(UIPanGestureRecognizer *)panGest{
     
-    //开始时
+    //begin
     if(panGest.state == UIGestureRecognizerStateBegan){
         CGPoint beginPoint = [panGest locationInView:panGest.view];
         if (beginPoint.x>panGest.view.frame.size.width/5) {
@@ -208,7 +208,7 @@
     [self slipViewWithDistance:trans.x];
     [panGest setTranslation:CGPointZero inView:panGest.view];
     
-    //结束时
+    //end
     if(panGest.state == UIGestureRecognizerStateEnded){
         if(fabs(panGest.view.frame.origin.x)>self.leftSideViewController.view.frame.size.width/2){
             [UIView animateWithDuration:0.1 animations:^{
@@ -272,11 +272,11 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-    // 1.取出照片
+    // 1.pick photo
     NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
     [userDefults setObject:UIImagePNGRepresentation(info[UIImagePickerControllerEditedImage]) forKey:kUserHeaderKey];
     [userDefults synchronize];
-    // 2.退出控制器
+    // 2.dismiss vc
     [picker dismissViewControllerAnimated:YES completion:nil];
     [self.leftSideViewController viewWillAppear:YES];
 }

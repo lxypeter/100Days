@@ -58,10 +58,7 @@
 
 + (NSString *)dayDescriptionOfDay:(NSInteger)day{
     //chinese
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSArray *allLanguage = [defaults objectForKey:@"AppleLanguages"];
-    NSString *currentLanguage = [allLanguage objectAtIndex:0];
-    if ([currentLanguage hasPrefix:@"zh-Hans"]){
+    if ([[NSBundle currentLanguage] hasPrefix:@"zh-Hans"]){
         return [NSString stringWithFormat:@"%zi日",day];
     }
     
@@ -76,15 +73,12 @@
 }
 
 + (NSString *)dateDescriptionOfDate:(NSDate *)date{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSArray *allLanguage = [defaults objectForKey:@"AppleLanguages"];
-    NSString *currentLanguage = [allLanguage objectAtIndex:0];
-    
+
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     formatter.dateFormat = @"yyyy";
     NSUInteger year = [[formatter stringFromDate:date]integerValue];
     
-    if ([currentLanguage hasPrefix:@"zh-Hans"]){
+    if ([[NSBundle currentLanguage] hasPrefix:@"zh-Hans"]){
         
         formatter.dateFormat = @"MM";
         NSUInteger month = [[formatter stringFromDate:date]integerValue];
