@@ -23,7 +23,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMD-Mo-hLh">
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daliy target complete" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qz1-cE-h8o">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daliy goal complete" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qz1-cE-h8o">
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -78,7 +78,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Haf-oc-LzB">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O96-Df-eWO">
-                                        <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -102,12 +102,12 @@
                                     <constraint firstItem="O96-Df-eWO" firstAttribute="centerY" secondItem="Haf-oc-LzB" secondAttribute="centerY" multiplier="0.75" id="Dhe-Ji-8Qx"/>
                                     <constraint firstItem="PSH-yZ-o4u" firstAttribute="top" secondItem="Haf-oc-LzB" secondAttribute="top" id="OrI-Tu-rY8"/>
                                     <constraint firstItem="O96-Df-eWO" firstAttribute="leading" secondItem="Haf-oc-LzB" secondAttribute="leading" constant="40" id="VF0-11-zqA"/>
-                                    <constraint firstItem="O96-Df-eWO" firstAttribute="width" secondItem="Haf-oc-LzB" secondAttribute="width" multiplier="0.7" id="WW5-Ii-zOJ"/>
+                                    <constraint firstItem="O96-Df-eWO" firstAttribute="width" secondItem="Haf-oc-LzB" secondAttribute="width" multiplier="0.8" id="WW5-Ii-zOJ"/>
                                     <constraint firstItem="gpZ-Eh-fNG" firstAttribute="leading" secondItem="O96-Df-eWO" secondAttribute="leading" id="Yg7-R6-sPq"/>
                                     <constraint firstAttribute="bottom" secondItem="PSH-yZ-o4u" secondAttribute="bottom" id="mkF-00-8tl"/>
                                     <constraint firstAttribute="trailing" secondItem="PSH-yZ-o4u" secondAttribute="trailing" id="ndY-ZJ-Rtk"/>
                                     <constraint firstAttribute="trailing" secondItem="gpZ-Eh-fNG" secondAttribute="trailing" constant="40" id="pW9-9a-Qet"/>
-                                    <constraint firstItem="gpZ-Eh-fNG" firstAttribute="width" secondItem="Haf-oc-LzB" secondAttribute="width" multiplier="0.7" id="r1J-CL-iCb"/>
+                                    <constraint firstItem="gpZ-Eh-fNG" firstAttribute="width" secondItem="Haf-oc-LzB" secondAttribute="width" multiplier="0.8" id="r1J-CL-iCb"/>
                                     <constraint firstItem="PSH-yZ-o4u" firstAttribute="leading" secondItem="Haf-oc-LzB" secondAttribute="leading" id="xQ2-Po-69A"/>
                                 </constraints>
                                 <variation key="default">
@@ -242,8 +242,8 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyM-IK-qH8">
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leave" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lx-EM-XqV">
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Off" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lx-EM-XqV">
+                                        <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -262,10 +262,10 @@
                                 <color key="backgroundColor" red="0.36078431372549019" green="0.59215686274509804" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="4lx-EM-XqV" firstAttribute="leading" secondItem="kyM-IK-qH8" secondAttribute="leading" constant="40" id="9eA-Oe-pkk"/>
-                                    <constraint firstItem="el2-VQ-wru" firstAttribute="width" secondItem="kyM-IK-qH8" secondAttribute="width" multiplier="0.7" id="Adn-UE-gcb"/>
+                                    <constraint firstItem="el2-VQ-wru" firstAttribute="width" secondItem="kyM-IK-qH8" secondAttribute="width" multiplier="0.8" id="Adn-UE-gcb"/>
                                     <constraint firstItem="el2-VQ-wru" firstAttribute="leading" secondItem="kyM-IK-qH8" secondAttribute="leading" constant="40" id="GGC-iP-tOT"/>
                                     <constraint firstItem="iDP-Nc-PgE" firstAttribute="top" secondItem="kyM-IK-qH8" secondAttribute="top" id="JkR-wP-OEo"/>
-                                    <constraint firstItem="4lx-EM-XqV" firstAttribute="width" secondItem="kyM-IK-qH8" secondAttribute="width" multiplier="0.7" id="PLS-Ej-WQl"/>
+                                    <constraint firstItem="4lx-EM-XqV" firstAttribute="width" secondItem="kyM-IK-qH8" secondAttribute="width" multiplier="0.8" id="PLS-Ej-WQl"/>
                                     <constraint firstItem="iDP-Nc-PgE" firstAttribute="leading" secondItem="kyM-IK-qH8" secondAttribute="leading" id="PlB-BS-M3h"/>
                                     <constraint firstAttribute="trailing" secondItem="el2-VQ-wru" secondAttribute="trailing" constant="40" id="ZSa-w5-oEV"/>
                                     <constraint firstItem="4lx-EM-XqV" firstAttribute="centerY" secondItem="kyM-IK-qH8" secondAttribute="centerY" multiplier="0.75" id="fG4-u0-lTX"/>
@@ -362,7 +362,7 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Elk-Tb-OOH">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a/an" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Elk-Tb-OOH">
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -439,7 +439,7 @@
                                             <outlet property="delegate" destination="x0q-l9-AVO" id="ia6-R5-Sf3"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" leaves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylN-0w-8yH">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylN-0w-8yH">
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -754,6 +754,7 @@
                         <outlet property="confirmButton" destination="Zbt-gv-MU1" id="bIY-pj-tmA"/>
                         <outlet property="currentDayLabel" destination="eZ4-pl-33Q" id="SWj-Uk-k5t"/>
                         <outlet property="dateLabel" destination="MS8-E6-4nA" id="X0k-Zu-spm"/>
+                        <outlet property="editButton" destination="4oB-iq-5dW" id="kmI-Tu-nUG"/>
                         <outlet property="editNoteView" destination="nY7-ry-1dJ" id="ZzF-ZU-h0g"/>
                         <outlet property="headerImageView" destination="dKe-E1-r9L" id="rln-fM-d3R"/>
                         <outlet property="nameLabel" destination="YVr-ZN-R9F" id="qje-zF-Fo2"/>

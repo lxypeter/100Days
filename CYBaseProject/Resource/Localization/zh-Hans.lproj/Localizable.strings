@@ -14,6 +14,8 @@
 "Cancel" = "取消";
 
 //MainViewController
+"You need a target" = "你需要一个目标";
+
 "day" = "日";
 
 "LeaveTimeLeft" = "您剩下%@次机会";
@@ -53,6 +55,8 @@
 
 "Language" = "语言";
 
+"Setting" = "设定";
+
 //TargetMonthlyListController
 "DaysPassed" = "已进行%@天";
 
@@ -79,6 +83,12 @@
 "CurrentDay" = "第%@";
 
 "Target" = "目标";
+
+"100 Days" = "百日";
+
+"Sharing Succeeded！" = "分享成功！";
+
+"Sharing Failed..." = "分享失败...";
 
 //TimeReminderViewController
 "Daily Reminder" = "每日提醒";

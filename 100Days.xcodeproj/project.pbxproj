@@ -37,6 +37,7 @@
 		E13572641D99212A0057B80F /* CYDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E13572601D99212A0057B80F /* CYDatePicker.m */; };
 		E135CFA71D91213E00C6D180 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E135CFA91D91213E00C6D180 /* InfoPlist.strings */; };
 		E135CFB41D91213E00C6D180 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E135CFB61D91213E00C6D180 /* Localizable.strings */; };
+		E152EB171D9E05600052D9F6 /* UIView+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = E152EB161D9E05600052D9F6 /* UIView+Image.m */; };
 		E15B83371D7EA97200E1B2CF /* TargetDayViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15B83351D7EA97200E1B2CF /* TargetDayViewCell.m */; };
 		E15B83381D7EA97200E1B2CF /* TargetDayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15B83361D7EA97200E1B2CF /* TargetDayViewCell.xib */; };
 		E15B833E1D7EB35000E1B2CF /* WeekDayHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E15B833D1D7EB35000E1B2CF /* WeekDayHeaderView.m */; };
@@ -84,7 +85,6 @@
 		E1E54D451D90DB5F00487C98 /* WeekDayHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E54D471D90DB5F00487C98 /* WeekDayHeaderView.xib */; };
 		E1E54D491D90DC2100487C98 /* TargetMonthlyListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E54D4B1D90DC2100487C98 /* TargetMonthlyListCell.xib */; };
 		E1E54D4D1D90E3A200487C98 /* TargetListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E54D4F1D90E3A200487C98 /* TargetListCell.xib */; };
-		E1E54D531D9110F400487C98 /* NoTargetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E54D551D9110F400487C98 /* NoTargetView.xib */; };
 		E1E54D5D1D913A0900487C98 /* SignShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E54D5C1D913A0900487C98 /* SignShareViewController.m */; };
 		E1F686811D810E8700C3EC49 /* TargetMonthlyListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F6867F1D810E8700C3EC49 /* TargetMonthlyListCell.m */; };
 		E1F686851D81116B00C3EC49 /* TargetMonthlyListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F686841D81116B00C3EC49 /* TargetMonthlyListController.m */; };
@@ -150,6 +150,8 @@
 		E135CFAA1D91213E00C6D180 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E135CFB51D91213E00C6D180 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E135CFB71D91213E00C6D180 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E152EB151D9E05600052D9F6 /* UIView+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Image.h"; sourceTree = "<group>"; };
+		E152EB161D9E05600052D9F6 /* UIView+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Image.m"; sourceTree = "<group>"; };
 		E15B83341D7EA97200E1B2CF /* TargetDayViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetDayViewCell.h; sourceTree = "<group>"; };
 		E15B83351D7EA97200E1B2CF /* TargetDayViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetDayViewCell.m; sourceTree = "<group>"; };
 		E15B83361D7EA97200E1B2CF /* TargetDayViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetDayViewCell.xib; sourceTree = "<group>"; };
@@ -246,8 +248,6 @@
 		E1E54D4C1D90DC2400487C98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TargetMonthlyListCell.xib; sourceTree = "<group>"; };
 		E1E54D4E1D90E3A200487C98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TargetListCell.xib; sourceTree = "<group>"; };
 		E1E54D521D90E43200487C98 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/TargetListCell.xib"; sourceTree = "<group>"; };
-		E1E54D541D9110F400487C98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NoTargetView.xib; sourceTree = "<group>"; };
-		E1E54D581D91117B00487C98 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/NoTargetView.xib"; sourceTree = "<group>"; };
 		E1E54D5B1D913A0900487C98 /* SignShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignShareViewController.h; sourceTree = "<group>"; };
 		E1E54D5C1D913A0900487C98 /* SignShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignShareViewController.m; sourceTree = "<group>"; };
 		E1F6867E1D810E8700C3EC49 /* TargetMonthlyListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMonthlyListCell.h; sourceTree = "<group>"; };
@@ -537,6 +537,8 @@
 				E1A140B71D3E4CDF00D77589 /* UIView+Frame.m */,
 				E1A140B81D3E4CDF00D77589 /* UIView+Toast.h */,
 				E1A140B91D3E4CDF00D77589 /* UIView+Toast.m */,
+				E152EB151D9E05600052D9F6 /* UIView+Image.h */,
+				E152EB161D9E05600052D9F6 /* UIView+Image.m */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -581,7 +583,6 @@
 			children = (
 				E1BF44B31D7673E60070900D /* NoTargetView.h */,
 				E1BF44B41D7673E60070900D /* NoTargetView.m */,
-				E1E54D551D9110F400487C98 /* NoTargetView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -896,7 +897,8 @@
 				TargetAttributes = {
 					E1CC2ED01D3E0C1B005FEA04 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = test;
+						DevelopmentTeam = 982DAQF6T6;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -929,7 +931,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1E54D531D9110F400487C98 /* NoTargetView.xib in Resources */,
 				E13530031D9CB66800DE4B01 /* README.txt in Resources */,
 				E135CFB41D91213E00C6D180 /* Localizable.strings in Resources */,
 				E13530001D9CB66800DE4B01 /* WeiboSDK.bundle in Resources */,
@@ -1033,6 +1034,7 @@
 				E1E54D5D1D913A0900487C98 /* SignShareViewController.m in Sources */,
 				E13572621D99212A0057B80F /* CYBasePicker.m in Sources */,
 				E135724E1D98C2060057B80F /* TimeReminderViewController.m in Sources */,
+				E152EB171D9E05600052D9F6 /* UIView+Image.m in Sources */,
 				E1A140BA1D3E4CDF00D77589 /* NSString+CYVerification.m in Sources */,
 				E1BF44B01D76701A0070900D /* IndexViewController.m in Sources */,
 				E1F6868A1D814C9400C3EC49 /* CustInfoSettingViewController.m in Sources */,
@@ -1120,15 +1122,6 @@
 				E1E54D521D90E43200487C98 /* zh-Hans */,
 			);
 			name = TargetListCell.xib;
-			sourceTree = "<group>";
-		};
-		E1E54D551D9110F400487C98 /* NoTargetView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E1E54D541D9110F400487C98 /* Base */,
-				E1E54D581D91117B00487C98 /* zh-Hans */,
-			);
-			name = NoTargetView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1222,7 +1215,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Feng Hou (JY7929XD73)";
-				DEVELOPMENT_TEAM = test;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 982DAQF6T6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CYBaseProject/Vender/SDKFile/ShareSDK",
@@ -1251,7 +1245,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Feng Hou (JY7929XD73)";
-				DEVELOPMENT_TEAM = test;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 982DAQF6T6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CYBaseProject/Vender/SDKFile/ShareSDK",

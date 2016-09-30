@@ -53,7 +53,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
 #pragma mark - get/set method
 - (NoTargetView *)noTargetView{
     if (!_noTargetView) {
-        NoTargetView *noTargetView = [[[NSBundle currentBundle]loadNibNamed:@"NoTargetView" owner:nil options:nil]lastObject];
+        NoTargetView *noTargetView = [[NoTargetView alloc]init];
         noTargetView.settingBlock = ^{
             SetTargetViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"SetTargetViewController"];
             [self presentViewController:ctrl animated:YES completion:nil];

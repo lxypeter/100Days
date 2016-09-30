@@ -69,7 +69,6 @@
     target.endDate = endDate;
     target.day = @1;
     target.flexibleTimes = @([self.flexibleTimesTextField.text intValue]);
-    target.flexibleTimes = @(100);
     target.result = @(TargetResultProgressing);
     
     if ([context hasChanges]) {
