@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Qr3-0B-rOh">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Qr3-0B-rOh">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -927,6 +927,7 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是一个目标这是一个目标这是一个目标这是一个目标这是一个目标这是一个目标这是一个目标这是一个目标" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bz6-Qd-t2K">
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -947,6 +948,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016-09-08" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czK-X4-1zZ">
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -967,6 +969,7 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进行中 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHL-7N-lmu">
                                         <constraints>
@@ -1341,6 +1344,61 @@
             </objects>
             <point key="canvasLocation" x="-1063" y="232"/>
         </scene>
+        <!--Launch View Controller-->
+        <scene sceneID="aqC-Wm-PyC">
+            <objects>
+                <viewController storyboardIdentifier="LaunchViewController" id="DyF-k0-Rhl" customClass="LaunchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PiT-va-im0"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ugc-ID-YRr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GSA-gw-Jyc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version: 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j81-Gp-cwJ">
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="full_logo" translatesAutoresizingMaskIntoConstraints="NO" id="VoF-cX-fgB">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Aed-Uo-Ylr"/>
+                                    <constraint firstAttribute="width" secondItem="VoF-cX-fgB" secondAttribute="height" multiplier="1000:197" id="mJU-8O-roE"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1iT-aY-yIh">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="G19-R9-vYd"/>
+                                    <constraint firstAttribute="width" secondItem="1iT-aY-yIh" secondAttribute="height" multiplier="10:3" id="XRQ-Xu-oli"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="self challenge in 100 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7QS-aa-5aT">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.50588235290000005" green="0.81176470590000005" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1iT-aY-yIh" firstAttribute="centerX" secondItem="GSA-gw-Jyc" secondAttribute="centerX" id="03X-Oi-m3r"/>
+                            <constraint firstItem="VoF-cX-fgB" firstAttribute="centerX" secondItem="GSA-gw-Jyc" secondAttribute="centerX" constant="1" id="C0t-o9-Rab"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="j81-Gp-cwJ" secondAttribute="bottom" constant="30" id="FlF-2I-UX6"/>
+                            <constraint firstItem="7QS-aa-5aT" firstAttribute="top" secondItem="1iT-aY-yIh" secondAttribute="bottom" constant="10" id="MvJ-rb-fEb"/>
+                            <constraint firstItem="1iT-aY-yIh" firstAttribute="centerY" secondItem="GSA-gw-Jyc" secondAttribute="centerY" multiplier="0.5" id="aKg-SJ-gzH"/>
+                            <constraint firstItem="7QS-aa-5aT" firstAttribute="centerX" secondItem="GSA-gw-Jyc" secondAttribute="centerX" id="rzj-VD-qpX"/>
+                            <constraint firstItem="j81-Gp-cwJ" firstAttribute="centerX" secondItem="GSA-gw-Jyc" secondAttribute="centerX" id="s6x-Do-rix"/>
+                            <constraint firstItem="j81-Gp-cwJ" firstAttribute="top" secondItem="VoF-cX-fgB" secondAttribute="bottom" constant="5" id="tJ7-OF-dbj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logoImageView" destination="1iT-aY-yIh" id="eEW-Cn-bbZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5ZH-Ux-XnE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1063" y="1817"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back_arrow" width="74" height="74"/>
@@ -1349,6 +1407,7 @@
         <image name="close" width="128" height="128"/>
         <image name="darkgray" width="2" height="2"/>
         <image name="edit" width="128" height="128"/>
+        <image name="full_logo" width="1000" height="197"/>
         <image name="header" width="342" height="342"/>
         <image name="setting" width="128" height="128"/>
         <image name="setting_user" width="128" height="128"/>

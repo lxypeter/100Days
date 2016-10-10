@@ -48,6 +48,8 @@
         
         LeftSideViewOption *languageOption = [LeftSideViewOption optionWithTitle:NSLocalizedString(@"Language", nil) imageName:@"leftview_language" actionType:LeftSideActionTypeSwitchLanguage];
         
+        
+        
         _optionsArray = @[recordOption,reminderOption,languageOption];
     }
     return _optionsArray;

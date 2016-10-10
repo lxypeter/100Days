@@ -73,9 +73,11 @@
 "Please input your nickname!" = "用户名不能为空！";
 
 //TargetListViewController
-"Are you sure to delete the target record?" = "是否确认删除目标？";
+"Are you sure to delete the target record?" = "是否确认删除目标记录？";
 
 "Delete" = "删除";
+
+"No Record" = "没有记录";
 
 //SignShareViewController
 "TargetDayType" = "%@天目标";
@@ -124,3 +126,6 @@
 "Oct" = "十月";
 "Nov" = "十一月";
 "Dec" = "十二月";
+
+//Image
+"100Day_Base" = "100Day_zh-Hans";

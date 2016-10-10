@@ -15,6 +15,7 @@
 @interface TargetListViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIView *emptyView;
 @property (nonatomic, strong) NSMutableArray *targetDatas;
 
 @end
@@ -27,6 +28,34 @@
         _targetDatas = [NSMutableArray array];
     }
     return _targetDatas;
+}
+
+- (UIView *)emptyView{
+    if (!_emptyView) {
+        _emptyView = [[UIView alloc]init];
+        [self.view addSubview:_emptyView];
+        [_emptyView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.view);
+        }];
+        UIImageView *emptyImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"empty"]];
+        [_emptyView addSubview:emptyImageView];
+        [emptyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(_emptyView.mas_centerX);
+            make.centerY.equalTo(_emptyView.mas_centerY).multipliedBy(0.9);
+            make.width.mas_equalTo(120);
+            make.height.mas_equalTo(120);
+        }];
+        UILabel *emptyLabel = [[UILabel alloc]init];
+        emptyLabel.textColor = [UIColor grayColor];
+        emptyLabel.font = [UIFont systemFontOfSize:25];
+        emptyLabel.text = NSLocalizedString(@"No Record", nil);
+        [_emptyView addSubview:emptyLabel];
+        [emptyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(_emptyView.mas_centerX);
+            make.top.equalTo(emptyImageView.mas_bottom).offset(10);
+        }];
+    }
+    return _emptyView;
 }
 
 #pragma mark - life cycle
@@ -50,6 +79,11 @@
 
 #pragma mark - tableView delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    if (self.targetDatas.count==0) {
+        self.emptyView.hidden = NO;
+    }else{
+        self.emptyView.hidden = YES;
+    }
     return self.targetDatas.count;
 }
 

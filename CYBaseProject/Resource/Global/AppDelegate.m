@@ -15,6 +15,7 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import "WXApi.h"
 #import "WeiboSDK.h"
+#import "CYLaunchAnimateViewController.h"
 
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
@@ -40,8 +41,15 @@
     [NSBundle setLanguage:language];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"IndexViewController"];;
+    self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"IndexViewController"];
     [self.window makeKeyAndVisible];
+    
+    // init launch view
+    UIView *launchView = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"LaunchViewController"].view;
+    
+    //init CYLaunchAnimateViewController
+    CYLaunchAnimateViewController *launchCtrl = [[CYLaunchAnimateViewController alloc]initWithContentView:launchView animateType:CYLaunchAnimateTypeFadeAndZoomIn showSkipButton:NO];
+    [launchCtrl show];
     
     return YES;
 }
