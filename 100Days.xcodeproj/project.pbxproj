@@ -50,6 +50,7 @@
 		E186BD7E1D797EE6006D62D5 /* TargetListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E186BD7D1D797EE6006D62D5 /* TargetListViewController.m */; };
 		E18AC85D1D7FBFCE00531F6F /* MonthHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E18AC85C1D7FBFCE00531F6F /* MonthHeaderView.m */; };
 		E18AC8601D7FEE7E00531F6F /* TargetCalendarDay.m in Sources */ = {isa = PBXBuildFile; fileRef = E18AC85F1D7FEE7E00531F6F /* TargetCalendarDay.m */; };
+		E18AF25E1DACD19800342C50 /* TimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18AF25D1DACD19800342C50 /* TimerViewController.m */; };
 		E18E4FEB1D78087E001EEAA4 /* NSDate+CYCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = E18E4FEA1D78087E001EEAA4 /* NSDate+CYCompare.m */; };
 		E1A140BA1D3E4CDF00D77589 /* NSString+CYVerification.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A140B11D3E4CDF00D77589 /* NSString+CYVerification.m */; };
 		E1A140BB1D3E4CDF00D77589 /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A140B41D3E4CDF00D77589 /* UIColor+HexString.m */; };
@@ -176,6 +177,8 @@
 		E18AC85C1D7FBFCE00531F6F /* MonthHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthHeaderView.m; sourceTree = "<group>"; };
 		E18AC85E1D7FEE7E00531F6F /* TargetCalendarDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetCalendarDay.h; sourceTree = "<group>"; };
 		E18AC85F1D7FEE7E00531F6F /* TargetCalendarDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetCalendarDay.m; sourceTree = "<group>"; };
+		E18AF25C1DACD19800342C50 /* TimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerViewController.h; sourceTree = "<group>"; };
+		E18AF25D1DACD19800342C50 /* TimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerViewController.m; sourceTree = "<group>"; };
 		E18E4FE91D78087E001EEAA4 /* NSDate+CYCompare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CYCompare.h"; sourceTree = "<group>"; };
 		E18E4FEA1D78087E001EEAA4 /* NSDate+CYCompare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CYCompare.m"; sourceTree = "<group>"; };
 		E1A140B01D3E4CDF00D77589 /* NSString+CYVerification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CYVerification.h"; sourceTree = "<group>"; };
@@ -253,7 +256,6 @@
 		E1E54D4A1D90DC2100487C98 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/TargetMonthlyListCell.xib"; sourceTree = "<group>"; };
 		E1E54D4C1D90DC2400487C98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TargetMonthlyListCell.xib; sourceTree = "<group>"; };
 		E1E54D4E1D90E3A200487C98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TargetListCell.xib; sourceTree = "<group>"; };
-		E1E54D521D90E43200487C98 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/TargetListCell.xib"; sourceTree = "<group>"; };
 		E1E54D5B1D913A0900487C98 /* SignShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignShareViewController.h; sourceTree = "<group>"; };
 		E1E54D5C1D913A0900487C98 /* SignShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignShareViewController.m; sourceTree = "<group>"; };
 		E1F6867E1D810E8700C3EC49 /* TargetMonthlyListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMonthlyListCell.h; sourceTree = "<group>"; };
@@ -622,6 +624,8 @@
 				E1F686891D814C9400C3EC49 /* CustInfoSettingViewController.m */,
 				E135724C1D98C2060057B80F /* TimeReminderViewController.h */,
 				E135724D1D98C2060057B80F /* TimeReminderViewController.m */,
+				E18AF25C1DACD19800342C50 /* TimerViewController.h */,
+				E18AF25D1DACD19800342C50 /* TimerViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1024,6 +1028,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E18AF25E1DACD19800342C50 /* TimerViewController.m in Sources */,
 				E18AC85D1D7FBFCE00531F6F /* MonthHeaderView.m in Sources */,
 				E1BF44B51D7673E60070900D /* NoTargetView.m in Sources */,
 				E1F686851D81116B00C3EC49 /* TargetMonthlyListController.m in Sources */,
@@ -1139,7 +1144,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				E1E54D4E1D90E3A200487C98 /* Base */,
-				E1E54D521D90E43200487C98 /* zh-Hans */,
 			);
 			name = TargetListCell.xib;
 			sourceTree = "<group>";

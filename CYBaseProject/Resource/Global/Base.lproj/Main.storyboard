@@ -1246,6 +1246,56 @@
             </objects>
             <point key="canvasLocation" x="1261.5999999999999" y="1090.704647676162"/>
         </scene>
+        <!--Timer View Controller-->
+        <scene sceneID="rZi-N1-h51">
+            <objects>
+                <viewController storyboardIdentifier="TimerViewController" id="BFy-qP-9hy" customClass="TimerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="05X-U2-pWn"/>
+                        <viewControllerLayoutGuide type="bottom" id="hbZ-Hg-cnG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JBT-d8-qfZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Gi-uV-luF">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_blue" translatesAutoresizingMaskIntoConstraints="NO" id="4Nz-wj-deZ"/>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="4Nz-wj-deZ" secondAttribute="bottom" id="L0R-PX-ofd"/>
+                                    <constraint firstItem="4Nz-wj-deZ" firstAttribute="leading" secondItem="7Gi-uV-luF" secondAttribute="leading" id="PXU-ns-dCg"/>
+                                    <constraint firstItem="4Nz-wj-deZ" firstAttribute="top" secondItem="7Gi-uV-luF" secondAttribute="top" id="UFs-hM-Uof"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Nz-wj-deZ" secondAttribute="trailing" id="pce-sG-T8i"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C25-f5-hBn">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="AP4-8G-ekq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.50588235290000005" green="0.81176470590000005" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="C25-f5-hBn" firstAttribute="height" secondItem="7Gi-uV-luF" secondAttribute="height" multiplier="0.4" id="5eL-4o-m8Y"/>
+                            <constraint firstItem="C25-f5-hBn" firstAttribute="top" secondItem="JBT-d8-qfZ" secondAttribute="topMargin" id="97I-YL-Br6"/>
+                            <constraint firstAttribute="bottom" secondItem="7Gi-uV-luF" secondAttribute="bottom" id="B9m-XU-eTx"/>
+                            <constraint firstItem="7Gi-uV-luF" firstAttribute="top" secondItem="JBT-d8-qfZ" secondAttribute="top" id="FUU-la-HNw"/>
+                            <constraint firstItem="C25-f5-hBn" firstAttribute="centerX" secondItem="JBT-d8-qfZ" secondAttribute="centerX" id="SBX-Rk-wKU"/>
+                            <constraint firstAttribute="trailing" secondItem="7Gi-uV-luF" secondAttribute="trailing" id="c0D-33-pxF"/>
+                            <constraint firstItem="7Gi-uV-luF" firstAttribute="leading" secondItem="JBT-d8-qfZ" secondAttribute="leading" id="efT-2x-mWP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="coverView" destination="7Gi-uV-luF" id="8pY-Xq-U73"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j8D-DG-kBP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1063" y="-463"/>
+        </scene>
         <!--Left Menu View Controller-->
         <scene sceneID="An6-5r-3Ur">
             <objects>

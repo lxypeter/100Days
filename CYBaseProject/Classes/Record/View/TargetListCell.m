@@ -16,10 +16,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *targetContentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalDaysLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalDaysSuffixLabel;
 @property (weak, nonatomic) IBOutlet UILabel *startDayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *startMonthLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endDayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endMonthLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 
@@ -29,6 +31,8 @@
     [super awakeFromNib];
     self.statusLabel.layer.masksToBounds = YES;
     self.statusLabel.layer.cornerRadius = 3;
+    self.titleLabel.text = [NSString stringWithFormat:@"%@:",NSLocalizedString(@"Target", nil)];
+    self.totalDaysSuffixLabel.text = [NSString stringWithFormat:NSLocalizedString(@"TargetDayType", nil),@""];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

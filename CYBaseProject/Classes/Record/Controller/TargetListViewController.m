@@ -96,7 +96,7 @@
     static NSString *cellId = @"targetListCell";
     TargetListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (!cell) {
-        cell = [[[NSBundle currentBundle]loadNibNamed:@"TargetListCell" owner:nil options:nil]lastObject];
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"TargetListCell" owner:nil options:nil]lastObject];
     }
     NSArray *datas = self.targetDatas[indexPath.section][@"datas"];
     Target *target = datas[indexPath.row];
@@ -154,7 +154,13 @@
         [datas removeObjectAtIndex:indexPath.row];
         [target.managedObjectContext deleteObject:target];
         [target.managedObjectContext save:nil];
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+        
+        if(datas.count==0){
+            [self.targetDatas removeObjectAtIndex:indexPath.section];
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationRight];
+        }else{
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+        }
     }];
     [alertController addAction:confirmAction];
     [self presentViewController:alertController animated:YES completion:nil];

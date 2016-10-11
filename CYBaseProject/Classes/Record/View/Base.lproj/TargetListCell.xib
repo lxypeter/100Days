@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -15,9 +15,9 @@
                 <frame key="frameInset" width="364" height="79"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHH-zc-8o5">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHH-zc-8o5">
                         <constraints>
-                            <constraint firstAttribute="width" constant="67" id="xF8-d4-M9Z"/>
+                            <constraint firstAttribute="width" constant="60" id="xF8-d4-M9Z"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -147,10 +147,10 @@
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="dMc-9A-ysN"/>
-                        <exclude reference="fvD-gI-zkr"/>
-                        <exclude reference="rIg-PE-Yp9"/>
                         <exclude reference="PFD-HD-qfc"/>
                         <exclude reference="fz0-PN-6EG"/>
+                        <exclude reference="fvD-gI-zkr"/>
+                        <exclude reference="rIg-PE-Yp9"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
@@ -161,7 +161,9 @@
                 <outlet property="startMonthLabel" destination="3eF-B5-KSl" id="qD2-JW-SVD"/>
                 <outlet property="statusLabel" destination="Ayf-Ea-WTW" id="Jvt-R8-Ocv"/>
                 <outlet property="targetContentLabel" destination="s2l-hV-rLr" id="leF-IA-aR3"/>
+                <outlet property="titleLabel" destination="hHH-zc-8o5" id="9Bw-uq-sPV"/>
                 <outlet property="totalDaysLabel" destination="Vge-jF-QpA" id="0uL-m5-YbZ"/>
+                <outlet property="totalDaysSuffixLabel" destination="DLO-ff-KS5" id="g5z-tw-IXC"/>
             </connections>
             <point key="canvasLocation" x="245" y="186"/>
         </tableViewCell>
