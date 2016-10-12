@@ -10,6 +10,7 @@
 		696872CAAC6733D6F9917A0E /* libPods-100Days.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC8616921B563A3832D4712 /* libPods-100Days.a */; };
 		E10ECE421D7D4FA100B15F26 /* CalendarColorDict.plist in Resources */ = {isa = PBXBuildFile; fileRef = E10ECE411D7D4FA100B15F26 /* CalendarColorDict.plist */; };
 		E10ECE461D7D55A200B15F26 /* TargetMonthlySign.m in Sources */ = {isa = PBXBuildFile; fileRef = E10ECE451D7D55A200B15F26 /* TargetMonthlySign.m */; };
+		E12507D61DAE2F6B0040CB61 /* SignTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = E12507D51DAE2F6B0040CB61 /* SignTimer.m */; };
 		E1352FF91D9CB66800DE4B01 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1352FD61D9CB66800DE4B01 /* ShareSDK.framework */; };
 		E1352FFA1D9CB66800DE4B01 /* ShareSDKExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1352FD91D9CB66800DE4B01 /* ShareSDKExtension.framework */; };
 		E1352FFB1D9CB66800DE4B01 /* ShareSDKUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E1352FDA1D9CB66800DE4B01 /* ShareSDKUI.bundle */; };
@@ -104,6 +105,8 @@
 		E10ECE411D7D4FA100B15F26 /* CalendarColorDict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CalendarColorDict.plist; sourceTree = "<group>"; };
 		E10ECE441D7D55A200B15F26 /* TargetMonthlySign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMonthlySign.h; sourceTree = "<group>"; };
 		E10ECE451D7D55A200B15F26 /* TargetMonthlySign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMonthlySign.m; sourceTree = "<group>"; };
+		E12507D41DAE2F6B0040CB61 /* SignTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignTimer.h; sourceTree = "<group>"; };
+		E12507D51DAE2F6B0040CB61 /* SignTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignTimer.m; sourceTree = "<group>"; };
 		E1352FD61D9CB66800DE4B01 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
 		E1352FD91D9CB66800DE4B01 /* ShareSDKExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKExtension.framework; sourceTree = "<group>"; };
 		E1352FDA1D9CB66800DE4B01 /* ShareSDKUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKUI.bundle; sourceTree = "<group>"; };
@@ -332,6 +335,15 @@
 				E18AC85F1D7FEE7E00531F6F /* TargetCalendarDay.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E12507D31DAE2ECD0040CB61 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E12507D41DAE2F6B0040CB61 /* SignTimer.h */,
+				E12507D51DAE2F6B0040CB61 /* SignTimer.m */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		E1352FD51D9CB66800DE4B01 /* ShareSDK */ = {
@@ -609,6 +621,7 @@
 		E1BF44BB1D76BFD70070900D /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				E12507D31DAE2ECD0040CB61 /* Util */,
 				E1BF44BC1D76BFD70070900D /* Controller */,
 				E1BF44C01D76C1190070900D /* View */,
 			);
@@ -1064,6 +1077,7 @@
 				E1F6868A1D814C9400C3EC49 /* CustInfoSettingViewController.m in Sources */,
 				E152A1CC1DAB784900F7C331 /* CYBasePicker.m in Sources */,
 				E1BF44D81D76DA8C0070900D /* Target+CoreDataProperties.m in Sources */,
+				E12507D61DAE2F6B0040CB61 /* SignTimer.m in Sources */,
 				E1F686811D810E8700C3EC49 /* TargetMonthlyListCell.m in Sources */,
 				E174FEE01D7BD28C00894AB3 /* TargetMonthlyViewController.m in Sources */,
 				E1FEE5151D93C4A600185B51 /* TargetSucceedViewController.m in Sources */,
