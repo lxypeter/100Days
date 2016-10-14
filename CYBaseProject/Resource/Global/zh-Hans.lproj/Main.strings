@@ -140,3 +140,7 @@
 
 //LaunchViewController
 "7QS-aa-5aT.text" = "100天的自我挑战";
+
+//TimerViewController
+"XPo-N8-MDF.normalTitle" = "重置";
+"QmN-SO-adR.text" = "倒计时结束后自动签到";

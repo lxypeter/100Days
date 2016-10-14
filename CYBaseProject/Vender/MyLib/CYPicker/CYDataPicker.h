@@ -20,10 +20,12 @@ typedef NS_ENUM(NSUInteger, CYDataPickerType) {
 
 @property (nonatomic, strong) NSArray *dataSource;
 @property (nonatomic, assign) CYDataPickerType dataPickerType;
+@property (nonatomic, assign) CGFloat widthPercent;
+@property (nonatomic, assign, getter=isLoop) BOOL loop;
 @property (nonatomic, copy) CYDataMultiSelectedBlock dataMultiSelectedBlock;
 @property (nonatomic, copy) CYDataSingleSelectedBlock dataSingleSelectedBlock;
 
-+ (instancetype)dataPickerWithType:(CYDataPickerType)dataPickerType dataSource:(NSArray *)dataSource;
++ (instancetype)dataPickerWithType:(CYDataPickerType)dataPickerType dataSource:(NSArray *)dataSource loop:(BOOL)loop;
 
 /**
  *  显示Picker并选中项（单选）

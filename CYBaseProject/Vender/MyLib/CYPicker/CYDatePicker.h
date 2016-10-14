@@ -8,20 +8,26 @@
 
 #import "CYBasePicker.h"
 
-typedef void(^CYDateSelectedBlock)(NSDate *selectedDate);
+typedef void(^CYDateSelectedBlock)(id selectedValue);
 
 @interface CYDatePicker : CYBasePicker
 
+@property (strong, nonatomic) NSDate *currentDate;
+@property (assign, nonatomic) NSTimeInterval currentCountDownDuration;
 @property (strong, nonatomic) UIDatePicker *datePicker;
 @property (assign, nonatomic) UIDatePickerMode datePickerMode;
 @property (copy, nonatomic) CYDateSelectedBlock dateSelectedBlock;
-@property (strong, nonatomic) NSDate *currentDate;
 
-+ (instancetype)datePickerWithDateSelectedBlock:(CYDateSelectedBlock)dateSelectedBlock;
++ (instancetype)datePickerWithDatePickerMode:(UIDatePickerMode)datePickerMode selectedBlock:(CYDateSelectedBlock)dateSelectedBlock;
 
 /**
- *  显示Picker并设定当前选中时间
+ *  Show date picker with date
  */
-- (void)showPickerByDate:(NSDate *)date;
+- (void)showPickerWithDate:(NSDate *)date;
+
+/**
+ *  Show date picker with duration(for UIDatePickerModeCountDownTimer)
+ */
+- (void)showPickerWithCountDownDuration:(NSTimeInterval)duration;
 
 @end

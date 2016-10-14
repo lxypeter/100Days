@@ -84,4 +84,9 @@ static const int ddLogLevel = 0;
 #define kUserNameKey @"kUserNameKey"
 #define kUserHeaderKey @"kUserHeaderKey"
 
+#pragma mark - Timer
+#define kDefaultCountDown @"kDefaultCountDown"
+#define kCountDownAutoSign @"kCountDownAutoSign"
+
+#define SignNotificationKey @"SignNotificationKey"
 #endif /* MainMacro_h */

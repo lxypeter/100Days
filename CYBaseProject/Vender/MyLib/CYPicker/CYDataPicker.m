@@ -8,6 +8,8 @@
 
 #import "CYDataPicker.h"
 
+const static NSInteger kLoopRound = 50;
+
 @interface CYDataPicker ()<UIPickerViewDataSource,UIPickerViewDelegate>
 
 @property (nonatomic, strong) UIPickerView *dataPickerView;
@@ -17,10 +19,11 @@
 @implementation CYDataPicker
 
 #pragma mark - 初始化
-+ (instancetype)dataPickerWithType:(CYDataPickerType)dataPickerType dataSource:(NSArray *)dataSource{
++ (instancetype)dataPickerWithType:(CYDataPickerType)dataPickerType dataSource:(NSArray *)dataSource loop:(BOOL)loop{
     CYDataPicker *picker = [[CYDataPicker alloc] init];
     picker.dataPickerType = dataPickerType;
     picker.dataSource = dataSource;
+    picker.loop = loop;
     return picker;
 }
 
@@ -36,6 +39,16 @@
     if (self.dataPickerView) {
         [self.dataPickerView reloadAllComponents];
     }
+}
+
+- (void)setWidthPercent:(CGFloat)widthPercent{
+    if (widthPercent>1) widthPercent = 1;
+    else if(widthPercent<0) widthPercent = 0;
+    _widthPercent = widthPercent;
+    CGRect pickerFrame = self.dataPickerView.frame;
+    pickerFrame.size.width = pickerFrame.size.width * widthPercent;
+    pickerFrame.origin.x = (self.contentView.bounds.size.width - pickerFrame.size.width)/2;
+    self.dataPickerView.frame = pickerFrame;
 }
 
 #pragma mark - 点击事件
@@ -79,9 +92,36 @@
     }
 }
 
+- (void)showPicker{
+    switch (self.dataPickerType) {
+        case CYDataPickerTypeSingleSelect:{
+            NSInteger selectedRow = 0;
+            if (self.isLoop) {
+                selectedRow = kLoopRound/2*self.dataSource.count;
+            }
+            [self.dataPickerView selectRow:selectedRow inComponent:0 animated:YES];
+            break;
+        }
+        case CYDataPickerTypeMultiSelect:{
+            [self.dataSource enumerateObjectsUsingBlock:^(NSArray * _Nonnull componentSource, NSUInteger idx, BOOL * _Nonnull stop) {
+                NSInteger selectedRow = 0;
+                if (self.isLoop) {
+                    selectedRow = kLoopRound/2*componentSource.count;
+                }
+                [self.dataPickerView selectRow:selectedRow inComponent:idx animated:YES];
+            }];
+            break;
+        }
+    }
+    [super showPicker];
+}
+
 - (void)showPickerWithSelectedRow:(NSInteger)row{
     switch (self.dataPickerType) {
         case CYDataPickerTypeSingleSelect:{
+            if (self.isLoop) {
+                row = kLoopRound/2*self.dataSource.count+row;
+            }
             [self.dataPickerView selectRow:row inComponent:0 animated:YES];
             break;
         }
@@ -89,24 +129,32 @@
             break;
         }
     }
-    [self showPicker];
+    [super showPicker];
 }
 
 - (void)showPickerWithSelectedRows:(NSArray *)selectedIndexs{
     switch (self.dataPickerType) {
         case CYDataPickerTypeSingleSelect:{
-            
+            NSInteger selectedRow = [selectedIndexs[0] integerValue];
+            if (self.isLoop) {
+                selectedRow = kLoopRound/2*self.dataSource.count+selectedRow;
+            }
+            [self.dataPickerView selectRow:selectedRow inComponent:0 animated:YES];
             break;
         }
         case CYDataPickerTypeMultiSelect:{
             [selectedIndexs enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 NSInteger selectedRow = [obj integerValue];
+                if (self.isLoop) {
+                    NSArray *componentSource = self.dataSource[idx];
+                    selectedRow = kLoopRound/2*componentSource.count+selectedRow;
+                }
                 [self.dataPickerView selectRow:selectedRow inComponent:idx animated:YES];
             }];
             break;
         }
     }
-    [self showPicker];
+    [super showPicker];
 }
 
 #pragma mark - UIPickerView 代理
@@ -124,10 +172,16 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     switch (self.dataPickerType) {
         case CYDataPickerTypeSingleSelect:{
+            if(self.isLoop&&self.dataSource.count>1){
+                return self.dataSource.count*kLoopRound;
+            }
             return self.dataSource.count;
         }
         case CYDataPickerTypeMultiSelect:{
             NSArray *componentSource = self.dataSource[component];
+            if(self.isLoop&&componentSource.count>1){
+                return componentSource.count*kLoopRound;
+            }
             return componentSource.count;
         }
     }
@@ -137,12 +191,20 @@
     NSString *title;
     switch (self.dataPickerType) {
         case CYDataPickerTypeSingleSelect:{
-            title = self.dataSource[row];
+            if (self.isLoop&&self.dataSource.count>1) {
+                title = self.dataSource[row%self.dataSource.count];
+            }else{
+                title = self.dataSource[row];
+            }
             break;
         }
         case CYDataPickerTypeMultiSelect:{
             NSArray *componentSource = self.dataSource[component];
-            title = componentSource[row];
+            if (self.isLoop&&componentSource.count>1) {
+                title = componentSource[row%componentSource.count];
+            }else{
+                title = componentSource[row];
+            }
             break;
         }
     }

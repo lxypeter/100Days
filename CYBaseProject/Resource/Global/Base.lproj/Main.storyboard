@@ -1315,23 +1315,24 @@
                                     <constraint firstAttribute="height" constant="70" id="GJ8-Ys-vUI"/>
                                     <constraint firstAttribute="width" constant="70" id="l9c-RY-JrL"/>
                                 </constraints>
-                                <state key="normal" title="重置">
+                                <state key="normal" title="Reset">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickResetButton:" destination="BFy-qP-9hy" eventType="touchUpInside" id="jv5-Yw-exP"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PAz-xp-biA">
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROH-AM-3nB">
-                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总共:01:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r15-Nv-H4K">
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="计时结束后自动签到" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmN-SO-adR">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign once countdown ends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmN-SO-adR">
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -1352,26 +1353,79 @@
                                             <constraint firstAttribute="height" constant="25" id="yHT-OD-KHP"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <state key="normal" backgroundImage="checkbox_unchecke"/>
+                                        <state key="normal" backgroundImage="checkbox_uncheck"/>
                                         <state key="selected" backgroundImage="checkbox_check"/>
                                         <connections>
                                             <action selector="clickAutoSignButton:" destination="BFy-qP-9hy" eventType="touchUpInside" id="088-VR-HvB"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ArT-w3-rWL">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="JOB-Ez-m3c"/>
+                                            <constraint firstAttribute="width" constant="75" id="K7e-7p-DqF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMR-RK-UeY">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="F9r-xk-Mv5"/>
+                                            <constraint firstAttribute="width" constant="15" id="SGh-ca-UdW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qba-zq-qTL">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="15" id="STU-gZ-jD7"/>
+                                            <constraint firstAttribute="height" constant="44" id="tqv-9W-aGc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Uy-QX-2cT">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="NxG-EY-7HR"/>
+                                            <constraint firstAttribute="width" constant="75" id="Z2n-5O-Gdb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uW4-BR-Ftt">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="UA3-H6-0cp"/>
+                                            <constraint firstAttribute="height" constant="44" id="coh-pI-V41"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="DSA-qd-cVD" firstAttribute="centerY" secondItem="QmN-SO-adR" secondAttribute="centerY" id="3wh-21-CrU"/>
                                     <constraint firstItem="r15-Nv-H4K" firstAttribute="centerX" secondItem="PAz-xp-biA" secondAttribute="centerX" constant="-15" id="5eD-Df-mnr"/>
+                                    <constraint firstItem="ArT-w3-rWL" firstAttribute="centerX" secondItem="PAz-xp-biA" secondAttribute="centerX" id="6qV-Lk-CpU"/>
                                     <constraint firstItem="DSA-qd-cVD" firstAttribute="leading" secondItem="QmN-SO-adR" secondAttribute="trailing" constant="5" id="8bb-gC-Vq6"/>
-                                    <constraint firstItem="ROH-AM-3nB" firstAttribute="top" secondItem="PAz-xp-biA" secondAttribute="top" constant="5" id="HBm-gs-Wun"/>
+                                    <constraint firstItem="uW4-BR-Ftt" firstAttribute="leading" secondItem="dMR-RK-UeY" secondAttribute="trailing" id="HLa-pt-4G4"/>
+                                    <constraint firstItem="dMR-RK-UeY" firstAttribute="leading" secondItem="ArT-w3-rWL" secondAttribute="trailing" id="IGn-j8-KCX"/>
                                     <constraint firstAttribute="height" constant="150" id="Jb2-bE-ZDX"/>
+                                    <constraint firstItem="uW4-BR-Ftt" firstAttribute="centerY" secondItem="ArT-w3-rWL" secondAttribute="centerY" id="MXf-69-8V5"/>
+                                    <constraint firstItem="ArT-w3-rWL" firstAttribute="centerY" secondItem="3Uy-QX-2cT" secondAttribute="centerY" id="SDJ-by-srN"/>
+                                    <constraint firstItem="ArT-w3-rWL" firstAttribute="top" secondItem="PAz-xp-biA" secondAttribute="top" constant="25" id="U7A-yU-V6C"/>
+                                    <constraint firstItem="qba-zq-qTL" firstAttribute="leading" secondItem="3Uy-QX-2cT" secondAttribute="trailing" id="Uye-ue-wAP"/>
                                     <constraint firstItem="QmN-SO-adR" firstAttribute="centerX" secondItem="PAz-xp-biA" secondAttribute="centerX" constant="-15" id="bgm-fQ-i2i"/>
                                     <constraint firstItem="fbZ-EX-5By" firstAttribute="leading" secondItem="r15-Nv-H4K" secondAttribute="trailing" constant="5" id="cwL-AH-Z5z"/>
                                     <constraint firstItem="QmN-SO-adR" firstAttribute="top" secondItem="r15-Nv-H4K" secondAttribute="bottom" constant="10" id="d84-p3-5wy"/>
-                                    <constraint firstItem="ROH-AM-3nB" firstAttribute="centerX" secondItem="PAz-xp-biA" secondAttribute="centerX" id="gkY-ab-59H"/>
+                                    <constraint firstItem="ArT-w3-rWL" firstAttribute="centerY" secondItem="qba-zq-qTL" secondAttribute="centerY" constant="5" id="iE3-Sh-kSX"/>
+                                    <constraint firstItem="dMR-RK-UeY" firstAttribute="centerY" secondItem="ArT-w3-rWL" secondAttribute="centerY" constant="-5" id="j4G-iF-HCP"/>
+                                    <constraint firstItem="ArT-w3-rWL" firstAttribute="leading" secondItem="qba-zq-qTL" secondAttribute="trailing" id="mLR-9t-QKq"/>
                                     <constraint firstItem="fbZ-EX-5By" firstAttribute="centerY" secondItem="r15-Nv-H4K" secondAttribute="centerY" id="olr-dI-j64"/>
-                                    <constraint firstItem="r15-Nv-H4K" firstAttribute="top" secondItem="ROH-AM-3nB" secondAttribute="bottom" id="yuf-W2-IbN"/>
+                                    <constraint firstItem="r15-Nv-H4K" firstAttribute="top" secondItem="ArT-w3-rWL" secondAttribute="bottom" constant="8" id="vU3-VO-tgJ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1400,12 +1454,14 @@
                         <outlet property="autoSignButton" destination="DSA-qd-cVD" id="mcZ-EI-KtQ"/>
                         <outlet property="coverView" destination="7Gi-uV-luF" id="8pY-Xq-U73"/>
                         <outlet property="editTimeButton" destination="fbZ-EX-5By" id="zOt-Wt-jeA"/>
+                        <outlet property="hourLabel" destination="3Uy-QX-2cT" id="dYS-5R-rdK"/>
+                        <outlet property="minuteLabel" destination="ArT-w3-rWL" id="Cxh-tR-De1"/>
                         <outlet property="resetBackgroundView" destination="97j-8R-PyJ" id="YRK-Ei-Pu0"/>
                         <outlet property="resetButton" destination="XPo-N8-MDF" id="qgq-LP-EXg"/>
+                        <outlet property="secondLabel" destination="uW4-BR-Ftt" id="Fg2-ag-t2J"/>
                         <outlet property="startBackgroundView" destination="iFZ-CK-Mu7" id="uGh-pl-lmO"/>
                         <outlet property="startButton" destination="j9s-s4-tul" id="gBg-BX-Pfq"/>
                         <outlet property="timeDetailView" destination="PAz-xp-biA" id="TIz-Dj-4K9"/>
-                        <outlet property="timeLabel" destination="ROH-AM-3nB" id="lde-gJ-Dsd"/>
                         <outlet property="totalTimeLabel" destination="r15-Nv-H4K" id="93H-TY-fQY"/>
                     </connections>
                 </viewController>
@@ -1573,7 +1629,7 @@
         <image name="background_blue" width="474" height="711"/>
         <image name="calendar" width="128" height="128"/>
         <image name="checkbox_check" width="120" height="120"/>
-        <image name="checkbox_unchecke" width="120" height="120"/>
+        <image name="checkbox_uncheck" width="120" height="120"/>
         <image name="close" width="128" height="128"/>
         <image name="control_panel" width="120" height="120"/>
         <image name="darkgray" width="2" height="2"/>

@@ -22,5 +22,8 @@
 //TimeReminderViewController
 "NotificationContent" = "Hello,%@! It's time to complete your daliy target!";
 
+//TimerViewController
+"TotalTime" = "Total:%@";
+
 //Calander
 "CalanderDay" = " ";

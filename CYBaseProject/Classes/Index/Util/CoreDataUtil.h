@@ -8,9 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "Target.h"
 
 @interface CoreDataUtil : NSObject
 
 + (NSManagedObjectContext *)shareContext;
+
++ (Target *)queryCurrentTarget;
++ (TargetSign *)queryLastTargetSign:(Target *)target;
++ (TargetSign *)queryTargetSign:(Target *)target date:(NSDate *)date;
++ (void)updateTarget:(Target *)target complete:(void(^)())complete fail:(void(^)())fail;
++ (void)signTarget:(Target *)target signType:(TargetSignType)type  complete:(void(^)(TargetSign *targetSign))complete;
++ (void)terminateTarget:(Target *)target WithResult:(TargetResult)result complete:(void(^)())complete;
 
 @end

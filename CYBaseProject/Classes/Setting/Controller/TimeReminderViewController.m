@@ -40,9 +40,9 @@ const static NSString *kTitleKey = @"title";
 - (CYDatePicker *)timePicker{
     if (!_timePicker) {
         __weak typeof(self) weakSelf = self;
-        _timePicker = [CYDatePicker datePickerWithDateSelectedBlock:^(NSDate *selectedDate) {
+        _timePicker = [CYDatePicker datePickerWithDatePickerMode:UIDatePickerModeTime selectedBlock:^(id selectedValue) {
             
-            NSDateComponents *dateComponents = [[NSCalendar currentCalendar]components:NSCalendarUnitHour|NSCalendarUnitMinute fromDate:selectedDate];
+            NSDateComponents *dateComponents = [[NSCalendar currentCalendar]components:NSCalendarUnitHour|NSCalendarUnitMinute fromDate:selectedValue];
             NSString *minute = [[NSString stringWithFormat:@"%2ld",dateComponents.minute]stringByReplacingOccurrencesOfString:@" " withString:@"0"];
             NSString *notificationDateString = [NSString stringWithFormat:@"%@:%@",@(dateComponents.hour),minute];
             
@@ -198,7 +198,7 @@ const static NSString *kTitleKey = @"title";
         NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
         dateComponents.hour = [dateStringArray[0] integerValue];
         dateComponents.minute = [dateStringArray[1] integerValue];
-        [self.timePicker showPickerByDate:[[NSCalendar currentCalendar]dateFromComponents:dateComponents]];
+        [self.timePicker showPickerWithDate:[[NSCalendar currentCalendar]dateFromComponents:dateComponents]];
     }
 }
 

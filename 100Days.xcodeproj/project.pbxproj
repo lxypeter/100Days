@@ -64,13 +64,13 @@
 		E1BF44B21D76701A0070900D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BF44AF1D76701A0070900D /* MainViewController.m */; };
 		E1BF44B51D7673E60070900D /* NoTargetView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BF44B41D7673E60070900D /* NoTargetView.m */; };
 		E1BF44BF1D76C00C0070900D /* SetTargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BF44BE1D76C00C0070900D /* SetTargetViewController.m */; };
-		E1BF44C31D76C1320070900D /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BF44C21D76C1320070900D /* UIPlaceHolderTextView.m */; };
 		E1BF44C81D76D4ED0070900D /* 100DaysTargetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1BF44C61D76D4ED0070900D /* 100DaysTargetModel.xcdatamodeld */; };
 		E1BF44CF1D76D9E60070900D /* CoreDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BF44CE1D76D9E60070900D /* CoreDataUtil.m */; };
 		E1BF44D81D76DA8C0070900D /* Target+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BF44D11D76DA8C0070900D /* Target+CoreDataProperties.m */; };
 		E1BF44D91D76DA8C0070900D /* Target.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BF44D31D76DA8C0070900D /* Target.m */; };
 		E1BF44DA1D76DA8C0070900D /* TargetSign+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BF44D51D76DA8C0070900D /* TargetSign+CoreDataProperties.m */; };
 		E1BF44DB1D76DA8C0070900D /* TargetSign.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BF44D71D76DA8C0070900D /* TargetSign.m */; };
+		E1C87FB31DB07E02001FFC49 /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C87FB21DB07E02001FFC49 /* UIPlaceHolderTextView.m */; };
 		E1CC33B51D3E0C86005FEA04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC2EEF1D3E0C85005FEA04 /* AppDelegate.m */; };
 		E1CC33B61D3E0C86005FEA04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CC2EF01D3E0C85005FEA04 /* LaunchScreen.storyboard */; };
 		E1CC33B71D3E0C86005FEA04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CC2EF21D3E0C85005FEA04 /* Main.storyboard */; };
@@ -206,8 +206,6 @@
 		E1BF44B41D7673E60070900D /* NoTargetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoTargetView.m; sourceTree = "<group>"; };
 		E1BF44BD1D76C00C0070900D /* SetTargetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetTargetViewController.h; sourceTree = "<group>"; };
 		E1BF44BE1D76C00C0070900D /* SetTargetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetTargetViewController.m; sourceTree = "<group>"; };
-		E1BF44C11D76C1320070900D /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
-		E1BF44C21D76C1320070900D /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
 		E1BF44C71D76D4ED0070900D /* 100DaysTargetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 100DaysTargetModel.xcdatamodel; sourceTree = "<group>"; };
 		E1BF44CD1D76D9E60070900D /* CoreDataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataUtil.h; sourceTree = "<group>"; };
 		E1BF44CE1D76D9E60070900D /* CoreDataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataUtil.m; sourceTree = "<group>"; };
@@ -219,6 +217,8 @@
 		E1BF44D51D76DA8C0070900D /* TargetSign+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TargetSign+CoreDataProperties.m"; sourceTree = "<group>"; };
 		E1BF44D61D76DA8C0070900D /* TargetSign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetSign.h; sourceTree = "<group>"; };
 		E1BF44D71D76DA8C0070900D /* TargetSign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetSign.m; sourceTree = "<group>"; };
+		E1C87FB11DB07E02001FFC49 /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
+		E1C87FB21DB07E02001FFC49 /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
 		E1CC2ED11D3E0C1B005FEA04 /* 100Days.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 100Days.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CC2EEE1D3E0C85005FEA04 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E1CC2EEF1D3E0C85005FEA04 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -623,7 +623,6 @@
 			children = (
 				E12507D31DAE2ECD0040CB61 /* Util */,
 				E1BF44BC1D76BFD70070900D /* Controller */,
-				E1BF44C01D76C1190070900D /* View */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -641,15 +640,6 @@
 				E18AF25D1DACD19800342C50 /* TimerViewController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		E1BF44C01D76C1190070900D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E1BF44C11D76C1320070900D /* UIPlaceHolderTextView.h */,
-				E1BF44C21D76C1320070900D /* UIPlaceHolderTextView.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		E1BF44C41D76D3FF0070900D /* CoreData */ = {
@@ -683,6 +673,15 @@
 				E1BF44CE1D76D9E60070900D /* CoreDataUtil.m */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		E1C87FB01DB07E02001FFC49 /* UIPlaceHolderTextView */ = {
+			isa = PBXGroup;
+			children = (
+				E1C87FB11DB07E02001FFC49 /* UIPlaceHolderTextView.h */,
+				E1C87FB21DB07E02001FFC49 /* UIPlaceHolderTextView.m */,
+			);
+			path = UIPlaceHolderTextView;
 			sourceTree = "<group>";
 		};
 		E1CC2EC81D3E0C1B005FEA04 = {
@@ -874,6 +873,7 @@
 		E1CC36F11D3E11B8005FEA04 /* MyLib */ = {
 			isa = PBXGroup;
 			children = (
+				E1C87FB01DB07E02001FFC49 /* UIPlaceHolderTextView */,
 				E152A1CF1DAB787700F7C331 /* CYLaunchAnimateViewController */,
 				E152A1C41DAB784900F7C331 /* CYPicker */,
 				E1B3FDE71D7A6DB900489B44 /* CYBaseViewController */,
@@ -1084,10 +1084,10 @@
 				E1A140BC1D3E4CDF00D77589 /* UIView+Frame.m in Sources */,
 				E186BD7E1D797EE6006D62D5 /* TargetListViewController.m in Sources */,
 				E1CC35B91D3E0C87005FEA04 /* DDMultiFormatter.m in Sources */,
+				E1C87FB31DB07E02001FFC49 /* UIPlaceHolderTextView.m in Sources */,
 				E1BF44C81D76D4ED0070900D /* 100DaysTargetModel.xcdatamodeld in Sources */,
 				E1CC35B41D3E0C87005FEA04 /* DDFileLogger.m in Sources */,
 				E152A1CD1DAB784900F7C331 /* CYDataPicker.m in Sources */,
-				E1BF44C31D76C1320070900D /* UIPlaceHolderTextView.m in Sources */,
 				E1CC35B61D3E0C87005FEA04 /* DDTTYLogger.m in Sources */,
 				E1BF44D91D76DA8C0070900D /* Target.m in Sources */,
 				E18E4FEB1D78087E001EEAA4 /* NSDate+CYCompare.m in Sources */,

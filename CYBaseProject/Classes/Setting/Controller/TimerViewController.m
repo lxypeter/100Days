@@ -8,6 +8,7 @@
 
 #import "TimerViewController.h"
 #import "SignTimer.h"
+#import "CYPicker.h"
 
 @interface TimerViewController ()
 
@@ -20,19 +21,44 @@
 @property (weak, nonatomic) IBOutlet UIButton *autoSignButton;
 
 @property (weak, nonatomic) IBOutlet UIView *timeDetailView;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hourLabel;
+@property (weak, nonatomic) IBOutlet UILabel *minuteLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
 
-@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) CYDatePicker *timePicker;
 
 @end
 
 @implementation TimerViewController
 
+#pragma mark - lazy load
+- (CYDatePicker *)timePicker{
+    if (!_timePicker) {
+        _timePicker = [CYDatePicker datePickerWithDatePickerMode:UIDatePickerModeCountDownTimer selectedBlock:^(id selectedValue) {
+            
+            NSInteger totalSecond = [selectedValue integerValue];
+            NSArray *timeComponent = [self calculateTimeComponentFromSecond:totalSecond];
+            
+            [self refreshTimeStringFromTimeComponent:timeComponent];
+            
+            NSString *countDownStirng = [[NSString stringWithFormat:@"%2li:%2li:%2li",[timeComponent[0]integerValue],[timeComponent[1]integerValue],[timeComponent[2]integerValue]]stringByReplacingOccurrencesOfString:@" " withString:@"0"];
+            self.totalTimeLabel.text = [NSString stringWithFormat:NSLocalizedString(@"TotalTime", nil),countDownStirng];
+            
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setObject:countDownStirng forKey:kDefaultCountDown];
+            [userDefaults synchronize];
+        }];
+        _timePicker.datePickerMode = UIDatePickerModeCountDownTimer;
+    }
+    return _timePicker;
+}
+
 #pragma mark - life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configureSubviews];
+    [self queryCountDownRecord];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -44,7 +70,7 @@
     self.navigationController.navigationBar.hidden = NO;
 }
 
-#pragma mark - view method
+#pragma mark - initial method
 - (void)configureSubviews{
     self.startBackgroundView.layer.cornerRadius = 100;
     self.startBackgroundView.hidden = YES;
@@ -60,6 +86,32 @@
     
     //time detail view
     self.timeDetailView.hidden = YES;
+    
+    [self.autoSignButton setBackgroundImage:[UIImage imageNamed:@"checkbox_check_disable"] forState:UIControlStateDisabled|UIControlStateSelected];
+    [self.autoSignButton setBackgroundImage:[UIImage imageNamed:@"checkbox_uncheck_disable"] forState:UIControlStateDisabled];
+}
+
+- (void)queryCountDownRecord{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    //default countdown
+    NSString *defaultCountDown = [userDefaults stringForKey:kDefaultCountDown];
+    if([NSString isBlankString:defaultCountDown]){
+        defaultCountDown = @"01:00:00";
+    }
+    self.totalTimeLabel.text = [NSString stringWithFormat:NSLocalizedString(@"TotalTime", nil),defaultCountDown];
+    
+    //auto sign
+    BOOL autoSign = [userDefaults boolForKey:kCountDownAutoSign];
+    self.autoSignButton.selected = autoSign;
+    
+    if ([SignTimer shareSignTimer].totalSecond!=0) {
+        [self refreshTimeStringFromTimeComponent:[self calculateTimeComponentFromSecond:[SignTimer shareSignTimer].totalSecond]];
+    }else{
+        [self clickResetButton:self.resetButton];
+    }
+    if ([SignTimer shareSignTimer].isCounting) {
+        [self clickStartButton:self.startButton];
+    }
 }
 
 - (void)startAnimation{
@@ -124,7 +176,7 @@
     //start button
     CABasicAnimation *startBtnAnimation = [CABasicAnimation animation];
     startBtnAnimation.keyPath = @"transform.scale";
-    startBtnAnimation.duration = 0.25;
+    startBtnAnimation.duration = 0.15;
     startBtnAnimation.fromValue = @(0);
     startBtnAnimation.toValue = @(1);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -172,14 +224,69 @@
 
 - (IBAction)clickStartButton:(UIButton *)sender {
     sender.selected = !sender.selected;
-    
+    [self switchButtons];
+    if (sender.selected) {//playing
+        //FIXME autoSign
+        __weak typeof(self) weakSelf = self;
+        [[SignTimer shareSignTimer]startTimerWithTotalSecond:[self getCurrentSecond] autoSign:self.autoSignButton.selected timerProgress:^(NSInteger passSecond) {
+            [weakSelf refreshTimeStringFromTimeComponent:[weakSelf calculateTimeComponentFromSecond:passSecond]];
+        } timeEnd:^{
+            [weakSelf switchButtons];
+            sender.selected = NO;
+        }];
+    }else{
+        [[SignTimer shareSignTimer]pauseTimer];
+    }
 }
 
 - (IBAction)clickEditTimeButton:(id)sender {
+    NSString *totalTimeString = [self.totalTimeLabel.text substringFromIndex:self.totalTimeLabel.text.length-8];
+    NSArray *timeComponents = [totalTimeString componentsSeparatedByString:@":"];
+    [self.timePicker showPickerWithCountDownDuration:[self calculateTotalSecondFormTimeComponent:timeComponents]];
 }
 
 - (IBAction)clickAutoSignButton:(UIButton *)sender {
     sender.selected = !sender.selected;
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:sender.selected forKey:kCountDownAutoSign];
+    [userDefaults synchronize];
 }
 
+- (IBAction)clickResetButton:(id)sender {
+    [[SignTimer shareSignTimer]resetTimer];
+    NSString *totalTimeString = [self.totalTimeLabel.text substringFromIndex:self.totalTimeLabel.text.length-8];
+    NSArray *timeComponents = [totalTimeString componentsSeparatedByString:@":"];
+    self.hourLabel.text = timeComponents[0];
+    self.minuteLabel.text = timeComponents[1];
+    self.secondLabel.text = timeComponents[2];
+}
+
+- (void)switchButtons{
+    self.resetButton.enabled = !self.resetButton.enabled;
+    self.editTimeButton.enabled = !self.editTimeButton.enabled;
+    self.autoSignButton.enabled = !self.autoSignButton.enabled;
+}
+
+- (NSInteger)getCurrentSecond{
+    NSArray *currentTimeComponent = @[self.hourLabel.text,self.minuteLabel.text,self.secondLabel.text];
+    return [self calculateTotalSecondFormTimeComponent:currentTimeComponent];
+}
+
+- (void)refreshTimeStringFromTimeComponent:(NSArray *)timeComponent{
+    self.hourLabel.text = [[NSString stringWithFormat:@"%2li",[timeComponent[0]integerValue]]stringByReplacingOccurrencesOfString:@" " withString:@"0"];
+    self.minuteLabel.text = [[NSString stringWithFormat:@"%2li",[timeComponent[1]integerValue]]stringByReplacingOccurrencesOfString:@" " withString:@"0"];
+    self.secondLabel.text = [[NSString stringWithFormat:@"%2li",[timeComponent[2]integerValue]]stringByReplacingOccurrencesOfString:@" " withString:@"0"];
+}
+
+- (NSArray *)calculateTimeComponentFromSecond:(NSInteger)totalSecond{
+    NSInteger hour = totalSecond/3600;
+    NSInteger minute = (totalSecond-hour*3600)/60;
+    NSInteger second = totalSecond-hour*3600-minute*60;
+    return @[@(hour),@(minute),@(second)];
+}
+
+- (NSInteger)calculateTotalSecondFormTimeComponent:(NSArray *)timeComponent{
+    return [timeComponent[0] integerValue]*3600 + [timeComponent[1] integerValue]*60 + [timeComponent[2] integerValue];
+}
 @end

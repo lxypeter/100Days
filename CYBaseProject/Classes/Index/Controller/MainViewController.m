@@ -79,6 +79,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
 #pragma mark - life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshData) name:SignNotificationKey object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -120,7 +121,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
         totalDay = [NSString stringWithFormat:@"%@",self.currentTarget.totalDays];
         targetContent = self.currentTarget.content;
         leaveNote = [NSString stringWithFormat:NSLocalizedString(@"LeaveTimeLeft", nil),self.currentTarget.flexibleTimes];
-        TargetSign *lastTargetSign = [self queryLastTargetSign:self.currentTarget];
+        TargetSign *lastTargetSign = [CoreDataUtil queryLastTargetSign:self.currentTarget];
         if (lastTargetSign) {
             NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
             formatter.dateFormat = @"yyyy-MM-dd hh:mm:ss";
@@ -245,16 +246,19 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
 }
 
 - (IBAction)clickSignButton:(id)sender {
-    [self signWithTarget:self.currentTarget type:TargetSignTypeSign];
+    [self signWithType:TargetSignTypeSign];
 }
 
 - (IBAction)clickEndButton:(id)sender {
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:NSLocalizedString(@"Are you sure to terminate the target?", nil)] preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", nil)  style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self terminateTarget:self.currentTarget WithResult:TargetResultStop];
-        
+        __weak typeof(self) weakSelf = self;
+        [CoreDataUtil terminateTarget:self.currentTarget WithResult:TargetResultStop complete:^{
+            [weakSelf targetStop];
+        }];
     }];
+    
     [alertController addAction:yesAction];
     UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"No,let me reconsider it.", nil) style:UIAlertActionStyleDefault handler:nil];
     [alertController addAction:noAction];
@@ -265,7 +269,7 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
     if (self.currentTarget.flexibleTimes<=0) {
         [self.view makeToast:NSLocalizedString(@"Sorry, you have no leave times!", nil)];
     }
-    [self signWithTarget:self.currentTarget type:TargetSignTypeLeave];
+    [self signWithType:TargetSignTypeLeave];
 }
 
 - (IBAction)clickCalendarButton:(id)sender {
@@ -276,204 +280,77 @@ typedef NS_ENUM(NSInteger,MainViewAnimationType){
 
 #pragma mark - coreData method
 - (void)queryCurrentTarget{
-    NSManagedObjectContext *context = [CoreDataUtil shareContext];
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Target"];
-    request.predicate = [NSPredicate predicateWithFormat:@"result == %@",@(TargetResultProgressing)];
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO];
-    request.sortDescriptors = @[sort];
-    NSError *error = nil;
-    NSArray *array = [context executeFetchRequest:request error:&error];
-    if (!error&&array.count>0) {
-        Target *target = array[0];
-        [self updateTarget:target];
-        self.currentTarget = target;
-    }else{
-        self.currentTarget = nil;
-        [self refreshData];
+    Target *target =[CoreDataUtil queryCurrentTarget];
+    if (target) {
+        __weak typeof(self) weakSelf = self;
+        [CoreDataUtil updateTarget:target complete:^{
+            [weakSelf targetComplete];
+        } fail:^{
+            [weakSelf targetFail];
+        }];
     }
+    self.currentTarget = target;
 }
 
-- (TargetSign *)queryLastTargetSign:(Target *)target{
-    if (!target) return nil;
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"signTime" ascending:NO];
-    NSArray *targetSigns = [target.targetSigns sortedArrayUsingDescriptors:@[sort]];
-    if(targetSigns&&targetSigns.count>0){
-        return targetSigns[0];
-    }
-    return nil;
-}
-
-- (TargetSign *)queryTargetSign:(Target *)target date:(NSDate *)date{
-
-    NSMutableArray<TargetSign *> *targetSigns = [NSMutableArray array];
-    [target.targetSigns enumerateObjectsUsingBlock:^(TargetSign * _Nonnull obj, BOOL * _Nonnull stop) {
-        if([obj.signTime dayIntervalSinceDate:date]==0){
-            [targetSigns addObject:obj];
-        }
-    }];
-
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"signTime" ascending:NO];
-    [targetSigns sortUsingDescriptors:@[sort]];
-    
-    if(targetSigns&&targetSigns.count>0){
-        return targetSigns[0];
-    }
-    return nil;
-}
-
-- (void)updateTarget:(Target *)target{
-    
-    NSManagedObjectContext *context = [CoreDataUtil shareContext];
-    //update target day
-    NSDate *lastValidDate = [NSDate date];
-    if ([lastValidDate compare:target.endDate]==NSOrderedDescending) {
-        lastValidDate = [target.endDate dateByAddingTimeInterval:60 * 60 * 24];
-    }
-    NSInteger dayInterval = [lastValidDate dayIntervalSinceDate:target.startDate];
-    
-    //update sign
-    TargetSign *lastTargetSign = [self queryLastTargetSign:target];
-    NSDate *lastSignTime;
-    if(lastTargetSign){
-        lastSignTime = lastTargetSign.signTime;
-    }else{
-        lastSignTime = [target.startDate dateByAddingTimeInterval:-(60 * 60 * 24)];
-    }
-    NSInteger signDayInterval = [lastValidDate dayIntervalSinceDate:lastSignTime];
-    if (signDayInterval>1) {
-        for (int index = 1; index<signDayInterval; index++) {
-            
-            NSInteger flexibleTimes = [target.flexibleTimes integerValue];
-            if (flexibleTimes>0) {
-                flexibleTimes--;
-                target.flexibleTimes = @(flexibleTimes);
-            }else{
-                [self terminateTarget:target WithResult:TargetResultFail];
-                break;
-            }
-            
-            TargetSign *targetSigh = [NSEntityDescription insertNewObjectForEntityForName:@"TargetSign" inManagedObjectContext:context];
-            targetSigh.signType = @(TargetSignTypeLeave);
-            targetSigh.note = NSLocalizedString(@"No Sign", nil);
-            targetSigh.signTime = [[lastSignTime zeroOfDate] dateByAddingTimeInterval:(60 * 60 * 24 * index)];
-            [target addTargetSignsObject:targetSigh];
-        }
-    }
-    
-    //update current day
-    if ([lastValidDate compare:target.endDate]==NSOrderedDescending) {
-        target.day = @(dayInterval);
-        [self terminateTarget:target WithResult:TargetResultComplete];
-    }else{
-        target.day = @(dayInterval+1);
-    }
-    
-    if ([context hasChanges]) {
-        [context save:nil];
-    }
-}
-
-- (void)signTarget:(Target *)target signType:(TargetSignType)type note:(NSString *)note time:(NSDate *)time{
-    //clear sign data
-    [target.targetSigns enumerateObjectsUsingBlock:^(TargetSign * _Nonnull obj, BOOL * _Nonnull stop) {
-        if ([obj.signTime dayIntervalSinceDate:time]==0) {
-            [target removeTargetSignsObject:obj];
+- (void)signTarget:(Target *)target signType:(TargetSignType)type{
+    __weak typeof(self) weakSelf = self;
+    [CoreDataUtil signTarget:target signType:type complete:^(TargetSign *targetSign) {
+        [weakSelf refreshData];
+        
+        //to share view
+        SignShareViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"SignShareViewController"];
+        ctrl.targetSign = targetSign;
+        [weakSelf presentViewController:ctrl animated:YES completion:nil];
+        
+        //check whether target has been completed
+        if ([target.day integerValue] == [target.totalDays integerValue]) {
+            [CoreDataUtil terminateTarget:target WithResult:TargetResultComplete complete:^{
+                [weakSelf targetComplete];
+            }];
         }
     }];
     
-    //create new sign data
-    TargetSign *targetSigh = [NSEntityDescription insertNewObjectForEntityForName:@"TargetSign" inManagedObjectContext:target.managedObjectContext];
-    targetSigh.signType = @(type);
-    targetSigh.note = note;
-    targetSigh.signTime = time;
-    [target addTargetSignsObject:targetSigh];
-    
-    if ([target.managedObjectContext hasChanges]) {
-        [target.managedObjectContext save:nil];
-    }
-    
-    [self refreshData];
-
-    //to share view
-    SignShareViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"SignShareViewController"];
-    ctrl.targetSign = targetSigh;
-    [self presentViewController:ctrl animated:YES completion:nil];
-    
-    //check whether target has been completed
-    if ([self.currentTarget.day integerValue] == [self.currentTarget.totalDays integerValue]) {
-        [self terminateTarget:self.currentTarget WithResult:TargetResultComplete];
-    }
-    
 }
 
-- (void)signWithTarget:(Target *)target type:(TargetSignType)type{
+- (void)signWithType:(TargetSignType)type{
     NSDate *now = [NSDate date];
-    TargetSign *targetSignInOneDay = [self queryTargetSign:self.currentTarget date:now];
+    TargetSign *targetSignInOneDay = [CoreDataUtil queryTargetSign:self.currentTarget date:now];
     TargetSignType lastSignType = [targetSignInOneDay.signType integerValue];
-    
-    NSString *defaultSignNote;
-    switch (type) {
-        case TargetSignTypeSign:
-            defaultSignNote = NSLocalizedString(@"Daliy sign", nil);
-            break;
-        case TargetSignTypeLeave:
-            defaultSignNote = NSLocalizedString(@"Take a leave", nil);
-            break;
-    }
     
     if (targetSignInOneDay) {// signed
         NSString *typeName = [DescriptionUtil signTypeDescriptionOfType:lastSignType];
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:NSLocalizedString(@"SignAlready", nil),typeName] preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *resignAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Sign again", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
-            if (lastSignType!=type) {
-                if(lastSignType == TargetSignTypeLeave){
-                    target.flexibleTimes = @([target.flexibleTimes integerValue]+1);
-                }else if (lastSignType == TargetSignTypeSign){
-                    target.flexibleTimes = @([target.flexibleTimes integerValue]-1);
-                }
-            }
-            
-            [self signTarget:target signType:type note:defaultSignNote time:[NSDate date]];
+            [self signTarget:self.currentTarget signType:type];
         }];
         [alertController addAction:resignAction];
         UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Confirm", nil) style:UIAlertActionStyleDefault handler:nil];
         [alertController addAction:confirmAction];
         [self presentViewController:alertController animated:YES completion:nil];
         return;
+    }else{
+        [self signTarget:self.currentTarget signType:type];
     }
-    //unsigned
-    [self signTarget:target signType:type note:defaultSignNote time:now];
 }
 
-- (void)terminateTarget:(Target *)target WithResult:(TargetResult)result{
-    NSManagedObjectContext *context = target.managedObjectContext;
-    target.result = @(result);
-    if ([context hasChanges]) {
-        [context save:nil];
-    }
-    
-    switch (result) {
-        case TargetResultComplete:{
-            TargetSucceedViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"TargetSucceedViewController"];
-            ctrl.target = self.currentTarget;
-            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ctrl animated:NO completion:nil];
-            break;
-        }
-        case TargetResultFail:{
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"Sorry, your target failed...", nil)  delegate:nil cancelButtonTitle:NSLocalizedString(@"Confirm", nil) otherButtonTitles: nil];
-            [alertView show];
-            break;
-        }
-        case TargetResultStop:{
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"You have terminated the target, a new tour is waiting for you！", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Confirm", nil) otherButtonTitles: nil];
-            [alertView show];
-            break;
-        }
-        default:
-            break;
-    }
-    
+#pragma mark - Target complete Method
+- (void)targetComplete{
+    TargetSucceedViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"TargetSucceedViewController"];
+    ctrl.target = self.currentTarget;
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ctrl animated:NO completion:nil];
+    self.currentTarget = nil;
+}
+
+- (void)targetFail{
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"Sorry, your target failed...", nil)  delegate:nil cancelButtonTitle:NSLocalizedString(@"Confirm", nil) otherButtonTitles: nil];
+    [alertView show];
+    self.currentTarget = nil;
+}
+
+- (void)targetStop{
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"You have terminated the target, a new tour is waiting for you！", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Confirm", nil) otherButtonTitles: nil];
+    [alertView show];
     self.currentTarget = nil;
 }
 

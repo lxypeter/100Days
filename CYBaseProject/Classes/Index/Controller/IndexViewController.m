@@ -115,7 +115,7 @@
                     }
                 }];
                 
-                CYDataPicker *picker = [CYDataPicker dataPickerWithType:CYDataPickerTypeSingleSelect dataSource:languageDataSource];
+                CYDataPicker *picker = [CYDataPicker dataPickerWithType:CYDataPickerTypeSingleSelect dataSource:languageDataSource loop:NO];
                 picker.dataSingleSelectedBlock = ^(NSString *selectedValue,NSInteger selectedIndex){
                     [self changeLanguageTo:validLanguageArray[selectedIndex][@"code"]];
                 };

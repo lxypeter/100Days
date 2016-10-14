@@ -14,10 +14,14 @@
 
 @implementation CYDatePicker
 
-#pragma mark - 初始化
-+ (instancetype)datePickerWithDateSelectedBlock:(CYDateSelectedBlock)dateSelectedBlock{
+@synthesize currentDate = _currentDate;
+@synthesize currentCountDownDuration = _currentCountDownDuration;
+
+#pragma mark - initialize
++ (instancetype)datePickerWithDatePickerMode:(UIDatePickerMode)datePickerMode selectedBlock:(CYDateSelectedBlock)dateSelectedBlock{
     CYDatePicker *dataPicker = [[CYDatePicker alloc]init];
     dataPicker.dateSelectedBlock = dateSelectedBlock;
+    dataPicker.datePickerMode = datePickerMode;
     return dataPicker;
 }
 
@@ -25,26 +29,7 @@
     //UIDatePicker
     self.datePicker = [[UIDatePicker alloc]initWithFrame:self.contentView.bounds];
     self.datePicker.datePickerMode = UIDatePickerModeDate;
-    
     [self.contentView addSubview:self.datePicker];
-}
-
-
-#pragma mark - 点击事件
-- (void)clickConfirmBtn{
-    [super clickConfirmBtn];
-    if (self.dateSelectedBlock) {
-        self.dateSelectedBlock(self.currentDate);
-    }
-}
-
-#pragma mark - 简便方法
-/**
- *  当前选中时间
- */
-- (NSDate *)currentDate{
-    _currentDate = self.datePicker.date;
-    return _currentDate;
 }
 
 - (void)setDatePickerMode:(UIDatePickerMode)datePickerMode{
@@ -52,8 +37,55 @@
     self.datePicker.datePickerMode = datePickerMode;
 }
 
-- (void)showPickerByDate:(NSDate *)date{
-    [super showPicker];
-    [self.datePicker setDate:date];
+#pragma mark - event method
+- (void)clickConfirmBtn{
+    [super clickConfirmBtn];
+    if (self.dateSelectedBlock) {
+        switch (self.datePickerMode) {
+            case UIDatePickerModeCountDownTimer:
+                self.dateSelectedBlock(@(self.currentCountDownDuration));
+                break;
+            default:
+                self.dateSelectedBlock(self.currentDate);
+                break;
+        }
+        
+    }
 }
+
+- (void)showPickerWithDate:(NSDate *)date{
+    self.datePicker.date = date;
+    [super showPicker];
+}
+
+- (void)showPickerWithCountDownDuration:(NSTimeInterval)duration{
+    self.datePicker.countDownDuration = duration;
+    [super showPicker];
+}
+
+#pragma mark - get/set time method
+/**
+ *  current selected time
+ */
+- (NSDate *)currentDate{
+    return self.datePicker.date;
+}
+
+- (void)setCurrentDate:(NSDate *)currentDate{
+    _currentDate = currentDate;
+    self.datePicker.date = currentDate;
+}
+
+/**
+ *  current countDownDuration(For UIDatePickerModeCountDownTimer)
+ */
+- (NSTimeInterval)currentCountDownDuration{
+    return self.datePicker.countDownDuration;
+}
+
+- (void)setCurrentCountDownDuration:(NSTimeInterval)currentCountDownDuration{
+    _currentCountDownDuration = currentCountDownDuration;
+    self.datePicker.countDownDuration = currentCountDownDuration;
+}
+
 @end
