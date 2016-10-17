@@ -35,6 +35,8 @@
 		E135724E1D98C2060057B80F /* TimeReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E135724D1D98C2060057B80F /* TimeReminderViewController.m */; };
 		E135CFA71D91213E00C6D180 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E135CFA91D91213E00C6D180 /* InfoPlist.strings */; };
 		E135CFB41D91213E00C6D180 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E135CFB61D91213E00C6D180 /* Localizable.strings */; };
+		E1406F6F1DB4BBD600DDDB4A /* LeftMenuViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1406F6D1DB4BBD600DDDB4A /* LeftMenuViewCell.m */; };
+		E1406F701DB4BBD600DDDB4A /* LeftMenuViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1406F6E1DB4BBD600DDDB4A /* LeftMenuViewCell.xib */; };
 		E152A1CC1DAB784900F7C331 /* CYBasePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E152A1C61DAB784900F7C331 /* CYBasePicker.m */; };
 		E152A1CD1DAB784900F7C331 /* CYDataPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E152A1C81DAB784900F7C331 /* CYDataPicker.m */; };
 		E152A1CE1DAB784900F7C331 /* CYDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E152A1CA1DAB784900F7C331 /* CYDatePicker.m */; };
@@ -149,6 +151,9 @@
 		E135CFAA1D91213E00C6D180 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E135CFB51D91213E00C6D180 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E135CFB71D91213E00C6D180 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E1406F6C1DB4BBD600DDDB4A /* LeftMenuViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewCell.h; sourceTree = "<group>"; };
+		E1406F6D1DB4BBD600DDDB4A /* LeftMenuViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewCell.m; sourceTree = "<group>"; };
+		E1406F6E1DB4BBD600DDDB4A /* LeftMenuViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMenuViewCell.xib; sourceTree = "<group>"; };
 		E152A1C51DAB784900F7C331 /* CYBasePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYBasePicker.h; sourceTree = "<group>"; };
 		E152A1C61DAB784900F7C331 /* CYBasePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYBasePicker.m; sourceTree = "<group>"; };
 		E152A1C71DAB784900F7C331 /* CYDataPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYDataPicker.h; sourceTree = "<group>"; };
@@ -614,6 +619,9 @@
 			children = (
 				E1BF44B31D7673E60070900D /* NoTargetView.h */,
 				E1BF44B41D7673E60070900D /* NoTargetView.m */,
+				E1406F6C1DB4BBD600DDDB4A /* LeftMenuViewCell.h */,
+				E1406F6D1DB4BBD600DDDB4A /* LeftMenuViewCell.m */,
+				E1406F6E1DB4BBD600DDDB4A /* LeftMenuViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -968,6 +976,7 @@
 			files = (
 				E13530031D9CB66800DE4B01 /* README.txt in Resources */,
 				E135CFB41D91213E00C6D180 /* Localizable.strings in Resources */,
+				E1406F701DB4BBD600DDDB4A /* LeftMenuViewCell.xib in Resources */,
 				E13530001D9CB66800DE4B01 /* WeiboSDK.bundle in Resources */,
 				E10ECE421D7D4FA100B15F26 /* CalendarColorDict.plist in Resources */,
 				E1E54D4D1D90E3A200487C98 /* TargetListCell.xib in Resources */,
@@ -1079,6 +1088,7 @@
 				E1BF44D81D76DA8C0070900D /* Target+CoreDataProperties.m in Sources */,
 				E12507D61DAE2F6B0040CB61 /* SignTimer.m in Sources */,
 				E1F686811D810E8700C3EC49 /* TargetMonthlyListCell.m in Sources */,
+				E1406F6F1DB4BBD600DDDB4A /* LeftMenuViewCell.m in Sources */,
 				E174FEE01D7BD28C00894AB3 /* TargetMonthlyViewController.m in Sources */,
 				E1FEE5151D93C4A600185B51 /* TargetSucceedViewController.m in Sources */,
 				E1A140BC1D3E4CDF00D77589 /* UIView+Frame.m in Sources */,

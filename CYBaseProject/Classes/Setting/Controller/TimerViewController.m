@@ -116,11 +116,13 @@
 
 - (void)startAnimation{
     
+    CGFloat totalTime = 0.6;
+    
     __weak typeof(self) weakSelf = self;
     
     //pic opacity animation
     CABasicAnimation *fadeInAnimation = [CABasicAnimation animation];
-    fadeInAnimation.duration = 1;
+    fadeInAnimation.duration = totalTime;
     fadeInAnimation.keyPath = @"opacity";
     fadeInAnimation.fromValue = @(0);
     fadeInAnimation.toValue = @(1);
@@ -130,7 +132,7 @@
     CAShapeLayer *maskLayer = [CAShapeLayer layer];
     self.coverView.layer.mask = maskLayer;
     CAKeyframeAnimation *coverAnimation = [CAKeyframeAnimation animation];
-    coverAnimation.duration = 1;
+    coverAnimation.duration = totalTime;
     coverAnimation.keyPath = @"path";
     UIBezierPath *pathOne = [UIBezierPath bezierPathWithArcCenter:CGPointMake(ScreenWidth/2, ScreenHeight/2) radius:ScreenHeight startAngle:-M_PI_2 endAngle:-M_PI_2+M_PI_2*0.1 clockwise:YES];
     [pathOne addLineToPoint:CGPointMake(ScreenWidth/2, ScreenHeight/2)];
@@ -168,7 +170,7 @@
     startBgAnimation.duration = 0.6;
     startBgAnimation.fromValue = @(ScreenHeight/2);
     startBgAnimation.toValue = @(ScreenHeight/2*0.65);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(totalTime*0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         weakSelf.startBackgroundView.hidden = NO;
         [weakSelf.startBackgroundView.layer addAnimation:startBgAnimation forKey:nil];
     });
@@ -179,7 +181,7 @@
     startBtnAnimation.duration = 0.15;
     startBtnAnimation.fromValue = @(0);
     startBtnAnimation.toValue = @(1);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(totalTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         weakSelf.startButton.hidden = NO;
         [weakSelf.startButton.layer addAnimation:startBtnAnimation forKey:nil];
     });
@@ -190,7 +192,7 @@
     timeDetailAnimation.duration = 0.5;
     timeDetailAnimation.fromValue = @(0);
     timeDetailAnimation.toValue = @(1);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(totalTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         weakSelf.timeDetailView.hidden = NO;
         [weakSelf.timeDetailView.layer addAnimation:timeDetailAnimation forKey:nil];
     });
@@ -208,7 +210,7 @@
     resetAnimation.fromValue = @(0);
     resetAnimation.toValue = @(1);
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(totalTime*0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         weakSelf.resetBackgroundView.hidden = NO;
         weakSelf.resetButton.hidden = NO;
         [weakSelf.resetBackgroundView.layer addAnimation:resetBgAnimation forKey:nil];

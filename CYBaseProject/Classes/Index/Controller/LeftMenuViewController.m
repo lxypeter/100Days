@@ -7,6 +7,7 @@
 //
 
 #import "LeftMenuViewController.h"
+#import "LeftMenuViewCell.h"
 
 @implementation LeftSideViewOption
 
@@ -98,16 +99,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellID = @"LeftViewCellID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    LeftMenuViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"LeftMenuViewCell" owner:nil options:nil]lastObject];
         cell.selectionStyle = UITableViewCellSelectionStyleDefault;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     LeftSideViewOption *option = self.optionsArray[indexPath.row];
-    cell.textLabel.text = option.title;
-    cell.detailTextLabel.text = option.detail;
-    cell.imageView.image = [UIImage imageNamed:option.imageName];
+    cell.myLabel.text = option.title;
+    cell.myImageView.image = [UIImage imageNamed:option.imageName];
     return cell;
 }
 
