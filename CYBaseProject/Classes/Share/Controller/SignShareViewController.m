@@ -128,44 +128,44 @@
 
 - (IBAction)clickShareButton:(id)sender {
     
-//    self.editButton.hidden = YES;
-//    self.confirmButton.hidden = YES;
-//    self.shareButton.hidden = YES;
-//    
-//    UIImage *signInfoViewImage = [self.signInfoView convertToImage];
-//    
-//    self.editButton.hidden = NO;
-//    self.confirmButton.hidden = NO;
-//    self.shareButton.hidden = NO;
-//    
-//    //FIXME: SHARE
-//    NSArray* imageArray = @[signInfoViewImage];
-//    
-//    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-//    [shareParams SSDKSetupShareParamsByText:NSLocalizedString(@"Daliy sign", nil) images:imageArray url:[NSURL URLWithString:@"http://mob.com"] title:NSLocalizedString(@"100 Days", nil) type:SSDKContentTypeAuto];
-//        
-//    [ShareSDK showShareActionSheet:nil
-//                             items:nil
-//                       shareParams:shareParams
-//               onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
-//        
-//        switch (state) {
-//            case SSDKResponseStateSuccess:
-//            {
-//               UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Sharing Succeeded！", nil) message:nil delegate:nil cancelButtonTitle:NSLocalizedString(@"Confirm", nil) otherButtonTitles:nil];
-//               [alertView show];
-//               break;
-//            }
-//            case SSDKResponseStateFail:
-//            {
-//               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Sharing Failed...", nil) message:[NSString stringWithFormat:@"%@",error] delegate:nil cancelButtonTitle:NSLocalizedString(@"Confirm", nil) otherButtonTitles:nil, nil];
-//               [alert show];
-//               break;
-//            }
-//            default:
-//               break;
-//        }
-//     }];
+    self.editButton.hidden = YES;
+    self.confirmButton.hidden = YES;
+    self.shareButton.hidden = YES;
+    
+    UIImage *signInfoViewImage = [self.signInfoView convertToImage];
+    
+    self.editButton.hidden = NO;
+    self.confirmButton.hidden = NO;
+    self.shareButton.hidden = NO;
+    //FIXME: SHARE
+    NSArray* imageArray = @[signInfoViewImage];
+    
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    [shareParams SSDKEnableUseClientShare];
+    [shareParams SSDKSetupShareParamsByText:NSLocalizedString(@"Daliy sign", nil) images:imageArray url:[NSURL URLWithString:@"itms-apps ://itunes.apple.com/gb/app"] title:NSLocalizedString(@"100 Days", nil) type:SSDKContentTypeAuto];
+    
+    [ShareSDK showShareActionSheet:nil
+                             items:nil
+                       shareParams:shareParams
+               onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+        
+        switch (state) {
+            case SSDKResponseStateSuccess:
+            {
+               UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Sharing Succeeded！", nil) message:nil delegate:nil cancelButtonTitle:NSLocalizedString(@"Confirm", nil) otherButtonTitles:nil];
+               [alertView show];
+               break;
+            }
+            case SSDKResponseStateFail:
+            {
+               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Sharing Failed...", nil) message:[NSString stringWithFormat:@"%@",error.userInfo[@"error_message"]] delegate:nil cancelButtonTitle:NSLocalizedString(@"Confirm", nil) otherButtonTitles:nil, nil];
+               [alert show];
+               break;
+            }
+            default:
+               break;
+        }
+     }];
 }
 
 - (IBAction)clickNoteConfrimButton:(id)sender {

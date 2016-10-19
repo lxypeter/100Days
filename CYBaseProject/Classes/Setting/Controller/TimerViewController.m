@@ -9,6 +9,7 @@
 #import "TimerViewController.h"
 #import "SignTimer.h"
 #import "CYPicker.h"
+#import "CoreDataUtil.h"
 
 @interface TimerViewController ()
 
@@ -27,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
 
 @property (nonatomic, strong) CYDatePicker *timePicker;
+@property (nonatomic, assign) BOOL hasTarget;
 
 @end
 
@@ -87,8 +89,17 @@
     //time detail view
     self.timeDetailView.hidden = YES;
     
+    //auto sign button
     [self.autoSignButton setBackgroundImage:[UIImage imageNamed:@"checkbox_check_disable"] forState:UIControlStateDisabled|UIControlStateSelected];
     [self.autoSignButton setBackgroundImage:[UIImage imageNamed:@"checkbox_uncheck_disable"] forState:UIControlStateDisabled];
+    
+    if ([CoreDataUtil queryCurrentTarget]) {
+        self.hasTarget = YES;
+    }else{
+        self.hasTarget = NO;
+        self.autoSignButton.enabled = NO;
+    }
+    
 }
 
 - (void)queryCountDownRecord{
@@ -101,7 +112,7 @@
     self.totalTimeLabel.text = [NSString stringWithFormat:NSLocalizedString(@"TotalTime", nil),defaultCountDown];
     
     //auto sign
-    BOOL autoSign = [userDefaults boolForKey:kCountDownAutoSign];
+    BOOL autoSign = self.hasTarget?[userDefaults boolForKey:kCountDownAutoSign]:NO;
     self.autoSignButton.selected = autoSign;
     
     if ([SignTimer shareSignTimer].totalSecond!=0) {
@@ -117,6 +128,7 @@
 - (void)startAnimation{
     
     CGFloat totalTime = 0.6;
+    CGFloat openAnimationPercent = 0.7;
     
     __weak typeof(self) weakSelf = self;
     
@@ -159,7 +171,7 @@
     [pathThree appendPath:pathThreeLeft];
     
     coverAnimation.values = @[(__bridge id)(pathOne.CGPath),(__bridge id)(pathTwo.CGPath),(__bridge id)(pathThree.CGPath)];
-    coverAnimation.keyTimes = @[@(0),@(0.4),@(1)];
+    coverAnimation.keyTimes = @[@(0),@(0.7),@(1)];
     coverAnimation.removedOnCompletion = NO;
     coverAnimation.fillMode = kCAFillModeForwards;
     [maskLayer addAnimation:coverAnimation forKey:nil];
@@ -170,7 +182,7 @@
     startBgAnimation.duration = 0.6;
     startBgAnimation.fromValue = @(ScreenHeight/2);
     startBgAnimation.toValue = @(ScreenHeight/2*0.65);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(totalTime*0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(totalTime*openAnimationPercent * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         weakSelf.startBackgroundView.hidden = NO;
         [weakSelf.startBackgroundView.layer addAnimation:startBgAnimation forKey:nil];
     });
@@ -181,7 +193,7 @@
     startBtnAnimation.duration = 0.15;
     startBtnAnimation.fromValue = @(0);
     startBtnAnimation.toValue = @(1);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(totalTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((totalTime*openAnimationPercent+0.6) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         weakSelf.startButton.hidden = NO;
         [weakSelf.startButton.layer addAnimation:startBtnAnimation forKey:nil];
     });
@@ -210,7 +222,7 @@
     resetAnimation.fromValue = @(0);
     resetAnimation.toValue = @(1);
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(totalTime*0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(totalTime*openAnimationPercent * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         weakSelf.resetBackgroundView.hidden = NO;
         weakSelf.resetButton.hidden = NO;
         [weakSelf.resetBackgroundView.layer addAnimation:resetBgAnimation forKey:nil];
@@ -228,9 +240,11 @@
     sender.selected = !sender.selected;
     [self switchButtons];
     if (sender.selected) {//playing
-        //FIXME autoSign
+        
+        BOOL autoSign = self.hasTarget?self.autoSignButton.selected:NO;
+        
         __weak typeof(self) weakSelf = self;
-        [[SignTimer shareSignTimer]startTimerWithTotalSecond:[self getCurrentSecond] autoSign:self.autoSignButton.selected timerProgress:^(NSInteger passSecond) {
+        [[SignTimer shareSignTimer]startTimerWithTotalSecond:[self getCurrentSecond] autoSign:autoSign timerProgress:^(NSInteger passSecond) {
             [weakSelf refreshTimeStringFromTimeComponent:[weakSelf calculateTimeComponentFromSecond:passSecond]];
         } timeEnd:^{
             [weakSelf switchButtons];
@@ -248,6 +262,9 @@
 }
 
 - (IBAction)clickAutoSignButton:(UIButton *)sender {
+    
+    if (!self.hasTarget) return;
+    
     sender.selected = !sender.selected;
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -267,7 +284,9 @@
 - (void)switchButtons{
     self.resetButton.enabled = !self.resetButton.enabled;
     self.editTimeButton.enabled = !self.editTimeButton.enabled;
-    self.autoSignButton.enabled = !self.autoSignButton.enabled;
+    if (self.hasTarget) {
+        self.autoSignButton.enabled = !self.autoSignButton.enabled;
+    }
 }
 
 - (NSInteger)getCurrentSecond{

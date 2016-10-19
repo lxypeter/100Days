@@ -83,7 +83,6 @@
             self.timerEnd();
         }
         
-        //FIXME:AUTOSIGN NOTIFICATION
         if (autoSign) {
             Target *target = [CoreDataUtil queryCurrentTarget];
             if (target) {

@@ -49,7 +49,7 @@
         
         LeftSideViewOption *languageOption = [LeftSideViewOption optionWithTitle:NSLocalizedString(@"Language", nil) imageName:@"leftview_language" actionType:LeftSideActionTypeSwitchLanguage];
         
-        LeftSideViewOption *toolOption = [LeftSideViewOption optionWithTitle:NSLocalizedString(@"Sign Tool", nil) imageName:@"leftview_tool" actionType:LeftSideActionTypeControllerFromStoryboard];
+        LeftSideViewOption *toolOption = [LeftSideViewOption optionWithTitle:NSLocalizedString(@"Sign Timer", nil) imageName:@"leftview_tool" actionType:LeftSideActionTypeControllerFromStoryboard];
         toolOption.className = @"TimerViewController";
         
         _optionsArray = @[recordOption,reminderOption,languageOption,toolOption];
