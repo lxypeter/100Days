@@ -142,9 +142,15 @@
     
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     [shareParams SSDKEnableUseClientShare];
-    [shareParams SSDKSetupShareParamsByText:NSLocalizedString(@"Daliy sign", nil) images:imageArray url:[NSURL URLWithString:@"itms-apps ://itunes.apple.com/gb/app"] title:NSLocalizedString(@"100 Days", nil) type:SSDKContentTypeAuto];
     
-    [ShareSDK showShareActionSheet:nil
+//    NSString *appStoreUrl = [[NSUserDefaults standardUserDefaults]stringForKey:kAppStoreUrlKey];
+//    if ([NSString isBlankString:appStoreUrl]) {
+//        appStoreUrl = kAppStoreUrlDefault;
+//    }
+    
+    [shareParams SSDKSetupShareParamsByText:NSLocalizedString(@"Daliy sign", nil) images:imageArray url:nil title:NSLocalizedString(@"100 Days", nil) type:SSDKContentTypeAuto];
+    
+    SSUIShareActionSheetController *sheet = [ShareSDK showShareActionSheet:nil
                              items:nil
                        shareParams:shareParams
                onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
@@ -165,7 +171,8 @@
             default:
                break;
         }
-     }];
+    }];
+    [sheet.directSharePlatforms addObject:@(SSDKPlatformTypeSinaWeibo)];
 }
 
 - (IBAction)clickNoteConfrimButton:(id)sender {

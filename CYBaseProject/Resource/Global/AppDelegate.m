@@ -13,7 +13,7 @@
 #import <ShareSDKConnector/ShareSDKConnector.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 #import <TencentOpenAPI/QQApiInterface.h>
-//#import <JSPatch/JSPatch.h>
+#import <JSPatchPlatform/JSPatch.h>
 #import "WXApi.h"
 #import "WeiboSDK.h"
 #import "CYLaunchAnimateViewController.h"
@@ -40,8 +40,10 @@
     //register shareSDK
     [self registerShareSDK];
     //JSPatch
-//    [JSPatch startWithAppKey:@"你的AppKey"];
-//    [JSPatch sync];
+    [JSPatch updateConfigWithAppKey:@"be88a5de896b0e4f"];
+    NSString *appStoreUrl = [JSPatch getConfigParam:kAppStoreUrlKey];
+    [[NSUserDefaults standardUserDefaults]setObject:appStoreUrl forKey:kAppStoreUrlKey];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     
     //language
     NSString *language = [NSBundle currentLanguage];
@@ -118,10 +120,9 @@
      
           activePlatforms:@[
                             @(SSDKPlatformTypeSinaWeibo),
-                            @(SSDKPlatformTypeCopy),
-                            @(SSDKPlatformTypeWechat),
-                            @(SSDKPlatformTypeQQ),
-                            @(SSDKPlatformTypeTencentWeibo)]
+                            @(SSDKPlatformSubTypeWechatSession),
+                            @(SSDKPlatformSubTypeWechatTimeline),
+                            @(SSDKPlatformTypeQQ)]
                  onImport:^(SSDKPlatformType platformType)
      {
          switch (platformType)

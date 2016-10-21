@@ -103,6 +103,9 @@
 //TimerViewController
 "TotalTime" = "总共:%@";
 
+//TargetSucceedViewController
+"Target Completed!" = "目标达成";
+
 //Calander
 "Calander" = "日历";
 

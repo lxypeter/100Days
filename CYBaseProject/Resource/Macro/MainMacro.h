@@ -89,4 +89,7 @@ static const int ddLogLevel = 0;
 #define kCountDownAutoSign @"kCountDownAutoSign"
 
 #define SignNotificationKey @"SignNotificationKey"
+
+#define kAppStoreUrlKey @"appStoreUrl"
+#define kAppStoreUrlDefault @"itms-apps://itunes.apple.com"
 #endif /* MainMacro_h */

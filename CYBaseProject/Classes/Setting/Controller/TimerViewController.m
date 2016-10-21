@@ -10,8 +10,9 @@
 #import "SignTimer.h"
 #import "CYPicker.h"
 #import "CoreDataUtil.h"
+#import "TimerProgressView.h"
 
-@interface TimerViewController ()
+@interface TimerViewController () <CAAnimationDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *coverView;
 @property (weak, nonatomic) IBOutlet UIView *startBackgroundView;
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *minuteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *secondLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
+@property (weak, nonatomic) IBOutlet TimerProgressView *progressView;
 
 @property (nonatomic, strong) CYDatePicker *timePicker;
 @property (nonatomic, assign) BOOL hasTarget;
@@ -100,6 +102,9 @@
         self.autoSignButton.enabled = NO;
     }
     
+    //progressView
+    self.progressView.hidden = YES;
+    self.progressView.radius = 85;
 }
 
 - (void)queryCountDownRecord{
@@ -117,12 +122,16 @@
     
     if ([SignTimer shareSignTimer].totalSecond!=0) {
         [self refreshTimeStringFromTimeComponent:[self calculateTimeComponentFromSecond:[SignTimer shareSignTimer].totalSecond]];
+        
+        NSInteger totalSecond = [self getTotalSecond];
+        self.progressView.progress = (totalSecond -[SignTimer shareSignTimer].totalSecond)*1.0/totalSecond;
     }else{
         [self clickResetButton:self.resetButton];
     }
     if ([SignTimer shareSignTimer].isCounting) {
         [self clickStartButton:self.startButton];
     }
+    
 }
 
 - (void)startAnimation{
@@ -190,6 +199,7 @@
     //start button
     CABasicAnimation *startBtnAnimation = [CABasicAnimation animation];
     startBtnAnimation.keyPath = @"transform.scale";
+    startBtnAnimation.delegate = self;
     startBtnAnimation.duration = 0.15;
     startBtnAnimation.fromValue = @(0);
     startBtnAnimation.toValue = @(1);
@@ -244,8 +254,12 @@
         BOOL autoSign = self.hasTarget?self.autoSignButton.selected:NO;
         
         __weak typeof(self) weakSelf = self;
-        [[SignTimer shareSignTimer]startTimerWithTotalSecond:[self getCurrentSecond] autoSign:autoSign timerProgress:^(NSInteger passSecond) {
-            [weakSelf refreshTimeStringFromTimeComponent:[weakSelf calculateTimeComponentFromSecond:passSecond]];
+        [[SignTimer shareSignTimer]startTimerWithTotalSecond:[self getCurrentSecond] autoSign:autoSign timerProgress:^(NSInteger remainingSecond) {
+            [weakSelf refreshTimeStringFromTimeComponent:[weakSelf calculateTimeComponentFromSecond:remainingSecond]];
+            
+            NSInteger totalSecond = [self getTotalSecond];
+            weakSelf.progressView.progress = (totalSecond -remainingSecond)*1.0/totalSecond;
+            
         } timeEnd:^{
             [weakSelf switchButtons];
             sender.selected = NO;
@@ -279,6 +293,8 @@
     self.hourLabel.text = timeComponents[0];
     self.minuteLabel.text = timeComponents[1];
     self.secondLabel.text = timeComponents[2];
+    
+    self.progressView.progress = 0;
 }
 
 - (void)switchButtons{
@@ -292,6 +308,12 @@
 - (NSInteger)getCurrentSecond{
     NSArray *currentTimeComponent = @[self.hourLabel.text,self.minuteLabel.text,self.secondLabel.text];
     return [self calculateTotalSecondFormTimeComponent:currentTimeComponent];
+}
+
+- (NSInteger)getTotalSecond{
+    NSString *totalTimeString = [self.totalTimeLabel.text substringFromIndex:self.totalTimeLabel.text.length-8];
+    NSArray *timeComponents = [totalTimeString componentsSeparatedByString:@":"];
+    return [self calculateTotalSecondFormTimeComponent:timeComponents];
 }
 
 - (void)refreshTimeStringFromTimeComponent:(NSArray *)timeComponent{
@@ -310,4 +332,10 @@
 - (NSInteger)calculateTotalSecondFormTimeComponent:(NSArray *)timeComponent{
     return [timeComponent[0] integerValue]*3600 + [timeComponent[1] integerValue]*60 + [timeComponent[2] integerValue];
 }
+
+#pragma mark - delegate method
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    self.progressView.hidden = NO;
+}
+
 @end

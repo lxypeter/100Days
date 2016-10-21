@@ -72,7 +72,8 @@
     }];
     self.signDayLabel.text = [NSString stringWithFormat:@"%@",@(signDay)];
     CGFloat signRate = signDay *100.0/[self.target.totalDays integerValue];
-    self.signRateLabel.text =[NSString stringWithFormat:@"%.1f%%",signRate];
+    NSString *signRateString = signRate!=100?[NSString stringWithFormat:@"%.1f%%",signRate]:[NSString stringWithFormat:@"%.f%%",signRate];
+    self.signRateLabel.text = signRateString;
 }
 
 - (void)viewAnimation{
@@ -115,6 +116,10 @@
     self.view.layer.mask = nil;
     
     //begin the animation of imageView;
+    [self beginImageViewAnimation];
+}
+
+- (void)beginImageViewAnimation{
     NSArray *imgArray = @[[UIImage imageNamed:@"cheers_1"],[UIImage imageNamed:@"cheers_2"],[UIImage imageNamed:@"cheers_3"]];
     self.contentImageView.animationImages=imgArray;
     self.contentImageView.animationDuration=1;
@@ -129,18 +134,26 @@
 - (IBAction)clickShareButton:(id)sender {
     
     self.shareButton.hidden = YES;
+    [self.contentImageView stopAnimating];
+    self.contentImageView.image = [UIImage imageNamed:@"cheers_3"];
 
     UIImage *signInfoViewImage = [self.view convertToImage];
     
     self.shareButton.hidden = NO;
+    [self beginImageViewAnimation];
 
     //FIXME: SHARE
     NSArray* imageArray = @[signInfoViewImage];
+    
+//    NSString *appStoreUrl = [[NSUserDefaults standardUserDefaults]stringForKey:kAppStoreUrlKey];
+//    if ([NSString isBlankString:appStoreUrl]) {
+//        appStoreUrl = kAppStoreUrlDefault;
+//    }
 
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-    [shareParams SSDKSetupShareParamsByText:NSLocalizedString(@"Daliy sign", nil) images:imageArray url:[NSURL URLWithString:@"http://mob.com"] title:NSLocalizedString(@"100 Days", nil) type:SSDKContentTypeAuto];
+    [shareParams SSDKSetupShareParamsByText:NSLocalizedString(@"Target Completed!", nil) images:imageArray url:nil title:NSLocalizedString(@"100 Days", nil) type:SSDKContentTypeAuto];
 
-    [ShareSDK showShareActionSheet:nil
+    SSUIShareActionSheetController *sheet = [ShareSDK showShareActionSheet:nil
                              items:nil
                        shareParams:shareParams
                onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
@@ -162,7 +175,7 @@
                break;
         }
      }];
-
+    [sheet.directSharePlatforms addObject:@(SSDKPlatformTypeSinaWeibo)];
 }
 
 @end

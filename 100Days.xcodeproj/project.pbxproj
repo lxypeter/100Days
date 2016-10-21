@@ -92,6 +92,7 @@
 		E1E54D491D90DC2100487C98 /* TargetMonthlyListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E54D4B1D90DC2100487C98 /* TargetMonthlyListCell.xib */; };
 		E1E54D4D1D90E3A200487C98 /* TargetListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E54D4F1D90E3A200487C98 /* TargetListCell.xib */; };
 		E1E54D5D1D913A0900487C98 /* SignShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E54D5C1D913A0900487C98 /* SignShareViewController.m */; };
+		E1E668D11DB9BD6500A74C55 /* TimerProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E668D01DB9BD6500A74C55 /* TimerProgressView.m */; };
 		E1F686811D810E8700C3EC49 /* TargetMonthlyListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F6867F1D810E8700C3EC49 /* TargetMonthlyListCell.m */; };
 		E1F686851D81116B00C3EC49 /* TargetMonthlyListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F686841D81116B00C3EC49 /* TargetMonthlyListController.m */; };
 		E1F6868A1D814C9400C3EC49 /* CustInfoSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F686891D814C9400C3EC49 /* CustInfoSettingViewController.m */; };
@@ -106,6 +107,7 @@
 		E10ECE451D7D55A200B15F26 /* TargetMonthlySign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMonthlySign.m; sourceTree = "<group>"; };
 		E12507D41DAE2F6B0040CB61 /* SignTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignTimer.h; sourceTree = "<group>"; };
 		E12507D51DAE2F6B0040CB61 /* SignTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignTimer.m; sourceTree = "<group>"; };
+		E127C8F11DB8997D00107FFF /* 100Days.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 100Days.entitlements; sourceTree = "<group>"; };
 		E1352FD61D9CB66800DE4B01 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
 		E1352FD91D9CB66800DE4B01 /* ShareSDKExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKExtension.framework; sourceTree = "<group>"; };
 		E1352FDA1D9CB66800DE4B01 /* ShareSDKUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKUI.bundle; sourceTree = "<group>"; };
@@ -263,6 +265,8 @@
 		E1E54D4E1D90E3A200487C98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TargetListCell.xib; sourceTree = "<group>"; };
 		E1E54D5B1D913A0900487C98 /* SignShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignShareViewController.h; sourceTree = "<group>"; };
 		E1E54D5C1D913A0900487C98 /* SignShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignShareViewController.m; sourceTree = "<group>"; };
+		E1E668CF1DB9BD6500A74C55 /* TimerProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerProgressView.h; sourceTree = "<group>"; };
+		E1E668D01DB9BD6500A74C55 /* TimerProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerProgressView.m; sourceTree = "<group>"; };
 		E1F6867E1D810E8700C3EC49 /* TargetMonthlyListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMonthlyListCell.h; sourceTree = "<group>"; };
 		E1F6867F1D810E8700C3EC49 /* TargetMonthlyListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMonthlyListCell.m; sourceTree = "<group>"; };
 		E1F686831D81116B00C3EC49 /* TargetMonthlyListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMonthlyListController.h; sourceTree = "<group>"; };
@@ -623,6 +627,7 @@
 		E1BF44BB1D76BFD70070900D /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				E1E668CE1DB9BC5600A74C55 /* View */,
 				E12507D31DAE2ECD0040CB61 /* Util */,
 				E1BF44BC1D76BFD70070900D /* Controller */,
 			);
@@ -689,6 +694,7 @@
 		E1CC2EC81D3E0C1B005FEA04 = {
 			isa = PBXGroup;
 			children = (
+				E127C8F11DB8997D00107FFF /* 100Days.entitlements */,
 				E1CC2ED31D3E0C1B005FEA04 /* CYBaseProject */,
 				E1CC2ED21D3E0C1B005FEA04 /* Products */,
 				A7D00153F912710157BA5D76 /* Pods */,
@@ -900,6 +906,15 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		E1E668CE1DB9BC5600A74C55 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E1E668CF1DB9BD6500A74C55 /* TimerProgressView.h */,
+				E1E668D01DB9BD6500A74C55 /* TimerProgressView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -937,6 +952,9 @@
 						DevelopmentTeam = J4U2XN7LR2;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 0;
 							};
@@ -1059,6 +1077,7 @@
 				E1A140BD1D3E4CDF00D77589 /* UIView+Toast.m in Sources */,
 				E1B3FDEA1D7A6DB900489B44 /* CYBaseViewController.m in Sources */,
 				E15E529D1D9BA38400BD8425 /* NSBundle+Language.m in Sources */,
+				E1E668D11DB9BD6500A74C55 /* TimerProgressView.m in Sources */,
 				E1CC35B01D3E0C87005FEA04 /* CLIColor.m in Sources */,
 				E15B83371D7EA97200E1B2CF /* TargetDayViewCell.m in Sources */,
 				E1B3FDEE1D7A70C400489B44 /* TargetListCell.m in Sources */,
@@ -1256,6 +1275,7 @@
 			baseConfigurationReference = 4C6DF8E0E3ED207E32706D8A /* Pods-100Days.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = 100Days.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Feng Hou (9M96B3D5K7)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Feng Hou (9M96B3D5K7)";
 				DEVELOPMENT_TEAM = J4U2XN7LR2;
@@ -1288,6 +1308,7 @@
 			baseConfigurationReference = FCDCEDDFCBE034AA29CA0038 /* Pods-100Days.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = 100Days.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Feng Hou (9M96B3D5K7)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Feng Hou (9M96B3D5K7)";
 				DEVELOPMENT_TEAM = "";
