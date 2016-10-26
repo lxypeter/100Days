@@ -155,10 +155,10 @@
     CAKeyframeAnimation *coverAnimation = [CAKeyframeAnimation animation];
     coverAnimation.duration = totalTime;
     coverAnimation.keyPath = @"path";
-    UIBezierPath *pathOne = [UIBezierPath bezierPathWithArcCenter:CGPointMake(ScreenWidth/2, ScreenHeight/2) radius:ScreenHeight startAngle:-M_PI_2 endAngle:-M_PI_2+M_PI_2*0.1 clockwise:YES];
+    UIBezierPath *pathOne = [UIBezierPath bezierPathWithArcCenter:CGPointMake(ScreenWidth/2, ScreenHeight/2) radius:ScreenHeight startAngle:-M_PI_2 endAngle:-M_PI_2+M_PI_2*0.01 clockwise:YES];
     [pathOne addLineToPoint:CGPointMake(ScreenWidth/2, ScreenHeight/2)];
     [pathOne closePath];
-    UIBezierPath *pathOneLeft = [UIBezierPath bezierPathWithArcCenter:CGPointMake(ScreenWidth/2, ScreenHeight/2) radius:ScreenHeight startAngle:-M_PI_2 endAngle:-M_PI_2-M_PI_2*0.1 clockwise:NO];
+    UIBezierPath *pathOneLeft = [UIBezierPath bezierPathWithArcCenter:CGPointMake(ScreenWidth/2, ScreenHeight/2) radius:ScreenHeight startAngle:-M_PI_2 endAngle:-M_PI_2-M_PI_2*0.01 clockwise:NO];
     [pathOneLeft addLineToPoint:CGPointMake(ScreenWidth/2, ScreenHeight/2)];
     [pathOneLeft closePath];
     [pathOne appendPath:pathOneLeft];

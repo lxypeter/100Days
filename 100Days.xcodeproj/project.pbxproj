@@ -48,6 +48,7 @@
 		E15B833E1D7EB35000E1B2CF /* WeekDayHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E15B833D1D7EB35000E1B2CF /* WeekDayHeaderView.m */; };
 		E15E529D1D9BA38400BD8425 /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = E15E529C1D9BA38400BD8425 /* NSBundle+Language.m */; };
 		E15E529F1D9BBD9000BD8425 /* Language.plist in Resources */ = {isa = PBXBuildFile; fileRef = E15E529E1D9BBD9000BD8425 /* Language.plist */; };
+		E1644DBD1DBDEC370021A5BE /* TargetSucceedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1644DBC1DBDEC370021A5BE /* TargetSucceedViewController.m */; };
 		E174FEDD1D7BC52600894AB3 /* DescriptionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E174FEDC1D7BC52600894AB3 /* DescriptionUtil.m */; };
 		E174FEE01D7BD28C00894AB3 /* TargetMonthlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E174FEDF1D7BD28C00894AB3 /* TargetMonthlyViewController.m */; };
 		E186BD7E1D797EE6006D62D5 /* TargetListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E186BD7D1D797EE6006D62D5 /* TargetListViewController.m */; };
@@ -96,7 +97,6 @@
 		E1F686811D810E8700C3EC49 /* TargetMonthlyListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F6867F1D810E8700C3EC49 /* TargetMonthlyListCell.m */; };
 		E1F686851D81116B00C3EC49 /* TargetMonthlyListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F686841D81116B00C3EC49 /* TargetMonthlyListController.m */; };
 		E1F6868A1D814C9400C3EC49 /* CustInfoSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F686891D814C9400C3EC49 /* CustInfoSettingViewController.m */; };
-		E1FEE5151D93C4A600185B51 /* TargetSucceedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FEE5141D93C4A600185B51 /* TargetSucceedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -174,6 +174,8 @@
 		E15E529B1D9BA38400BD8425 /* NSBundle+Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Language.h"; sourceTree = "<group>"; };
 		E15E529C1D9BA38400BD8425 /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
 		E15E529E1D9BBD9000BD8425 /* Language.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Language.plist; sourceTree = "<group>"; };
+		E1644DBB1DBDEC370021A5BE /* TargetSucceedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetSucceedViewController.h; sourceTree = "<group>"; };
+		E1644DBC1DBDEC370021A5BE /* TargetSucceedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetSucceedViewController.m; sourceTree = "<group>"; };
 		E174FEDB1D7BC52600894AB3 /* DescriptionUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionUtil.h; sourceTree = "<group>"; };
 		E174FEDC1D7BC52600894AB3 /* DescriptionUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionUtil.m; sourceTree = "<group>"; };
 		E174FEDE1D7BD28C00894AB3 /* TargetMonthlyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMonthlyViewController.h; sourceTree = "<group>"; };
@@ -273,8 +275,6 @@
 		E1F686841D81116B00C3EC49 /* TargetMonthlyListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMonthlyListController.m; sourceTree = "<group>"; };
 		E1F686881D814C9400C3EC49 /* CustInfoSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustInfoSettingViewController.h; sourceTree = "<group>"; };
 		E1F686891D814C9400C3EC49 /* CustInfoSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustInfoSettingViewController.m; sourceTree = "<group>"; };
-		E1FEE5131D93C4A600185B51 /* TargetSucceedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetSucceedViewController.h; sourceTree = "<group>"; };
-		E1FEE5141D93C4A600185B51 /* TargetSucceedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetSucceedViewController.m; sourceTree = "<group>"; };
 		FCDCEDDFCBE034AA29CA0038 /* Pods-100Days.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-100Days.release.xcconfig"; path = "Pods/Target Support Files/Pods-100Days/Pods-100Days.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -604,8 +604,6 @@
 				E1BF44AD1D76701A0070900D /* LeftMenuViewController.m */,
 				E1BF44AE1D76701A0070900D /* MainViewController.h */,
 				E1BF44AF1D76701A0070900D /* MainViewController.m */,
-				E1FEE5131D93C4A600185B51 /* TargetSucceedViewController.h */,
-				E1FEE5141D93C4A600185B51 /* TargetSucceedViewController.m */,
 				E152A1D31DAB80B100F7C331 /* LaunchViewController.h */,
 				E152A1D41DAB80B100F7C331 /* LaunchViewController.m */,
 			);
@@ -900,6 +898,8 @@
 		E1E54D5A1D91387300487C98 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E1644DBB1DBDEC370021A5BE /* TargetSucceedViewController.h */,
+				E1644DBC1DBDEC370021A5BE /* TargetSucceedViewController.m */,
 				E1E54D5B1D913A0900487C98 /* SignShareViewController.h */,
 				E1E54D5C1D913A0900487C98 /* SignShareViewController.m */,
 			);
@@ -1072,6 +1072,7 @@
 				E174FEDD1D7BC52600894AB3 /* DescriptionUtil.m in Sources */,
 				E1CC35B51D3E0C87005FEA04 /* DDLog.m in Sources */,
 				E152A1CE1DAB784900F7C331 /* CYDatePicker.m in Sources */,
+				E1644DBD1DBDEC370021A5BE /* TargetSucceedViewController.m in Sources */,
 				E1BF44B21D76701A0070900D /* MainViewController.m in Sources */,
 				E1A140BB1D3E4CDF00D77589 /* UIColor+HexString.m in Sources */,
 				E1A140BD1D3E4CDF00D77589 /* UIView+Toast.m in Sources */,
@@ -1103,7 +1104,6 @@
 				E1F686811D810E8700C3EC49 /* TargetMonthlyListCell.m in Sources */,
 				E1406F6F1DB4BBD600DDDB4A /* LeftMenuViewCell.m in Sources */,
 				E174FEE01D7BD28C00894AB3 /* TargetMonthlyViewController.m in Sources */,
-				E1FEE5151D93C4A600185B51 /* TargetSucceedViewController.m in Sources */,
 				E1A140BC1D3E4CDF00D77589 /* UIView+Frame.m in Sources */,
 				E186BD7E1D797EE6006D62D5 /* TargetListViewController.m in Sources */,
 				E1CC35B91D3E0C87005FEA04 /* DDMultiFormatter.m in Sources */,
