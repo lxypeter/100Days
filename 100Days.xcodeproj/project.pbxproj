@@ -949,8 +949,8 @@
 				TargetAttributes = {
 					E1CC2ED01D3E0C1B005FEA04 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = J4U2XN7LR2;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = NU947442EY;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -1277,8 +1277,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = 100Days.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Feng Hou (9M96B3D5K7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Feng Hou (9M96B3D5K7)";
-				DEVELOPMENT_TEAM = J4U2XN7LR2;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = NU947442EY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CYBaseProject/Vender/SDKFile/ShareSDK",
@@ -1296,10 +1296,10 @@
 					"$(PROJECT_DIR)/CYBaseProject/Vender/SDKFile/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/CYBaseProject/Vender/SDKFile/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lxypeter.100days;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lxypeter.onehundreddays;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2aa3c570-26a0-43c4-8199-48849139b4c4";
-				PROVISIONING_PROFILE_SPECIFIER = iOS_Development;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -1310,8 +1310,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = 100Days.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Feng Hou (9M96B3D5K7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Feng Hou (9M96B3D5K7)";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = NU947442EY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CYBaseProject/Vender/SDKFile/ShareSDK",
@@ -1329,7 +1329,7 @@
 					"$(PROJECT_DIR)/CYBaseProject/Vender/SDKFile/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/CYBaseProject/Vender/SDKFile/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lxypeter.100days;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lxypeter.onehundreddays;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
