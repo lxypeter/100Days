@@ -118,15 +118,6 @@ static const CGFloat kDefaultWaitDuration = 3.0;
     _contentView.center = CGPointMake(self.view.center.x, self.view.center.y);
     [self.view addSubview:_contentView];
     
-//    [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-////        make.edges.equalTo(self.view);
-//        make.top.equalTo(self.view.mas_top);
-//        make.bottom.equalTo(self.view.mas_bottom);
-//        make.right.equalTo(self.view.mas_right);
-//        make.left.equalTo(self.view.mas_left);
-//    }];
-//    [_contentView updateConstraintsIfNeeded];
-    
     if(self.showSkipButton){
         self.skipButton.remainSec = _waitDuration;
         [self.view addSubview:self.skipButton];
@@ -162,6 +153,8 @@ static const CGFloat kDefaultWaitDuration = 3.0;
             [animation setDuration:_animateDuration];
             animation.keyPath = @"opacity";
             animation.toValue = @(0);
+            animation.removedOnCompletion = NO;
+            animation.fillMode = kCAFillModeForwards;
             [self.view.layer addAnimation:animation forKey:nil];
             break;
         }
@@ -179,6 +172,9 @@ static const CGFloat kDefaultWaitDuration = 3.0;
             zoomInAnimation.toValue = @(2.0);
             
             groupAnimation.animations = @[fadeAnimation,zoomInAnimation];
+            
+            groupAnimation.removedOnCompletion = NO;
+            groupAnimation.fillMode = kCAFillModeForwards;
             
             [self.view.layer addAnimation:groupAnimation forKey:nil];
             break;
@@ -205,6 +201,9 @@ static const CGFloat kDefaultWaitDuration = 3.0;
             maskLayerAnimation.toValue = (__bridge id)((endPath.CGPath));
             
             maskLayerAnimation.timingFunction = [CAMediaTimingFunction  functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+            
+            maskLayerAnimation.removedOnCompletion = NO;
+            maskLayerAnimation.fillMode = kCAFillModeForwards;
             
             [maskLayer addAnimation:maskLayerAnimation forKey:nil];
             
@@ -240,6 +239,9 @@ static const CGFloat kDefaultWaitDuration = 3.0;
             keyFrameAnimation.values = @[(__bridge id)(pathOne.CGPath),(__bridge id)(pathTwo.CGPath),(__bridge id)(pathThree.CGPath),(__bridge id)(pathFour.CGPath)];
             keyFrameAnimation.keyTimes = @[@(0),@(0.3),@(0.6),@(1)];
             
+            keyFrameAnimation.removedOnCompletion = NO;
+            keyFrameAnimation.fillMode = kCAFillModeForwards;
+            
             [maskLayer addAnimation:keyFrameAnimation forKey:nil];
             
             break;
@@ -265,6 +267,9 @@ static const CGFloat kDefaultWaitDuration = 3.0;
             keyFrameAnimation.values = @[(__bridge id)(pathOne.CGPath),(__bridge id)(pathTwo.CGPath),(__bridge id)(pathThree.CGPath),(__bridge id)(pathFour.CGPath)];
             keyFrameAnimation.keyTimes = @[@(0),@(0.5),@(0.9),@(1)];
             
+            keyFrameAnimation.removedOnCompletion = NO;
+            keyFrameAnimation.fillMode = kCAFillModeForwards;
+            
             [maskLayer addAnimation:keyFrameAnimation forKey:nil];
             
             break;
@@ -286,6 +291,9 @@ static const CGFloat kDefaultWaitDuration = 3.0;
             maskLayerAnimation.fromValue = (__bridge id)(beginPath.CGPath);
             maskLayerAnimation.toValue = (__bridge id)(endPath.CGPath);
             
+            maskLayerAnimation.removedOnCompletion = NO;
+            maskLayerAnimation.fillMode = kCAFillModeForwards;
+            
             [maskLayer addAnimation:maskLayerAnimation forKey:nil];
             
             break;
@@ -296,9 +304,9 @@ static const CGFloat kDefaultWaitDuration = 3.0;
 }
 
 - (void)dismissAtOnce{
+    [self.view removeFromSuperview];
     [self.timer invalidate];
     self.timer = nil;
-    [self.view removeFromSuperview];
     if (_complete) {
         self.complete();
     }
