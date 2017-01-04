@@ -24,4 +24,16 @@
  */
 - (NSDate *)zeroOfDate;
 
+
+/**
+ 当月第一天
+ */
+- (NSDate *)firstDateOfCurrentMonth;
+
+
+/**
+ 当月最后一天
+ */
+- (NSDate *)lastDateOfCurrentMonth;
+
 @end

@@ -88,11 +88,7 @@
         
         monthlySign.signTotalDay = [self calculateValidateSignDayInMonth:month];
         monthlySign.month = month;
-        if ([month earlierDate:now]==now) {
-            monthlySign.begin = NO;
-        }else{
-            monthlySign.begin = YES;
-        }
+        monthlySign.begin = !([month earlierDate:now]==now);
         monthlySign.signDay = 0;
         monthlySign.signDictionary = [NSMutableDictionary dictionary];
         
@@ -123,24 +119,11 @@
 
 - (NSInteger)calculateValidateSignDayInMonth:(NSDate *)monthDate{
     
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSInteger month = [calendar components:NSUIntegerMax fromDate:monthDate].month;
-    NSInteger year = [calendar components:NSUIntegerMax fromDate:monthDate].year;
-    
     NSDate *startDate = self.target.startDate;
     NSDate *endDate = self.target.endDate;
     
-    NSDateComponents *firstDayComponents = [calendar components:NSUIntegerMax fromDate:[NSDate date]];
-    firstDayComponents.year = year;
-    firstDayComponents.month = month;
-    firstDayComponents.day = 1;
-    NSDate *firstDay = [calendar dateFromComponents:firstDayComponents];
-    
-    NSDateComponents *lastDayComponents = [calendar components:NSUIntegerMax fromDate:[NSDate date]];
-    lastDayComponents.year = year;
-    lastDayComponents.month = month+1;
-    lastDayComponents.day = 0;
-    NSDate *lastDay = [calendar dateFromComponents:lastDayComponents];
+    NSDate *firstDay = [monthDate firstDateOfCurrentMonth];
+    NSDate *lastDay = [monthDate lastDateOfCurrentMonth];
     
     if ([firstDay compare:startDate]!=NSOrderedDescending&&[lastDay compare:endDate]!=NSOrderedDescending) {
         return [lastDay dayIntervalSinceDate:startDate]+1;
@@ -156,19 +139,26 @@
 }
 
 - (NSArray *)monthsArrayFromDate:(NSDate *)startDate toDate:(NSDate *)endDate{
+    
     NSCalendar *calendar = [NSCalendar currentCalendar];
     calendar.locale = [NSLocale currentLocale];
+    
     NSDateComponents *startDateComponents = [calendar components:NSUIntegerMax fromDate:startDate];
     NSDateComponents *endDateComponents = [calendar components:NSUIntegerMax fromDate:endDate];
+    
     if (startDateComponents.year==endDateComponents.year&&startDateComponents.month==endDateComponents.month) {
         startDateComponents.day = 1;
-        return @[[calendar dateFromComponents:startDateComponents]];
+        return @[[startDate firstDateOfCurrentMonth]];
     }
     
     NSInteger yearInterval = endDateComponents.year-startDateComponents.year;
     NSInteger monthInterval = endDateComponents.month-startDateComponents.month;
+    
     NSMutableArray *monthsArray = [NSMutableArray array];
+    
+    
     for (int i = 0; i<=yearInterval * 12 + monthInterval; i++) {
+        
         NSInteger month = startDateComponents.month + i;
         NSInteger year = startDateComponents.year;
         if (month>12) {

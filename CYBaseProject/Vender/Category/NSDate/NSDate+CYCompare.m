@@ -22,4 +22,29 @@
     return [calendar startOfDayForDate:self];
 }
 
+- (NSDate *)firstDateOfCurrentMonth{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *oldComponents = [calendar components:NSUIntegerMax fromDate:self];
+    
+    NSDateComponents *components = [[NSDateComponents alloc]init];
+    components.year = oldComponents.year;
+    components.month = oldComponents.month;
+    components.day = 1;
+    
+    return [calendar dateFromComponents:components];
+}
+
+- (NSDate *)lastDateOfCurrentMonth{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    NSDateComponents *oldComponents = [calendar components:NSUIntegerMax fromDate:self];
+    
+    NSDateComponents *lastDayComponents = [[NSDateComponents alloc]init];
+    lastDayComponents.year = oldComponents.year;
+    lastDayComponents.month = oldComponents.month+1;
+    lastDayComponents.day = 0;
+    
+    return [calendar dateFromComponents:lastDayComponents];
+}
+
 @end
