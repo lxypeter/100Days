@@ -13,5 +13,4 @@ target '100Days' do
   pod 'Masonry'
   pod 'MJRefresh'
   pod 'SDWebImage'
-  pod 'JSPatchPlatform'
 end

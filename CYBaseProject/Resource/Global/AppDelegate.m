@@ -14,7 +14,6 @@
 #import <ShareSDKConnector/ShareSDKConnector.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 #import <TencentOpenAPI/QQApiInterface.h>
-#import <JSPatchPlatform/JSPatch.h>
 #import "WXApi.h"
 #import "WeiboSDK.h"
 #import "CYLaunchAnimateViewController.h"
@@ -42,11 +41,6 @@
     [self registerShareSDK];
     //register timer background
     [self registerBackground];
-    //JSPatch
-    [JSPatch updateConfigWithAppKey:@"be88a5de896b0e4f"];
-    NSString *appStoreUrl = [JSPatch getConfigParam:kAppStoreUrlKey];
-    [[NSUserDefaults standardUserDefaults]setObject:appStoreUrl forKey:kAppStoreUrlKey];
-    [[NSUserDefaults standardUserDefaults]synchronize];
     
     //language
     NSString *language = [NSBundle currentLanguage];
